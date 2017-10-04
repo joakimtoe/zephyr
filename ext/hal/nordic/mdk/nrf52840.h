@@ -2041,108 +2041,109 @@ typedef struct {                                    /*!< FPU Structure          
 /* ================                      USBD                      ================ */
 /* ================================================================================ */
 
-
 /**
   * @brief Universal Serial Bus device (USBD)
   */
 
-typedef struct {                                    /*!< USBD Structure                                                        */
-  __I  uint32_t  RESERVED0;
-  __O  uint32_t  TASKS_STARTEPIN[8];                /*!< Description collection[0]: Captures the EPIN[0].PTR, EPIN[0].MAXCNT
+typedef struct
+{ /*!< USBD Structure                                                        */
+  __I uint32_t RESERVED0;
+  __O uint32_t TASKS_STARTEPIN[8];  /*!< Description collection[0]: Captures the EPIN[0].PTR, EPIN[0].MAXCNT
                                                          and EPIN[0].CONFIG registers values, and enables endpoint IN
                                                           0 to respond to traffic from host                                    */
-  __O  uint32_t  TASKS_STARTISOIN;                  /*!< Captures the ISOIN.PTR, ISOIN.MAXCNT and ISOIN.CONFIG registers
+  __O uint32_t TASKS_STARTISOIN;    /*!< Captures the ISOIN.PTR, ISOIN.MAXCNT and ISOIN.CONFIG registers
                                                          values, and enables sending data on iso endpoint                      */
-  __O  uint32_t  TASKS_STARTEPOUT[8];               /*!< Description collection[0]: Captures the EPOUT[0].PTR, EPOUT[0].MAXCNT
+  __O uint32_t TASKS_STARTEPOUT[8]; /*!< Description collection[0]: Captures the EPOUT[0].PTR, EPOUT[0].MAXCNT
                                                          and EPOUT[0].CONFIG registers values, and enables endpoint 0
                                                           to respond to traffic from host                                      */
-  __O  uint32_t  TASKS_STARTISOOUT;                 /*!< Captures the ISOOUT.PTR, ISOOUT.MAXCNT and ISOOUT.CONFIG registers
+  __O uint32_t TASKS_STARTISOOUT;   /*!< Captures the ISOOUT.PTR, ISOOUT.MAXCNT and ISOOUT.CONFIG registers
                                                          values, and enables receiving of data on iso endpoint                 */
-  __O  uint32_t  TASKS_EP0RCVOUT;                   /*!< Allows OUT data stage on control endpoint 0                           */
-  __O  uint32_t  TASKS_EP0STATUS;                   /*!< Allows status stage on control endpoint 0                             */
-  __O  uint32_t  TASKS_EP0STALL;                    /*!< STALLs data and status stage on control endpoint 0                    */
-  __O  uint32_t  TASKS_DPDMDRIVE;                   /*!< Forces D+ and D-lines to the state defined in the DPDMVALUE
+  __O uint32_t TASKS_EP0RCVOUT;     /*!< Allows OUT data stage on control endpoint 0                           */
+  __O uint32_t TASKS_EP0STATUS;     /*!< Allows status stage on control endpoint 0                             */
+  __O uint32_t TASKS_EP0STALL;      /*!< STALLs data and status stage on control endpoint 0                    */
+  __O uint32_t TASKS_DPDMDRIVE;     /*!< Forces D+ and D-lines to the state defined in the DPDMVALUE
                                                          register                                                              */
-  __O  uint32_t  TASKS_DPDMNODRIVE;                 /*!< Stops forcing D+ and D- lines to any state (USB engine takes
+  __O uint32_t TASKS_DPDMNODRIVE;   /*!< Stops forcing D+ and D- lines to any state (USB engine takes
                                                          control)                                                              */
-  __I  uint32_t  RESERVED1[40];
-  __IO uint32_t  EVENTS_USBRESET;                   /*!< Signals that a USB reset condition has been detected on the
+  __I uint32_t RESERVED1[40];
+  __IO uint32_t EVENTS_USBRESET;    /*!< Signals that a USB reset condition has been detected on the
                                                          USB lines                                                             */
-  __IO uint32_t  EVENTS_STARTED;                    /*!< Confirms that the EPIN[n].PTR, EPIN[n].MAXCNT, EPIN[n].CONFIG,
+  __IO uint32_t EVENTS_STARTED;     /*!< Confirms that the EPIN[n].PTR, EPIN[n].MAXCNT, EPIN[n].CONFIG,
                                                          or EPOUT[n].PTR, EPOUT[n].MAXCNT and EPOUT[n].CONFIG registers
                                                           have been captured on all endpoints reported in the EPSTATUS
                                                           register                                                             */
-  __IO uint32_t  EVENTS_ENDEPIN[8];                 /*!< Description collection[0]: The whole EPIN[0] buffer has been
+  __IO uint32_t EVENTS_ENDEPIN[8];  /*!< Description collection[0]: The whole EPIN[0] buffer has been
                                                          consumed. The RAM buffer can be accessed safely by software.          */
-  __IO uint32_t  EVENTS_EP0DATADONE;                /*!< An acknowledged data transfer has taken place on the control
+  __IO uint32_t EVENTS_EP0DATADONE; /*!< An acknowledged data transfer has taken place on the control
                                                          endpoint                                                              */
-  __IO uint32_t  EVENTS_ENDISOIN;                   /*!< The whole ISOIN buffer has been consumed. The RAM buffer can
+  __IO uint32_t EVENTS_ENDISOIN;    /*!< The whole ISOIN buffer has been consumed. The RAM buffer can
                                                          be accessed safely by software.                                       */
-  __IO uint32_t  EVENTS_ENDEPOUT[8];                /*!< Description collection[0]: The whole EPOUT[0] buffer has been
+  __IO uint32_t EVENTS_ENDEPOUT[8]; /*!< Description collection[0]: The whole EPOUT[0] buffer has been
                                                          consumed. The RAM buffer can be accessed safely by software.          */
-  __IO uint32_t  EVENTS_ENDISOOUT;                  /*!< The whole ISOOUT buffer has been consumed. The RAM buffer can
+  __IO uint32_t EVENTS_ENDISOOUT;   /*!< The whole ISOOUT buffer has been consumed. The RAM buffer can
                                                          be accessed safely by software.                                       */
-  __IO uint32_t  EVENTS_SOF;                        /*!< Signals that a SOF (start of frame) condition has been detected
+  __IO uint32_t EVENTS_SOF;         /*!< Signals that a SOF (start of frame) condition has been detected
                                                          on the USB lines                                                      */
-  __IO uint32_t  EVENTS_USBEVENT;                   /*!< An event or an error not covered by specific events has occurred,
+  __IO uint32_t EVENTS_USBEVENT;    /*!< An event or an error not covered by specific events has occurred,
                                                          check EVENTCAUSE register to find the cause                           */
-  __IO uint32_t  EVENTS_EP0SETUP;                   /*!< A valid SETUP token has been received (and acknowledged) on
+  __IO uint32_t EVENTS_EP0SETUP;    /*!< A valid SETUP token has been received (and acknowledged) on
                                                          the control endpoint                                                  */
-  __IO uint32_t  EVENTS_EPDATA;                     /*!< A data transfer has occurred on a data endpoint, indicated by
+  __IO uint32_t EVENTS_EPDATA;      /*!< A data transfer has occurred on a data endpoint, indicated by
                                                          the EPDATASTATUS register                                             */
-  __IO uint32_t  EVENTS_ACCESSFAULT;                /*!< Access to an unavailable USB register has been attempted (software
+  __IO uint32_t EVENTS_ACCESSFAULT; /*!< Access to an unavailable USB register has been attempted (software
                                                          or EasyDMA). This event can get fired even when USBD is not
                                                           ENABLEd.                                                             */
-  __I  uint32_t  RESERVED2[38];
-  __IO uint32_t  SHORTS;                            /*!< Shortcut register                                                     */
-  __I  uint32_t  RESERVED3[63];
-  __IO uint32_t  INTEN;                             /*!< Enable or disable interrupt                                           */
-  __IO uint32_t  INTENSET;                          /*!< Enable interrupt                                                      */
-  __IO uint32_t  INTENCLR;                          /*!< Disable interrupt                                                     */
-  __I  uint32_t  RESERVED4[61];
-  __IO uint32_t  EVENTCAUSE;                        /*!< Details on event that caused the USBEVENT event                       */
-  __I  uint32_t  BUSSTATE;                          /*!< Provides the logic state of the D+ and D- lines                       */
-  __I  uint32_t  RESERVED5[6];
-  USBD_HALTED_Type HALTED;                          /*!< Unspecified                                                           */
-  __I  uint32_t  RESERVED6;
-  __IO uint32_t  EPSTATUS;                          /*!< Provides information on which endpoint's EasyDMA registers have
+  __I uint32_t RESERVED2[38];
+  __IO uint32_t SHORTS; /*!< Shortcut register                                                     */
+  __I uint32_t RESERVED3[63];
+  __IO uint32_t INTEN;    /*!< Enable or disable interrupt                                           */
+  __IO uint32_t INTENSET; /*!< Enable interrupt                                                      */
+  __IO uint32_t INTENCLR; /*!< Disable interrupt                                                     */
+  __I uint32_t RESERVED4[61];
+  __IO uint32_t EVENTCAUSE; /*!< Details on event that caused the USBEVENT event                       */
+  __I uint32_t BUSSTATE;    /*!< Provides the logic state of the D+ and D- lines                       */
+  __I uint32_t RESERVED5[6];
+  USBD_HALTED_Type HALTED; /*!< Unspecified                                                           */
+  __I uint32_t RESERVED6;
+  __IO uint32_t EPSTATUS;     /*!< Provides information on which endpoint's EasyDMA registers have
                                                          been captured                                                         */
-  __IO uint32_t  EPDATASTATUS;                      /*!< Provides information on which endpoint(s) an acknowledged data
+  __IO uint32_t EPDATASTATUS; /*!< Provides information on which endpoint(s) an acknowledged data
                                                          transfer has occurred (EPDATA event)                                  */
-  __I  uint32_t  USBADDR;                           /*!< Device USB address                                                    */
-  __I  uint32_t  RESERVED7[3];
-  __I  uint32_t  BMREQUESTTYPE;                     /*!< SETUP data, byte 0, bmRequestType                                     */
-  __I  uint32_t  BREQUEST;                          /*!< SETUP data, byte 1, bRequest                                          */
-  __I  uint32_t  WVALUEL;                           /*!< SETUP data, byte 2, LSB of wValue                                     */
-  __I  uint32_t  WVALUEH;                           /*!< SETUP data, byte 3, MSB of wValue                                     */
-  __I  uint32_t  WINDEXL;                           /*!< SETUP data, byte 4, LSB of wIndex                                     */
-  __I  uint32_t  WINDEXH;                           /*!< SETUP data, byte 5, MSB of wIndex                                     */
-  __I  uint32_t  WLENGTHL;                          /*!< SETUP data, byte 6, LSB of wLength                                    */
-  __I  uint32_t  WLENGTHH;                          /*!< SETUP data, byte 7, MSB of wLength                                    */
-  USBD_SIZE_Type SIZE;                              /*!< Unspecified                                                           */
-  __I  uint32_t  RESERVED8[15];
-  __IO uint32_t  ENABLE;                            /*!< Enable USB                                                            */
-  __IO uint32_t  USBPULLUP;                         /*!< Control of the USB pull-up                                            */
-  __IO uint32_t  DPDMVALUE;                         /*!< State at which the DPDMDRIVE task will force D+ and D-. The
+  __I uint32_t USBADDR;       /*!< Device USB address                                                    */
+  __I uint32_t RESERVED7[3];
+  __I uint32_t BMREQUESTTYPE; /*!< SETUP data, byte 0, bmRequestType                                     */
+  __I uint32_t BREQUEST;      /*!< SETUP data, byte 1, bRequest                                          */
+  __I uint32_t WVALUEL;       /*!< SETUP data, byte 2, LSB of wValue                                     */
+  __I uint32_t WVALUEH;       /*!< SETUP data, byte 3, MSB of wValue                                     */
+  __I uint32_t WINDEXL;       /*!< SETUP data, byte 4, LSB of wIndex                                     */
+  __I uint32_t WINDEXH;       /*!< SETUP data, byte 5, MSB of wIndex                                     */
+  __I uint32_t WLENGTHL;      /*!< SETUP data, byte 6, LSB of wLength                                    */
+  __I uint32_t WLENGTHH;      /*!< SETUP data, byte 7, MSB of wLength                                    */
+  USBD_SIZE_Type SIZE;        /*!< Unspecified                                                           */
+  __I uint32_t RESERVED8[15];
+  __IO uint32_t ENABLE;    /*!< Enable USB                                                            */
+  __IO uint32_t USBPULLUP; /*!< Control of the USB pull-up                                            */
+  __IO uint32_t DPDMVALUE; /*!< State at which the DPDMDRIVE task will force D+ and D-. The
                                                          DPDMNODRIVE task reverts the control of the lines to MAC IP
                                                           (no forcing).                                                        */
-  __IO uint32_t  DTOGGLE;                           /*!< Data toggle control and status.                                       */
-  __IO uint32_t  EPINEN;                            /*!< Endpoint IN enable                                                    */
-  __IO uint32_t  EPOUTEN;                           /*!< Endpoint OUT enable                                                   */
-  __O  uint32_t  EPSTALL;                           /*!< STALL endpoints                                                       */
-  __IO uint32_t  ISOSPLIT;                          /*!< Controls the split of ISO buffers                                     */
-  __I  uint32_t  FRAMECNTR;                         /*!< Returns the current value of the start of frame counter               */
-  __I  uint32_t  RESERVED9[3];
-  __IO uint32_t  ISOINCONFIG;                       /*!< Controls the response of the ISO IN endpoint to an IN token
+  __IO uint32_t DTOGGLE;   /*!< Data toggle control and status.                                       */
+  __IO uint32_t EPINEN;    /*!< Endpoint IN enable                                                    */
+  __IO uint32_t EPOUTEN;   /*!< Endpoint OUT enable                                                   */
+  __O uint32_t EPSTALL;    /*!< STALL endpoints                                                       */
+  __IO uint32_t ISOSPLIT;  /*!< Controls the split of ISO buffers                                     */
+  __I uint32_t FRAMECNTR;  /*!< Returns the current value of the start of frame counter               */
+  __I uint32_t RESERVED9[2];
+  __IO uint32_t LOWPOWER;    /*!< First silicon only: Controls USBD peripheral low-power mode
+                                                         during USB suspend                                                    */
+  __IO uint32_t ISOINCONFIG; /*!< Controls the response of the ISO IN endpoint to an IN token
                                                          when no data is ready to be sent                                      */
-  __I  uint32_t  RESERVED10[51];
-  USBD_EPIN_Type EPIN[8];                           /*!< Unspecified                                                           */
-  USBD_ISOIN_Type ISOIN;                            /*!< Unspecified                                                           */
-  __I  uint32_t  RESERVED11[21];
-  USBD_EPOUT_Type EPOUT[8];                         /*!< Unspecified                                                           */
-  USBD_ISOOUT_Type ISOOUT;                          /*!< Unspecified                                                           */
+  __I uint32_t RESERVED10[51];
+  USBD_EPIN_Type EPIN[8]; /*!< Unspecified                                                           */
+  USBD_ISOIN_Type ISOIN;  /*!< Unspecified                                                           */
+  __I uint32_t RESERVED11[21];
+  USBD_EPOUT_Type EPOUT[8]; /*!< Unspecified                                                           */
+  USBD_ISOOUT_Type ISOOUT;  /*!< Unspecified                                                           */
 } NRF_USBD_Type;
-
 
 /* ================================================================================ */
 /* ================                      QSPI                      ================ */

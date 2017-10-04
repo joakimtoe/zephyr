@@ -13252,7 +13252,6 @@ POSSIBILITY OF SUCH DAMAGE.
 #define UICR_REGOUT0_VOUT_3V3 (5UL) /*!< 3.3 V */
 #define UICR_REGOUT0_VOUT_DEFAULT (7UL) /*!< Default voltage: 1.8 V */
 
-
 /* Peripheral: USBD */
 /* Description: Universal Serial Bus device */
 
@@ -13260,1223 +13259,1231 @@ POSSIBILITY OF SUCH DAMAGE.
 /* Description: Shortcut register */
 
 /* Bit 4 : Shortcut between ENDEPOUT[0] event and EP0RCVOUT task */
-#define USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Pos (4UL) /*!< Position of ENDEPOUT0_EP0RCVOUT field. */
+#define USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Pos (4UL)                                          /*!< Position of ENDEPOUT0_EP0RCVOUT field. */
 #define USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Msk (0x1UL << USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Pos) /*!< Bit mask of ENDEPOUT0_EP0RCVOUT field. */
-#define USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Disabled (0UL) /*!< Disable shortcut */
-#define USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Enabled (1UL) /*!< Enable shortcut */
+#define USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Disabled (0UL)                                     /*!< Disable shortcut */
+#define USBD_SHORTS_ENDEPOUT0_EP0RCVOUT_Enabled (1UL)                                      /*!< Enable shortcut */
 
 /* Bit 3 : Shortcut between ENDEPOUT[0] event and EP0STATUS task */
-#define USBD_SHORTS_ENDEPOUT0_EP0STATUS_Pos (3UL) /*!< Position of ENDEPOUT0_EP0STATUS field. */
+#define USBD_SHORTS_ENDEPOUT0_EP0STATUS_Pos (3UL)                                          /*!< Position of ENDEPOUT0_EP0STATUS field. */
 #define USBD_SHORTS_ENDEPOUT0_EP0STATUS_Msk (0x1UL << USBD_SHORTS_ENDEPOUT0_EP0STATUS_Pos) /*!< Bit mask of ENDEPOUT0_EP0STATUS field. */
-#define USBD_SHORTS_ENDEPOUT0_EP0STATUS_Disabled (0UL) /*!< Disable shortcut */
-#define USBD_SHORTS_ENDEPOUT0_EP0STATUS_Enabled (1UL) /*!< Enable shortcut */
+#define USBD_SHORTS_ENDEPOUT0_EP0STATUS_Disabled (0UL)                                     /*!< Disable shortcut */
+#define USBD_SHORTS_ENDEPOUT0_EP0STATUS_Enabled (1UL)                                      /*!< Enable shortcut */
 
 /* Bit 2 : Shortcut between EP0DATADONE event and EP0STATUS task */
-#define USBD_SHORTS_EP0DATADONE_EP0STATUS_Pos (2UL) /*!< Position of EP0DATADONE_EP0STATUS field. */
+#define USBD_SHORTS_EP0DATADONE_EP0STATUS_Pos (2UL)                                            /*!< Position of EP0DATADONE_EP0STATUS field. */
 #define USBD_SHORTS_EP0DATADONE_EP0STATUS_Msk (0x1UL << USBD_SHORTS_EP0DATADONE_EP0STATUS_Pos) /*!< Bit mask of EP0DATADONE_EP0STATUS field. */
-#define USBD_SHORTS_EP0DATADONE_EP0STATUS_Disabled (0UL) /*!< Disable shortcut */
-#define USBD_SHORTS_EP0DATADONE_EP0STATUS_Enabled (1UL) /*!< Enable shortcut */
+#define USBD_SHORTS_EP0DATADONE_EP0STATUS_Disabled (0UL)                                       /*!< Disable shortcut */
+#define USBD_SHORTS_EP0DATADONE_EP0STATUS_Enabled (1UL)                                        /*!< Enable shortcut */
 
 /* Bit 1 : Shortcut between EP0DATADONE event and STARTEPOUT[0] task */
-#define USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Pos (1UL) /*!< Position of EP0DATADONE_STARTEPOUT0 field. */
+#define USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Pos (1UL)                                              /*!< Position of EP0DATADONE_STARTEPOUT0 field. */
 #define USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Msk (0x1UL << USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Pos) /*!< Bit mask of EP0DATADONE_STARTEPOUT0 field. */
-#define USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Disabled (0UL) /*!< Disable shortcut */
-#define USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Enabled (1UL) /*!< Enable shortcut */
+#define USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Disabled (0UL)                                         /*!< Disable shortcut */
+#define USBD_SHORTS_EP0DATADONE_STARTEPOUT0_Enabled (1UL)                                          /*!< Enable shortcut */
 
 /* Bit 0 : Shortcut between EP0DATADONE event and STARTEPIN[0] task */
-#define USBD_SHORTS_EP0DATADONE_STARTEPIN0_Pos (0UL) /*!< Position of EP0DATADONE_STARTEPIN0 field. */
+#define USBD_SHORTS_EP0DATADONE_STARTEPIN0_Pos (0UL)                                             /*!< Position of EP0DATADONE_STARTEPIN0 field. */
 #define USBD_SHORTS_EP0DATADONE_STARTEPIN0_Msk (0x1UL << USBD_SHORTS_EP0DATADONE_STARTEPIN0_Pos) /*!< Bit mask of EP0DATADONE_STARTEPIN0 field. */
-#define USBD_SHORTS_EP0DATADONE_STARTEPIN0_Disabled (0UL) /*!< Disable shortcut */
-#define USBD_SHORTS_EP0DATADONE_STARTEPIN0_Enabled (1UL) /*!< Enable shortcut */
+#define USBD_SHORTS_EP0DATADONE_STARTEPIN0_Disabled (0UL)                                        /*!< Disable shortcut */
+#define USBD_SHORTS_EP0DATADONE_STARTEPIN0_Enabled (1UL)                                         /*!< Enable shortcut */
 
 /* Register: USBD_INTEN */
 /* Description: Enable or disable interrupt */
 
 /* Bit 25 : Enable or disable interrupt for ACCESSFAULT event */
-#define USBD_INTEN_ACCESSFAULT_Pos (25UL) /*!< Position of ACCESSFAULT field. */
+#define USBD_INTEN_ACCESSFAULT_Pos (25UL)                                /*!< Position of ACCESSFAULT field. */
 #define USBD_INTEN_ACCESSFAULT_Msk (0x1UL << USBD_INTEN_ACCESSFAULT_Pos) /*!< Bit mask of ACCESSFAULT field. */
-#define USBD_INTEN_ACCESSFAULT_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ACCESSFAULT_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ACCESSFAULT_Disabled (0UL)                            /*!< Disable */
+#define USBD_INTEN_ACCESSFAULT_Enabled (1UL)                             /*!< Enable */
 
 /* Bit 24 : Enable or disable interrupt for EPDATA event */
-#define USBD_INTEN_EPDATA_Pos (24UL) /*!< Position of EPDATA field. */
+#define USBD_INTEN_EPDATA_Pos (24UL)                           /*!< Position of EPDATA field. */
 #define USBD_INTEN_EPDATA_Msk (0x1UL << USBD_INTEN_EPDATA_Pos) /*!< Bit mask of EPDATA field. */
-#define USBD_INTEN_EPDATA_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_EPDATA_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_EPDATA_Disabled (0UL)                       /*!< Disable */
+#define USBD_INTEN_EPDATA_Enabled (1UL)                        /*!< Enable */
 
 /* Bit 23 : Enable or disable interrupt for EP0SETUP event */
-#define USBD_INTEN_EP0SETUP_Pos (23UL) /*!< Position of EP0SETUP field. */
+#define USBD_INTEN_EP0SETUP_Pos (23UL)                             /*!< Position of EP0SETUP field. */
 #define USBD_INTEN_EP0SETUP_Msk (0x1UL << USBD_INTEN_EP0SETUP_Pos) /*!< Bit mask of EP0SETUP field. */
-#define USBD_INTEN_EP0SETUP_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_EP0SETUP_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_EP0SETUP_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_EP0SETUP_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 22 : Enable or disable interrupt for USBEVENT event */
-#define USBD_INTEN_USBEVENT_Pos (22UL) /*!< Position of USBEVENT field. */
+#define USBD_INTEN_USBEVENT_Pos (22UL)                             /*!< Position of USBEVENT field. */
 #define USBD_INTEN_USBEVENT_Msk (0x1UL << USBD_INTEN_USBEVENT_Pos) /*!< Bit mask of USBEVENT field. */
-#define USBD_INTEN_USBEVENT_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_USBEVENT_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_USBEVENT_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_USBEVENT_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 21 : Enable or disable interrupt for SOF event */
-#define USBD_INTEN_SOF_Pos (21UL) /*!< Position of SOF field. */
+#define USBD_INTEN_SOF_Pos (21UL)                        /*!< Position of SOF field. */
 #define USBD_INTEN_SOF_Msk (0x1UL << USBD_INTEN_SOF_Pos) /*!< Bit mask of SOF field. */
-#define USBD_INTEN_SOF_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_SOF_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_SOF_Disabled (0UL)                    /*!< Disable */
+#define USBD_INTEN_SOF_Enabled (1UL)                     /*!< Enable */
 
 /* Bit 20 : Enable or disable interrupt for ENDISOOUT event */
-#define USBD_INTEN_ENDISOOUT_Pos (20UL) /*!< Position of ENDISOOUT field. */
+#define USBD_INTEN_ENDISOOUT_Pos (20UL)                              /*!< Position of ENDISOOUT field. */
 #define USBD_INTEN_ENDISOOUT_Msk (0x1UL << USBD_INTEN_ENDISOOUT_Pos) /*!< Bit mask of ENDISOOUT field. */
-#define USBD_INTEN_ENDISOOUT_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDISOOUT_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDISOOUT_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDISOOUT_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 19 : Enable or disable interrupt for ENDEPOUT[7] event */
-#define USBD_INTEN_ENDEPOUT7_Pos (19UL) /*!< Position of ENDEPOUT7 field. */
+#define USBD_INTEN_ENDEPOUT7_Pos (19UL)                              /*!< Position of ENDEPOUT7 field. */
 #define USBD_INTEN_ENDEPOUT7_Msk (0x1UL << USBD_INTEN_ENDEPOUT7_Pos) /*!< Bit mask of ENDEPOUT7 field. */
-#define USBD_INTEN_ENDEPOUT7_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT7_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT7_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT7_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 18 : Enable or disable interrupt for ENDEPOUT[6] event */
-#define USBD_INTEN_ENDEPOUT6_Pos (18UL) /*!< Position of ENDEPOUT6 field. */
+#define USBD_INTEN_ENDEPOUT6_Pos (18UL)                              /*!< Position of ENDEPOUT6 field. */
 #define USBD_INTEN_ENDEPOUT6_Msk (0x1UL << USBD_INTEN_ENDEPOUT6_Pos) /*!< Bit mask of ENDEPOUT6 field. */
-#define USBD_INTEN_ENDEPOUT6_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT6_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT6_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT6_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 17 : Enable or disable interrupt for ENDEPOUT[5] event */
-#define USBD_INTEN_ENDEPOUT5_Pos (17UL) /*!< Position of ENDEPOUT5 field. */
+#define USBD_INTEN_ENDEPOUT5_Pos (17UL)                              /*!< Position of ENDEPOUT5 field. */
 #define USBD_INTEN_ENDEPOUT5_Msk (0x1UL << USBD_INTEN_ENDEPOUT5_Pos) /*!< Bit mask of ENDEPOUT5 field. */
-#define USBD_INTEN_ENDEPOUT5_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT5_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT5_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT5_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 16 : Enable or disable interrupt for ENDEPOUT[4] event */
-#define USBD_INTEN_ENDEPOUT4_Pos (16UL) /*!< Position of ENDEPOUT4 field. */
+#define USBD_INTEN_ENDEPOUT4_Pos (16UL)                              /*!< Position of ENDEPOUT4 field. */
 #define USBD_INTEN_ENDEPOUT4_Msk (0x1UL << USBD_INTEN_ENDEPOUT4_Pos) /*!< Bit mask of ENDEPOUT4 field. */
-#define USBD_INTEN_ENDEPOUT4_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT4_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT4_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT4_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 15 : Enable or disable interrupt for ENDEPOUT[3] event */
-#define USBD_INTEN_ENDEPOUT3_Pos (15UL) /*!< Position of ENDEPOUT3 field. */
+#define USBD_INTEN_ENDEPOUT3_Pos (15UL)                              /*!< Position of ENDEPOUT3 field. */
 #define USBD_INTEN_ENDEPOUT3_Msk (0x1UL << USBD_INTEN_ENDEPOUT3_Pos) /*!< Bit mask of ENDEPOUT3 field. */
-#define USBD_INTEN_ENDEPOUT3_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT3_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT3_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT3_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 14 : Enable or disable interrupt for ENDEPOUT[2] event */
-#define USBD_INTEN_ENDEPOUT2_Pos (14UL) /*!< Position of ENDEPOUT2 field. */
+#define USBD_INTEN_ENDEPOUT2_Pos (14UL)                              /*!< Position of ENDEPOUT2 field. */
 #define USBD_INTEN_ENDEPOUT2_Msk (0x1UL << USBD_INTEN_ENDEPOUT2_Pos) /*!< Bit mask of ENDEPOUT2 field. */
-#define USBD_INTEN_ENDEPOUT2_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT2_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT2_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT2_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 13 : Enable or disable interrupt for ENDEPOUT[1] event */
-#define USBD_INTEN_ENDEPOUT1_Pos (13UL) /*!< Position of ENDEPOUT1 field. */
+#define USBD_INTEN_ENDEPOUT1_Pos (13UL)                              /*!< Position of ENDEPOUT1 field. */
 #define USBD_INTEN_ENDEPOUT1_Msk (0x1UL << USBD_INTEN_ENDEPOUT1_Pos) /*!< Bit mask of ENDEPOUT1 field. */
-#define USBD_INTEN_ENDEPOUT1_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT1_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT1_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT1_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 12 : Enable or disable interrupt for ENDEPOUT[0] event */
-#define USBD_INTEN_ENDEPOUT0_Pos (12UL) /*!< Position of ENDEPOUT0 field. */
+#define USBD_INTEN_ENDEPOUT0_Pos (12UL)                              /*!< Position of ENDEPOUT0 field. */
 #define USBD_INTEN_ENDEPOUT0_Msk (0x1UL << USBD_INTEN_ENDEPOUT0_Pos) /*!< Bit mask of ENDEPOUT0 field. */
-#define USBD_INTEN_ENDEPOUT0_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPOUT0_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPOUT0_Disabled (0UL)                          /*!< Disable */
+#define USBD_INTEN_ENDEPOUT0_Enabled (1UL)                           /*!< Enable */
 
 /* Bit 11 : Enable or disable interrupt for ENDISOIN event */
-#define USBD_INTEN_ENDISOIN_Pos (11UL) /*!< Position of ENDISOIN field. */
+#define USBD_INTEN_ENDISOIN_Pos (11UL)                             /*!< Position of ENDISOIN field. */
 #define USBD_INTEN_ENDISOIN_Msk (0x1UL << USBD_INTEN_ENDISOIN_Pos) /*!< Bit mask of ENDISOIN field. */
-#define USBD_INTEN_ENDISOIN_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDISOIN_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDISOIN_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDISOIN_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 10 : Enable or disable interrupt for EP0DATADONE event */
-#define USBD_INTEN_EP0DATADONE_Pos (10UL) /*!< Position of EP0DATADONE field. */
+#define USBD_INTEN_EP0DATADONE_Pos (10UL)                                /*!< Position of EP0DATADONE field. */
 #define USBD_INTEN_EP0DATADONE_Msk (0x1UL << USBD_INTEN_EP0DATADONE_Pos) /*!< Bit mask of EP0DATADONE field. */
-#define USBD_INTEN_EP0DATADONE_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_EP0DATADONE_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_EP0DATADONE_Disabled (0UL)                            /*!< Disable */
+#define USBD_INTEN_EP0DATADONE_Enabled (1UL)                             /*!< Enable */
 
 /* Bit 9 : Enable or disable interrupt for ENDEPIN[7] event */
-#define USBD_INTEN_ENDEPIN7_Pos (9UL) /*!< Position of ENDEPIN7 field. */
+#define USBD_INTEN_ENDEPIN7_Pos (9UL)                              /*!< Position of ENDEPIN7 field. */
 #define USBD_INTEN_ENDEPIN7_Msk (0x1UL << USBD_INTEN_ENDEPIN7_Pos) /*!< Bit mask of ENDEPIN7 field. */
-#define USBD_INTEN_ENDEPIN7_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN7_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN7_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN7_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 8 : Enable or disable interrupt for ENDEPIN[6] event */
-#define USBD_INTEN_ENDEPIN6_Pos (8UL) /*!< Position of ENDEPIN6 field. */
+#define USBD_INTEN_ENDEPIN6_Pos (8UL)                              /*!< Position of ENDEPIN6 field. */
 #define USBD_INTEN_ENDEPIN6_Msk (0x1UL << USBD_INTEN_ENDEPIN6_Pos) /*!< Bit mask of ENDEPIN6 field. */
-#define USBD_INTEN_ENDEPIN6_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN6_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN6_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN6_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 7 : Enable or disable interrupt for ENDEPIN[5] event */
-#define USBD_INTEN_ENDEPIN5_Pos (7UL) /*!< Position of ENDEPIN5 field. */
+#define USBD_INTEN_ENDEPIN5_Pos (7UL)                              /*!< Position of ENDEPIN5 field. */
 #define USBD_INTEN_ENDEPIN5_Msk (0x1UL << USBD_INTEN_ENDEPIN5_Pos) /*!< Bit mask of ENDEPIN5 field. */
-#define USBD_INTEN_ENDEPIN5_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN5_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN5_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN5_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 6 : Enable or disable interrupt for ENDEPIN[4] event */
-#define USBD_INTEN_ENDEPIN4_Pos (6UL) /*!< Position of ENDEPIN4 field. */
+#define USBD_INTEN_ENDEPIN4_Pos (6UL)                              /*!< Position of ENDEPIN4 field. */
 #define USBD_INTEN_ENDEPIN4_Msk (0x1UL << USBD_INTEN_ENDEPIN4_Pos) /*!< Bit mask of ENDEPIN4 field. */
-#define USBD_INTEN_ENDEPIN4_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN4_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN4_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN4_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 5 : Enable or disable interrupt for ENDEPIN[3] event */
-#define USBD_INTEN_ENDEPIN3_Pos (5UL) /*!< Position of ENDEPIN3 field. */
+#define USBD_INTEN_ENDEPIN3_Pos (5UL)                              /*!< Position of ENDEPIN3 field. */
 #define USBD_INTEN_ENDEPIN3_Msk (0x1UL << USBD_INTEN_ENDEPIN3_Pos) /*!< Bit mask of ENDEPIN3 field. */
-#define USBD_INTEN_ENDEPIN3_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN3_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN3_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN3_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 4 : Enable or disable interrupt for ENDEPIN[2] event */
-#define USBD_INTEN_ENDEPIN2_Pos (4UL) /*!< Position of ENDEPIN2 field. */
+#define USBD_INTEN_ENDEPIN2_Pos (4UL)                              /*!< Position of ENDEPIN2 field. */
 #define USBD_INTEN_ENDEPIN2_Msk (0x1UL << USBD_INTEN_ENDEPIN2_Pos) /*!< Bit mask of ENDEPIN2 field. */
-#define USBD_INTEN_ENDEPIN2_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN2_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN2_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN2_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 3 : Enable or disable interrupt for ENDEPIN[1] event */
-#define USBD_INTEN_ENDEPIN1_Pos (3UL) /*!< Position of ENDEPIN1 field. */
+#define USBD_INTEN_ENDEPIN1_Pos (3UL)                              /*!< Position of ENDEPIN1 field. */
 #define USBD_INTEN_ENDEPIN1_Msk (0x1UL << USBD_INTEN_ENDEPIN1_Pos) /*!< Bit mask of ENDEPIN1 field. */
-#define USBD_INTEN_ENDEPIN1_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN1_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN1_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN1_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 2 : Enable or disable interrupt for ENDEPIN[0] event */
-#define USBD_INTEN_ENDEPIN0_Pos (2UL) /*!< Position of ENDEPIN0 field. */
+#define USBD_INTEN_ENDEPIN0_Pos (2UL)                              /*!< Position of ENDEPIN0 field. */
 #define USBD_INTEN_ENDEPIN0_Msk (0x1UL << USBD_INTEN_ENDEPIN0_Pos) /*!< Bit mask of ENDEPIN0 field. */
-#define USBD_INTEN_ENDEPIN0_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_ENDEPIN0_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_ENDEPIN0_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_ENDEPIN0_Enabled (1UL)                          /*!< Enable */
 
 /* Bit 1 : Enable or disable interrupt for STARTED event */
-#define USBD_INTEN_STARTED_Pos (1UL) /*!< Position of STARTED field. */
+#define USBD_INTEN_STARTED_Pos (1UL)                             /*!< Position of STARTED field. */
 #define USBD_INTEN_STARTED_Msk (0x1UL << USBD_INTEN_STARTED_Pos) /*!< Bit mask of STARTED field. */
-#define USBD_INTEN_STARTED_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_STARTED_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_STARTED_Disabled (0UL)                        /*!< Disable */
+#define USBD_INTEN_STARTED_Enabled (1UL)                         /*!< Enable */
 
 /* Bit 0 : Enable or disable interrupt for USBRESET event */
-#define USBD_INTEN_USBRESET_Pos (0UL) /*!< Position of USBRESET field. */
+#define USBD_INTEN_USBRESET_Pos (0UL)                              /*!< Position of USBRESET field. */
 #define USBD_INTEN_USBRESET_Msk (0x1UL << USBD_INTEN_USBRESET_Pos) /*!< Bit mask of USBRESET field. */
-#define USBD_INTEN_USBRESET_Disabled (0UL) /*!< Disable */
-#define USBD_INTEN_USBRESET_Enabled (1UL) /*!< Enable */
+#define USBD_INTEN_USBRESET_Disabled (0UL)                         /*!< Disable */
+#define USBD_INTEN_USBRESET_Enabled (1UL)                          /*!< Enable */
 
 /* Register: USBD_INTENSET */
 /* Description: Enable interrupt */
 
 /* Bit 25 : Write '1' to Enable interrupt for ACCESSFAULT event */
-#define USBD_INTENSET_ACCESSFAULT_Pos (25UL) /*!< Position of ACCESSFAULT field. */
+#define USBD_INTENSET_ACCESSFAULT_Pos (25UL)                                   /*!< Position of ACCESSFAULT field. */
 #define USBD_INTENSET_ACCESSFAULT_Msk (0x1UL << USBD_INTENSET_ACCESSFAULT_Pos) /*!< Bit mask of ACCESSFAULT field. */
-#define USBD_INTENSET_ACCESSFAULT_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ACCESSFAULT_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ACCESSFAULT_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ACCESSFAULT_Disabled (0UL)                               /*!< Read: Disabled */
+#define USBD_INTENSET_ACCESSFAULT_Enabled (1UL)                                /*!< Read: Enabled */
+#define USBD_INTENSET_ACCESSFAULT_Set (1UL)                                    /*!< Enable */
 
 /* Bit 24 : Write '1' to Enable interrupt for EPDATA event */
-#define USBD_INTENSET_EPDATA_Pos (24UL) /*!< Position of EPDATA field. */
+#define USBD_INTENSET_EPDATA_Pos (24UL)                              /*!< Position of EPDATA field. */
 #define USBD_INTENSET_EPDATA_Msk (0x1UL << USBD_INTENSET_EPDATA_Pos) /*!< Bit mask of EPDATA field. */
-#define USBD_INTENSET_EPDATA_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_EPDATA_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_EPDATA_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_EPDATA_Disabled (0UL)                          /*!< Read: Disabled */
+#define USBD_INTENSET_EPDATA_Enabled (1UL)                           /*!< Read: Enabled */
+#define USBD_INTENSET_EPDATA_Set (1UL)                               /*!< Enable */
 
 /* Bit 23 : Write '1' to Enable interrupt for EP0SETUP event */
-#define USBD_INTENSET_EP0SETUP_Pos (23UL) /*!< Position of EP0SETUP field. */
+#define USBD_INTENSET_EP0SETUP_Pos (23UL)                                /*!< Position of EP0SETUP field. */
 #define USBD_INTENSET_EP0SETUP_Msk (0x1UL << USBD_INTENSET_EP0SETUP_Pos) /*!< Bit mask of EP0SETUP field. */
-#define USBD_INTENSET_EP0SETUP_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_EP0SETUP_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_EP0SETUP_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_EP0SETUP_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_EP0SETUP_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_EP0SETUP_Set (1UL)                                 /*!< Enable */
 
 /* Bit 22 : Write '1' to Enable interrupt for USBEVENT event */
-#define USBD_INTENSET_USBEVENT_Pos (22UL) /*!< Position of USBEVENT field. */
+#define USBD_INTENSET_USBEVENT_Pos (22UL)                                /*!< Position of USBEVENT field. */
 #define USBD_INTENSET_USBEVENT_Msk (0x1UL << USBD_INTENSET_USBEVENT_Pos) /*!< Bit mask of USBEVENT field. */
-#define USBD_INTENSET_USBEVENT_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_USBEVENT_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_USBEVENT_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_USBEVENT_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_USBEVENT_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_USBEVENT_Set (1UL)                                 /*!< Enable */
 
 /* Bit 21 : Write '1' to Enable interrupt for SOF event */
-#define USBD_INTENSET_SOF_Pos (21UL) /*!< Position of SOF field. */
+#define USBD_INTENSET_SOF_Pos (21UL)                           /*!< Position of SOF field. */
 #define USBD_INTENSET_SOF_Msk (0x1UL << USBD_INTENSET_SOF_Pos) /*!< Bit mask of SOF field. */
-#define USBD_INTENSET_SOF_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_SOF_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_SOF_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_SOF_Disabled (0UL)                       /*!< Read: Disabled */
+#define USBD_INTENSET_SOF_Enabled (1UL)                        /*!< Read: Enabled */
+#define USBD_INTENSET_SOF_Set (1UL)                            /*!< Enable */
 
 /* Bit 20 : Write '1' to Enable interrupt for ENDISOOUT event */
-#define USBD_INTENSET_ENDISOOUT_Pos (20UL) /*!< Position of ENDISOOUT field. */
+#define USBD_INTENSET_ENDISOOUT_Pos (20UL)                                 /*!< Position of ENDISOOUT field. */
 #define USBD_INTENSET_ENDISOOUT_Msk (0x1UL << USBD_INTENSET_ENDISOOUT_Pos) /*!< Bit mask of ENDISOOUT field. */
-#define USBD_INTENSET_ENDISOOUT_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDISOOUT_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDISOOUT_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDISOOUT_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDISOOUT_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDISOOUT_Set (1UL)                                  /*!< Enable */
 
 /* Bit 19 : Write '1' to Enable interrupt for ENDEPOUT[7] event */
-#define USBD_INTENSET_ENDEPOUT7_Pos (19UL) /*!< Position of ENDEPOUT7 field. */
+#define USBD_INTENSET_ENDEPOUT7_Pos (19UL)                                 /*!< Position of ENDEPOUT7 field. */
 #define USBD_INTENSET_ENDEPOUT7_Msk (0x1UL << USBD_INTENSET_ENDEPOUT7_Pos) /*!< Bit mask of ENDEPOUT7 field. */
-#define USBD_INTENSET_ENDEPOUT7_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT7_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT7_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT7_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT7_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT7_Set (1UL)                                  /*!< Enable */
 
 /* Bit 18 : Write '1' to Enable interrupt for ENDEPOUT[6] event */
-#define USBD_INTENSET_ENDEPOUT6_Pos (18UL) /*!< Position of ENDEPOUT6 field. */
+#define USBD_INTENSET_ENDEPOUT6_Pos (18UL)                                 /*!< Position of ENDEPOUT6 field. */
 #define USBD_INTENSET_ENDEPOUT6_Msk (0x1UL << USBD_INTENSET_ENDEPOUT6_Pos) /*!< Bit mask of ENDEPOUT6 field. */
-#define USBD_INTENSET_ENDEPOUT6_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT6_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT6_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT6_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT6_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT6_Set (1UL)                                  /*!< Enable */
 
 /* Bit 17 : Write '1' to Enable interrupt for ENDEPOUT[5] event */
-#define USBD_INTENSET_ENDEPOUT5_Pos (17UL) /*!< Position of ENDEPOUT5 field. */
+#define USBD_INTENSET_ENDEPOUT5_Pos (17UL)                                 /*!< Position of ENDEPOUT5 field. */
 #define USBD_INTENSET_ENDEPOUT5_Msk (0x1UL << USBD_INTENSET_ENDEPOUT5_Pos) /*!< Bit mask of ENDEPOUT5 field. */
-#define USBD_INTENSET_ENDEPOUT5_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT5_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT5_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT5_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT5_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT5_Set (1UL)                                  /*!< Enable */
 
 /* Bit 16 : Write '1' to Enable interrupt for ENDEPOUT[4] event */
-#define USBD_INTENSET_ENDEPOUT4_Pos (16UL) /*!< Position of ENDEPOUT4 field. */
+#define USBD_INTENSET_ENDEPOUT4_Pos (16UL)                                 /*!< Position of ENDEPOUT4 field. */
 #define USBD_INTENSET_ENDEPOUT4_Msk (0x1UL << USBD_INTENSET_ENDEPOUT4_Pos) /*!< Bit mask of ENDEPOUT4 field. */
-#define USBD_INTENSET_ENDEPOUT4_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT4_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT4_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT4_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT4_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT4_Set (1UL)                                  /*!< Enable */
 
 /* Bit 15 : Write '1' to Enable interrupt for ENDEPOUT[3] event */
-#define USBD_INTENSET_ENDEPOUT3_Pos (15UL) /*!< Position of ENDEPOUT3 field. */
+#define USBD_INTENSET_ENDEPOUT3_Pos (15UL)                                 /*!< Position of ENDEPOUT3 field. */
 #define USBD_INTENSET_ENDEPOUT3_Msk (0x1UL << USBD_INTENSET_ENDEPOUT3_Pos) /*!< Bit mask of ENDEPOUT3 field. */
-#define USBD_INTENSET_ENDEPOUT3_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT3_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT3_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT3_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT3_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT3_Set (1UL)                                  /*!< Enable */
 
 /* Bit 14 : Write '1' to Enable interrupt for ENDEPOUT[2] event */
-#define USBD_INTENSET_ENDEPOUT2_Pos (14UL) /*!< Position of ENDEPOUT2 field. */
+#define USBD_INTENSET_ENDEPOUT2_Pos (14UL)                                 /*!< Position of ENDEPOUT2 field. */
 #define USBD_INTENSET_ENDEPOUT2_Msk (0x1UL << USBD_INTENSET_ENDEPOUT2_Pos) /*!< Bit mask of ENDEPOUT2 field. */
-#define USBD_INTENSET_ENDEPOUT2_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT2_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT2_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT2_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT2_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT2_Set (1UL)                                  /*!< Enable */
 
 /* Bit 13 : Write '1' to Enable interrupt for ENDEPOUT[1] event */
-#define USBD_INTENSET_ENDEPOUT1_Pos (13UL) /*!< Position of ENDEPOUT1 field. */
+#define USBD_INTENSET_ENDEPOUT1_Pos (13UL)                                 /*!< Position of ENDEPOUT1 field. */
 #define USBD_INTENSET_ENDEPOUT1_Msk (0x1UL << USBD_INTENSET_ENDEPOUT1_Pos) /*!< Bit mask of ENDEPOUT1 field. */
-#define USBD_INTENSET_ENDEPOUT1_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT1_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT1_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT1_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT1_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT1_Set (1UL)                                  /*!< Enable */
 
 /* Bit 12 : Write '1' to Enable interrupt for ENDEPOUT[0] event */
-#define USBD_INTENSET_ENDEPOUT0_Pos (12UL) /*!< Position of ENDEPOUT0 field. */
+#define USBD_INTENSET_ENDEPOUT0_Pos (12UL)                                 /*!< Position of ENDEPOUT0 field. */
 #define USBD_INTENSET_ENDEPOUT0_Msk (0x1UL << USBD_INTENSET_ENDEPOUT0_Pos) /*!< Bit mask of ENDEPOUT0 field. */
-#define USBD_INTENSET_ENDEPOUT0_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPOUT0_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPOUT0_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPOUT0_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPOUT0_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPOUT0_Set (1UL)                                  /*!< Enable */
 
 /* Bit 11 : Write '1' to Enable interrupt for ENDISOIN event */
-#define USBD_INTENSET_ENDISOIN_Pos (11UL) /*!< Position of ENDISOIN field. */
+#define USBD_INTENSET_ENDISOIN_Pos (11UL)                                /*!< Position of ENDISOIN field. */
 #define USBD_INTENSET_ENDISOIN_Msk (0x1UL << USBD_INTENSET_ENDISOIN_Pos) /*!< Bit mask of ENDISOIN field. */
-#define USBD_INTENSET_ENDISOIN_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDISOIN_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDISOIN_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDISOIN_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDISOIN_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDISOIN_Set (1UL)                                 /*!< Enable */
 
 /* Bit 10 : Write '1' to Enable interrupt for EP0DATADONE event */
-#define USBD_INTENSET_EP0DATADONE_Pos (10UL) /*!< Position of EP0DATADONE field. */
+#define USBD_INTENSET_EP0DATADONE_Pos (10UL)                                   /*!< Position of EP0DATADONE field. */
 #define USBD_INTENSET_EP0DATADONE_Msk (0x1UL << USBD_INTENSET_EP0DATADONE_Pos) /*!< Bit mask of EP0DATADONE field. */
-#define USBD_INTENSET_EP0DATADONE_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_EP0DATADONE_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_EP0DATADONE_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_EP0DATADONE_Disabled (0UL)                               /*!< Read: Disabled */
+#define USBD_INTENSET_EP0DATADONE_Enabled (1UL)                                /*!< Read: Enabled */
+#define USBD_INTENSET_EP0DATADONE_Set (1UL)                                    /*!< Enable */
 
 /* Bit 9 : Write '1' to Enable interrupt for ENDEPIN[7] event */
-#define USBD_INTENSET_ENDEPIN7_Pos (9UL) /*!< Position of ENDEPIN7 field. */
+#define USBD_INTENSET_ENDEPIN7_Pos (9UL)                                 /*!< Position of ENDEPIN7 field. */
 #define USBD_INTENSET_ENDEPIN7_Msk (0x1UL << USBD_INTENSET_ENDEPIN7_Pos) /*!< Bit mask of ENDEPIN7 field. */
-#define USBD_INTENSET_ENDEPIN7_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN7_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN7_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN7_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN7_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN7_Set (1UL)                                 /*!< Enable */
 
 /* Bit 8 : Write '1' to Enable interrupt for ENDEPIN[6] event */
-#define USBD_INTENSET_ENDEPIN6_Pos (8UL) /*!< Position of ENDEPIN6 field. */
+#define USBD_INTENSET_ENDEPIN6_Pos (8UL)                                 /*!< Position of ENDEPIN6 field. */
 #define USBD_INTENSET_ENDEPIN6_Msk (0x1UL << USBD_INTENSET_ENDEPIN6_Pos) /*!< Bit mask of ENDEPIN6 field. */
-#define USBD_INTENSET_ENDEPIN6_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN6_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN6_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN6_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN6_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN6_Set (1UL)                                 /*!< Enable */
 
 /* Bit 7 : Write '1' to Enable interrupt for ENDEPIN[5] event */
-#define USBD_INTENSET_ENDEPIN5_Pos (7UL) /*!< Position of ENDEPIN5 field. */
+#define USBD_INTENSET_ENDEPIN5_Pos (7UL)                                 /*!< Position of ENDEPIN5 field. */
 #define USBD_INTENSET_ENDEPIN5_Msk (0x1UL << USBD_INTENSET_ENDEPIN5_Pos) /*!< Bit mask of ENDEPIN5 field. */
-#define USBD_INTENSET_ENDEPIN5_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN5_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN5_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN5_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN5_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN5_Set (1UL)                                 /*!< Enable */
 
 /* Bit 6 : Write '1' to Enable interrupt for ENDEPIN[4] event */
-#define USBD_INTENSET_ENDEPIN4_Pos (6UL) /*!< Position of ENDEPIN4 field. */
+#define USBD_INTENSET_ENDEPIN4_Pos (6UL)                                 /*!< Position of ENDEPIN4 field. */
 #define USBD_INTENSET_ENDEPIN4_Msk (0x1UL << USBD_INTENSET_ENDEPIN4_Pos) /*!< Bit mask of ENDEPIN4 field. */
-#define USBD_INTENSET_ENDEPIN4_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN4_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN4_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN4_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN4_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN4_Set (1UL)                                 /*!< Enable */
 
 /* Bit 5 : Write '1' to Enable interrupt for ENDEPIN[3] event */
-#define USBD_INTENSET_ENDEPIN3_Pos (5UL) /*!< Position of ENDEPIN3 field. */
+#define USBD_INTENSET_ENDEPIN3_Pos (5UL)                                 /*!< Position of ENDEPIN3 field. */
 #define USBD_INTENSET_ENDEPIN3_Msk (0x1UL << USBD_INTENSET_ENDEPIN3_Pos) /*!< Bit mask of ENDEPIN3 field. */
-#define USBD_INTENSET_ENDEPIN3_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN3_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN3_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN3_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN3_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN3_Set (1UL)                                 /*!< Enable */
 
 /* Bit 4 : Write '1' to Enable interrupt for ENDEPIN[2] event */
-#define USBD_INTENSET_ENDEPIN2_Pos (4UL) /*!< Position of ENDEPIN2 field. */
+#define USBD_INTENSET_ENDEPIN2_Pos (4UL)                                 /*!< Position of ENDEPIN2 field. */
 #define USBD_INTENSET_ENDEPIN2_Msk (0x1UL << USBD_INTENSET_ENDEPIN2_Pos) /*!< Bit mask of ENDEPIN2 field. */
-#define USBD_INTENSET_ENDEPIN2_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN2_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN2_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN2_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN2_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN2_Set (1UL)                                 /*!< Enable */
 
 /* Bit 3 : Write '1' to Enable interrupt for ENDEPIN[1] event */
-#define USBD_INTENSET_ENDEPIN1_Pos (3UL) /*!< Position of ENDEPIN1 field. */
+#define USBD_INTENSET_ENDEPIN1_Pos (3UL)                                 /*!< Position of ENDEPIN1 field. */
 #define USBD_INTENSET_ENDEPIN1_Msk (0x1UL << USBD_INTENSET_ENDEPIN1_Pos) /*!< Bit mask of ENDEPIN1 field. */
-#define USBD_INTENSET_ENDEPIN1_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN1_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN1_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN1_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN1_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN1_Set (1UL)                                 /*!< Enable */
 
 /* Bit 2 : Write '1' to Enable interrupt for ENDEPIN[0] event */
-#define USBD_INTENSET_ENDEPIN0_Pos (2UL) /*!< Position of ENDEPIN0 field. */
+#define USBD_INTENSET_ENDEPIN0_Pos (2UL)                                 /*!< Position of ENDEPIN0 field. */
 #define USBD_INTENSET_ENDEPIN0_Msk (0x1UL << USBD_INTENSET_ENDEPIN0_Pos) /*!< Bit mask of ENDEPIN0 field. */
-#define USBD_INTENSET_ENDEPIN0_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_ENDEPIN0_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_ENDEPIN0_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_ENDEPIN0_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_ENDEPIN0_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_ENDEPIN0_Set (1UL)                                 /*!< Enable */
 
 /* Bit 1 : Write '1' to Enable interrupt for STARTED event */
-#define USBD_INTENSET_STARTED_Pos (1UL) /*!< Position of STARTED field. */
+#define USBD_INTENSET_STARTED_Pos (1UL)                                /*!< Position of STARTED field. */
 #define USBD_INTENSET_STARTED_Msk (0x1UL << USBD_INTENSET_STARTED_Pos) /*!< Bit mask of STARTED field. */
-#define USBD_INTENSET_STARTED_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_STARTED_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_STARTED_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_STARTED_Disabled (0UL)                           /*!< Read: Disabled */
+#define USBD_INTENSET_STARTED_Enabled (1UL)                            /*!< Read: Enabled */
+#define USBD_INTENSET_STARTED_Set (1UL)                                /*!< Enable */
 
 /* Bit 0 : Write '1' to Enable interrupt for USBRESET event */
-#define USBD_INTENSET_USBRESET_Pos (0UL) /*!< Position of USBRESET field. */
+#define USBD_INTENSET_USBRESET_Pos (0UL)                                 /*!< Position of USBRESET field. */
 #define USBD_INTENSET_USBRESET_Msk (0x1UL << USBD_INTENSET_USBRESET_Pos) /*!< Bit mask of USBRESET field. */
-#define USBD_INTENSET_USBRESET_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENSET_USBRESET_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENSET_USBRESET_Set (1UL) /*!< Enable */
+#define USBD_INTENSET_USBRESET_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENSET_USBRESET_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENSET_USBRESET_Set (1UL)                                 /*!< Enable */
 
 /* Register: USBD_INTENCLR */
 /* Description: Disable interrupt */
 
 /* Bit 25 : Write '1' to Disable interrupt for ACCESSFAULT event */
-#define USBD_INTENCLR_ACCESSFAULT_Pos (25UL) /*!< Position of ACCESSFAULT field. */
+#define USBD_INTENCLR_ACCESSFAULT_Pos (25UL)                                   /*!< Position of ACCESSFAULT field. */
 #define USBD_INTENCLR_ACCESSFAULT_Msk (0x1UL << USBD_INTENCLR_ACCESSFAULT_Pos) /*!< Bit mask of ACCESSFAULT field. */
-#define USBD_INTENCLR_ACCESSFAULT_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ACCESSFAULT_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ACCESSFAULT_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ACCESSFAULT_Disabled (0UL)                               /*!< Read: Disabled */
+#define USBD_INTENCLR_ACCESSFAULT_Enabled (1UL)                                /*!< Read: Enabled */
+#define USBD_INTENCLR_ACCESSFAULT_Clear (1UL)                                  /*!< Disable */
 
 /* Bit 24 : Write '1' to Disable interrupt for EPDATA event */
-#define USBD_INTENCLR_EPDATA_Pos (24UL) /*!< Position of EPDATA field. */
+#define USBD_INTENCLR_EPDATA_Pos (24UL)                              /*!< Position of EPDATA field. */
 #define USBD_INTENCLR_EPDATA_Msk (0x1UL << USBD_INTENCLR_EPDATA_Pos) /*!< Bit mask of EPDATA field. */
-#define USBD_INTENCLR_EPDATA_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_EPDATA_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_EPDATA_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_EPDATA_Disabled (0UL)                          /*!< Read: Disabled */
+#define USBD_INTENCLR_EPDATA_Enabled (1UL)                           /*!< Read: Enabled */
+#define USBD_INTENCLR_EPDATA_Clear (1UL)                             /*!< Disable */
 
 /* Bit 23 : Write '1' to Disable interrupt for EP0SETUP event */
-#define USBD_INTENCLR_EP0SETUP_Pos (23UL) /*!< Position of EP0SETUP field. */
+#define USBD_INTENCLR_EP0SETUP_Pos (23UL)                                /*!< Position of EP0SETUP field. */
 #define USBD_INTENCLR_EP0SETUP_Msk (0x1UL << USBD_INTENCLR_EP0SETUP_Pos) /*!< Bit mask of EP0SETUP field. */
-#define USBD_INTENCLR_EP0SETUP_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_EP0SETUP_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_EP0SETUP_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_EP0SETUP_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_EP0SETUP_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_EP0SETUP_Clear (1UL)                               /*!< Disable */
 
 /* Bit 22 : Write '1' to Disable interrupt for USBEVENT event */
-#define USBD_INTENCLR_USBEVENT_Pos (22UL) /*!< Position of USBEVENT field. */
+#define USBD_INTENCLR_USBEVENT_Pos (22UL)                                /*!< Position of USBEVENT field. */
 #define USBD_INTENCLR_USBEVENT_Msk (0x1UL << USBD_INTENCLR_USBEVENT_Pos) /*!< Bit mask of USBEVENT field. */
-#define USBD_INTENCLR_USBEVENT_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_USBEVENT_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_USBEVENT_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_USBEVENT_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_USBEVENT_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_USBEVENT_Clear (1UL)                               /*!< Disable */
 
 /* Bit 21 : Write '1' to Disable interrupt for SOF event */
-#define USBD_INTENCLR_SOF_Pos (21UL) /*!< Position of SOF field. */
+#define USBD_INTENCLR_SOF_Pos (21UL)                           /*!< Position of SOF field. */
 #define USBD_INTENCLR_SOF_Msk (0x1UL << USBD_INTENCLR_SOF_Pos) /*!< Bit mask of SOF field. */
-#define USBD_INTENCLR_SOF_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_SOF_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_SOF_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_SOF_Disabled (0UL)                       /*!< Read: Disabled */
+#define USBD_INTENCLR_SOF_Enabled (1UL)                        /*!< Read: Enabled */
+#define USBD_INTENCLR_SOF_Clear (1UL)                          /*!< Disable */
 
 /* Bit 20 : Write '1' to Disable interrupt for ENDISOOUT event */
-#define USBD_INTENCLR_ENDISOOUT_Pos (20UL) /*!< Position of ENDISOOUT field. */
+#define USBD_INTENCLR_ENDISOOUT_Pos (20UL)                                 /*!< Position of ENDISOOUT field. */
 #define USBD_INTENCLR_ENDISOOUT_Msk (0x1UL << USBD_INTENCLR_ENDISOOUT_Pos) /*!< Bit mask of ENDISOOUT field. */
-#define USBD_INTENCLR_ENDISOOUT_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDISOOUT_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDISOOUT_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDISOOUT_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDISOOUT_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDISOOUT_Clear (1UL)                                /*!< Disable */
 
 /* Bit 19 : Write '1' to Disable interrupt for ENDEPOUT[7] event */
-#define USBD_INTENCLR_ENDEPOUT7_Pos (19UL) /*!< Position of ENDEPOUT7 field. */
+#define USBD_INTENCLR_ENDEPOUT7_Pos (19UL)                                 /*!< Position of ENDEPOUT7 field. */
 #define USBD_INTENCLR_ENDEPOUT7_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT7_Pos) /*!< Bit mask of ENDEPOUT7 field. */
-#define USBD_INTENCLR_ENDEPOUT7_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT7_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT7_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT7_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT7_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT7_Clear (1UL)                                /*!< Disable */
 
 /* Bit 18 : Write '1' to Disable interrupt for ENDEPOUT[6] event */
-#define USBD_INTENCLR_ENDEPOUT6_Pos (18UL) /*!< Position of ENDEPOUT6 field. */
+#define USBD_INTENCLR_ENDEPOUT6_Pos (18UL)                                 /*!< Position of ENDEPOUT6 field. */
 #define USBD_INTENCLR_ENDEPOUT6_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT6_Pos) /*!< Bit mask of ENDEPOUT6 field. */
-#define USBD_INTENCLR_ENDEPOUT6_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT6_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT6_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT6_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT6_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT6_Clear (1UL)                                /*!< Disable */
 
 /* Bit 17 : Write '1' to Disable interrupt for ENDEPOUT[5] event */
-#define USBD_INTENCLR_ENDEPOUT5_Pos (17UL) /*!< Position of ENDEPOUT5 field. */
+#define USBD_INTENCLR_ENDEPOUT5_Pos (17UL)                                 /*!< Position of ENDEPOUT5 field. */
 #define USBD_INTENCLR_ENDEPOUT5_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT5_Pos) /*!< Bit mask of ENDEPOUT5 field. */
-#define USBD_INTENCLR_ENDEPOUT5_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT5_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT5_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT5_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT5_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT5_Clear (1UL)                                /*!< Disable */
 
 /* Bit 16 : Write '1' to Disable interrupt for ENDEPOUT[4] event */
-#define USBD_INTENCLR_ENDEPOUT4_Pos (16UL) /*!< Position of ENDEPOUT4 field. */
+#define USBD_INTENCLR_ENDEPOUT4_Pos (16UL)                                 /*!< Position of ENDEPOUT4 field. */
 #define USBD_INTENCLR_ENDEPOUT4_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT4_Pos) /*!< Bit mask of ENDEPOUT4 field. */
-#define USBD_INTENCLR_ENDEPOUT4_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT4_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT4_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT4_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT4_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT4_Clear (1UL)                                /*!< Disable */
 
 /* Bit 15 : Write '1' to Disable interrupt for ENDEPOUT[3] event */
-#define USBD_INTENCLR_ENDEPOUT3_Pos (15UL) /*!< Position of ENDEPOUT3 field. */
+#define USBD_INTENCLR_ENDEPOUT3_Pos (15UL)                                 /*!< Position of ENDEPOUT3 field. */
 #define USBD_INTENCLR_ENDEPOUT3_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT3_Pos) /*!< Bit mask of ENDEPOUT3 field. */
-#define USBD_INTENCLR_ENDEPOUT3_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT3_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT3_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT3_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT3_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT3_Clear (1UL)                                /*!< Disable */
 
 /* Bit 14 : Write '1' to Disable interrupt for ENDEPOUT[2] event */
-#define USBD_INTENCLR_ENDEPOUT2_Pos (14UL) /*!< Position of ENDEPOUT2 field. */
+#define USBD_INTENCLR_ENDEPOUT2_Pos (14UL)                                 /*!< Position of ENDEPOUT2 field. */
 #define USBD_INTENCLR_ENDEPOUT2_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT2_Pos) /*!< Bit mask of ENDEPOUT2 field. */
-#define USBD_INTENCLR_ENDEPOUT2_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT2_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT2_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT2_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT2_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT2_Clear (1UL)                                /*!< Disable */
 
 /* Bit 13 : Write '1' to Disable interrupt for ENDEPOUT[1] event */
-#define USBD_INTENCLR_ENDEPOUT1_Pos (13UL) /*!< Position of ENDEPOUT1 field. */
+#define USBD_INTENCLR_ENDEPOUT1_Pos (13UL)                                 /*!< Position of ENDEPOUT1 field. */
 #define USBD_INTENCLR_ENDEPOUT1_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT1_Pos) /*!< Bit mask of ENDEPOUT1 field. */
-#define USBD_INTENCLR_ENDEPOUT1_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT1_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT1_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT1_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT1_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT1_Clear (1UL)                                /*!< Disable */
 
 /* Bit 12 : Write '1' to Disable interrupt for ENDEPOUT[0] event */
-#define USBD_INTENCLR_ENDEPOUT0_Pos (12UL) /*!< Position of ENDEPOUT0 field. */
+#define USBD_INTENCLR_ENDEPOUT0_Pos (12UL)                                 /*!< Position of ENDEPOUT0 field. */
 #define USBD_INTENCLR_ENDEPOUT0_Msk (0x1UL << USBD_INTENCLR_ENDEPOUT0_Pos) /*!< Bit mask of ENDEPOUT0 field. */
-#define USBD_INTENCLR_ENDEPOUT0_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPOUT0_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPOUT0_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPOUT0_Disabled (0UL)                             /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPOUT0_Enabled (1UL)                              /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPOUT0_Clear (1UL)                                /*!< Disable */
 
 /* Bit 11 : Write '1' to Disable interrupt for ENDISOIN event */
-#define USBD_INTENCLR_ENDISOIN_Pos (11UL) /*!< Position of ENDISOIN field. */
+#define USBD_INTENCLR_ENDISOIN_Pos (11UL)                                /*!< Position of ENDISOIN field. */
 #define USBD_INTENCLR_ENDISOIN_Msk (0x1UL << USBD_INTENCLR_ENDISOIN_Pos) /*!< Bit mask of ENDISOIN field. */
-#define USBD_INTENCLR_ENDISOIN_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDISOIN_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDISOIN_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDISOIN_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDISOIN_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDISOIN_Clear (1UL)                               /*!< Disable */
 
 /* Bit 10 : Write '1' to Disable interrupt for EP0DATADONE event */
-#define USBD_INTENCLR_EP0DATADONE_Pos (10UL) /*!< Position of EP0DATADONE field. */
+#define USBD_INTENCLR_EP0DATADONE_Pos (10UL)                                   /*!< Position of EP0DATADONE field. */
 #define USBD_INTENCLR_EP0DATADONE_Msk (0x1UL << USBD_INTENCLR_EP0DATADONE_Pos) /*!< Bit mask of EP0DATADONE field. */
-#define USBD_INTENCLR_EP0DATADONE_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_EP0DATADONE_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_EP0DATADONE_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_EP0DATADONE_Disabled (0UL)                               /*!< Read: Disabled */
+#define USBD_INTENCLR_EP0DATADONE_Enabled (1UL)                                /*!< Read: Enabled */
+#define USBD_INTENCLR_EP0DATADONE_Clear (1UL)                                  /*!< Disable */
 
 /* Bit 9 : Write '1' to Disable interrupt for ENDEPIN[7] event */
-#define USBD_INTENCLR_ENDEPIN7_Pos (9UL) /*!< Position of ENDEPIN7 field. */
+#define USBD_INTENCLR_ENDEPIN7_Pos (9UL)                                 /*!< Position of ENDEPIN7 field. */
 #define USBD_INTENCLR_ENDEPIN7_Msk (0x1UL << USBD_INTENCLR_ENDEPIN7_Pos) /*!< Bit mask of ENDEPIN7 field. */
-#define USBD_INTENCLR_ENDEPIN7_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN7_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN7_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN7_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN7_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN7_Clear (1UL)                               /*!< Disable */
 
 /* Bit 8 : Write '1' to Disable interrupt for ENDEPIN[6] event */
-#define USBD_INTENCLR_ENDEPIN6_Pos (8UL) /*!< Position of ENDEPIN6 field. */
+#define USBD_INTENCLR_ENDEPIN6_Pos (8UL)                                 /*!< Position of ENDEPIN6 field. */
 #define USBD_INTENCLR_ENDEPIN6_Msk (0x1UL << USBD_INTENCLR_ENDEPIN6_Pos) /*!< Bit mask of ENDEPIN6 field. */
-#define USBD_INTENCLR_ENDEPIN6_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN6_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN6_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN6_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN6_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN6_Clear (1UL)                               /*!< Disable */
 
 /* Bit 7 : Write '1' to Disable interrupt for ENDEPIN[5] event */
-#define USBD_INTENCLR_ENDEPIN5_Pos (7UL) /*!< Position of ENDEPIN5 field. */
+#define USBD_INTENCLR_ENDEPIN5_Pos (7UL)                                 /*!< Position of ENDEPIN5 field. */
 #define USBD_INTENCLR_ENDEPIN5_Msk (0x1UL << USBD_INTENCLR_ENDEPIN5_Pos) /*!< Bit mask of ENDEPIN5 field. */
-#define USBD_INTENCLR_ENDEPIN5_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN5_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN5_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN5_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN5_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN5_Clear (1UL)                               /*!< Disable */
 
 /* Bit 6 : Write '1' to Disable interrupt for ENDEPIN[4] event */
-#define USBD_INTENCLR_ENDEPIN4_Pos (6UL) /*!< Position of ENDEPIN4 field. */
+#define USBD_INTENCLR_ENDEPIN4_Pos (6UL)                                 /*!< Position of ENDEPIN4 field. */
 #define USBD_INTENCLR_ENDEPIN4_Msk (0x1UL << USBD_INTENCLR_ENDEPIN4_Pos) /*!< Bit mask of ENDEPIN4 field. */
-#define USBD_INTENCLR_ENDEPIN4_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN4_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN4_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN4_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN4_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN4_Clear (1UL)                               /*!< Disable */
 
 /* Bit 5 : Write '1' to Disable interrupt for ENDEPIN[3] event */
-#define USBD_INTENCLR_ENDEPIN3_Pos (5UL) /*!< Position of ENDEPIN3 field. */
+#define USBD_INTENCLR_ENDEPIN3_Pos (5UL)                                 /*!< Position of ENDEPIN3 field. */
 #define USBD_INTENCLR_ENDEPIN3_Msk (0x1UL << USBD_INTENCLR_ENDEPIN3_Pos) /*!< Bit mask of ENDEPIN3 field. */
-#define USBD_INTENCLR_ENDEPIN3_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN3_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN3_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN3_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN3_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN3_Clear (1UL)                               /*!< Disable */
 
 /* Bit 4 : Write '1' to Disable interrupt for ENDEPIN[2] event */
-#define USBD_INTENCLR_ENDEPIN2_Pos (4UL) /*!< Position of ENDEPIN2 field. */
+#define USBD_INTENCLR_ENDEPIN2_Pos (4UL)                                 /*!< Position of ENDEPIN2 field. */
 #define USBD_INTENCLR_ENDEPIN2_Msk (0x1UL << USBD_INTENCLR_ENDEPIN2_Pos) /*!< Bit mask of ENDEPIN2 field. */
-#define USBD_INTENCLR_ENDEPIN2_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN2_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN2_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN2_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN2_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN2_Clear (1UL)                               /*!< Disable */
 
 /* Bit 3 : Write '1' to Disable interrupt for ENDEPIN[1] event */
-#define USBD_INTENCLR_ENDEPIN1_Pos (3UL) /*!< Position of ENDEPIN1 field. */
+#define USBD_INTENCLR_ENDEPIN1_Pos (3UL)                                 /*!< Position of ENDEPIN1 field. */
 #define USBD_INTENCLR_ENDEPIN1_Msk (0x1UL << USBD_INTENCLR_ENDEPIN1_Pos) /*!< Bit mask of ENDEPIN1 field. */
-#define USBD_INTENCLR_ENDEPIN1_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN1_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN1_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN1_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN1_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN1_Clear (1UL)                               /*!< Disable */
 
 /* Bit 2 : Write '1' to Disable interrupt for ENDEPIN[0] event */
-#define USBD_INTENCLR_ENDEPIN0_Pos (2UL) /*!< Position of ENDEPIN0 field. */
+#define USBD_INTENCLR_ENDEPIN0_Pos (2UL)                                 /*!< Position of ENDEPIN0 field. */
 #define USBD_INTENCLR_ENDEPIN0_Msk (0x1UL << USBD_INTENCLR_ENDEPIN0_Pos) /*!< Bit mask of ENDEPIN0 field. */
-#define USBD_INTENCLR_ENDEPIN0_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_ENDEPIN0_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_ENDEPIN0_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_ENDEPIN0_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_ENDEPIN0_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_ENDEPIN0_Clear (1UL)                               /*!< Disable */
 
 /* Bit 1 : Write '1' to Disable interrupt for STARTED event */
-#define USBD_INTENCLR_STARTED_Pos (1UL) /*!< Position of STARTED field. */
+#define USBD_INTENCLR_STARTED_Pos (1UL)                                /*!< Position of STARTED field. */
 #define USBD_INTENCLR_STARTED_Msk (0x1UL << USBD_INTENCLR_STARTED_Pos) /*!< Bit mask of STARTED field. */
-#define USBD_INTENCLR_STARTED_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_STARTED_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_STARTED_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_STARTED_Disabled (0UL)                           /*!< Read: Disabled */
+#define USBD_INTENCLR_STARTED_Enabled (1UL)                            /*!< Read: Enabled */
+#define USBD_INTENCLR_STARTED_Clear (1UL)                              /*!< Disable */
 
 /* Bit 0 : Write '1' to Disable interrupt for USBRESET event */
-#define USBD_INTENCLR_USBRESET_Pos (0UL) /*!< Position of USBRESET field. */
+#define USBD_INTENCLR_USBRESET_Pos (0UL)                                 /*!< Position of USBRESET field. */
 #define USBD_INTENCLR_USBRESET_Msk (0x1UL << USBD_INTENCLR_USBRESET_Pos) /*!< Bit mask of USBRESET field. */
-#define USBD_INTENCLR_USBRESET_Disabled (0UL) /*!< Read: Disabled */
-#define USBD_INTENCLR_USBRESET_Enabled (1UL) /*!< Read: Enabled */
-#define USBD_INTENCLR_USBRESET_Clear (1UL) /*!< Disable */
+#define USBD_INTENCLR_USBRESET_Disabled (0UL)                            /*!< Read: Disabled */
+#define USBD_INTENCLR_USBRESET_Enabled (1UL)                             /*!< Read: Enabled */
+#define USBD_INTENCLR_USBRESET_Clear (1UL)                               /*!< Disable */
 
 /* Register: USBD_EVENTCAUSE */
 /* Description: Details on event that caused the USBEVENT event */
 
 /* Bit 11 : Wrapper has re-initialized SFRs to the proper values. MAC is ready for normal operation. Write '1' to clear. */
-#define USBD_EVENTCAUSE_READY_Pos (11UL) /*!< Position of READY field. */
+#define USBD_EVENTCAUSE_READY_Pos (11UL)                               /*!< Position of READY field. */
 #define USBD_EVENTCAUSE_READY_Msk (0x1UL << USBD_EVENTCAUSE_READY_Pos) /*!< Bit mask of READY field. */
-#define USBD_EVENTCAUSE_READY_NotDetected (0UL) /*!< USBEVENT was not issued due to USBD peripheral ready */
-#define USBD_EVENTCAUSE_READY_Ready (1UL) /*!< USBD peripheral is ready */
+#define USBD_EVENTCAUSE_READY_NotDetected (0UL)                        /*!< USBEVENT was not issued due to USBD peripheral ready */
+#define USBD_EVENTCAUSE_READY_Ready (1UL)                              /*!< USBD peripheral is ready */
 
 /* Bit 9 : Signals that a RESUME condition (K state or activity restart) has been detected on the USB lines. Write '1' to clear. */
-#define USBD_EVENTCAUSE_RESUME_Pos (9UL) /*!< Position of RESUME field. */
+#define USBD_EVENTCAUSE_RESUME_Pos (9UL)                                 /*!< Position of RESUME field. */
 #define USBD_EVENTCAUSE_RESUME_Msk (0x1UL << USBD_EVENTCAUSE_RESUME_Pos) /*!< Bit mask of RESUME field. */
-#define USBD_EVENTCAUSE_RESUME_NotDetected (0UL) /*!< Resume not detected */
-#define USBD_EVENTCAUSE_RESUME_Detected (1UL) /*!< Resume detected */
+#define USBD_EVENTCAUSE_RESUME_NotDetected (0UL)                         /*!< Resume not detected */
+#define USBD_EVENTCAUSE_RESUME_Detected (1UL)                            /*!< Resume detected */
 
 /* Bit 8 : Signals that the USB lines have been seen idle long enough for the device to enter suspend. Write '1' to clear. */
-#define USBD_EVENTCAUSE_SUSPEND_Pos (8UL) /*!< Position of SUSPEND field. */
+#define USBD_EVENTCAUSE_SUSPEND_Pos (8UL)                                  /*!< Position of SUSPEND field. */
 #define USBD_EVENTCAUSE_SUSPEND_Msk (0x1UL << USBD_EVENTCAUSE_SUSPEND_Pos) /*!< Bit mask of SUSPEND field. */
-#define USBD_EVENTCAUSE_SUSPEND_NotDetected (0UL) /*!< Suspend not detected */
-#define USBD_EVENTCAUSE_SUSPEND_Detected (1UL) /*!< Suspend detected */
+#define USBD_EVENTCAUSE_SUSPEND_NotDetected (0UL)                          /*!< Suspend not detected */
+#define USBD_EVENTCAUSE_SUSPEND_Detected (1UL)                             /*!< Suspend detected */
 
 /* Bit 0 : CRC error was detected on isochronous OUT endpoint 8. Write '1' to clear. */
-#define USBD_EVENTCAUSE_ISOOUTCRC_Pos (0UL) /*!< Position of ISOOUTCRC field. */
+#define USBD_EVENTCAUSE_ISOOUTCRC_Pos (0UL)                                    /*!< Position of ISOOUTCRC field. */
 #define USBD_EVENTCAUSE_ISOOUTCRC_Msk (0x1UL << USBD_EVENTCAUSE_ISOOUTCRC_Pos) /*!< Bit mask of ISOOUTCRC field. */
-#define USBD_EVENTCAUSE_ISOOUTCRC_NotDetected (0UL) /*!< No error detected */
-#define USBD_EVENTCAUSE_ISOOUTCRC_Detected (1UL) /*!< Error detected */
+#define USBD_EVENTCAUSE_ISOOUTCRC_NotDetected (0UL)                            /*!< No error detected */
+#define USBD_EVENTCAUSE_ISOOUTCRC_Detected (1UL)                               /*!< Error detected */
 
 /* Register: USBD_BUSSTATE */
 /* Description: Provides the logic state of the D+ and D- lines */
 
 /* Bit 1 : State of the D+ line */
-#define USBD_BUSSTATE_DP_Pos (1UL) /*!< Position of DP field. */
+#define USBD_BUSSTATE_DP_Pos (1UL)                           /*!< Position of DP field. */
 #define USBD_BUSSTATE_DP_Msk (0x1UL << USBD_BUSSTATE_DP_Pos) /*!< Bit mask of DP field. */
-#define USBD_BUSSTATE_DP_Low (0UL) /*!< Low */
-#define USBD_BUSSTATE_DP_High (1UL) /*!< High */
+#define USBD_BUSSTATE_DP_Low (0UL)                           /*!< Low */
+#define USBD_BUSSTATE_DP_High (1UL)                          /*!< High */
 
 /* Bit 0 : State of the D- line */
-#define USBD_BUSSTATE_DM_Pos (0UL) /*!< Position of DM field. */
+#define USBD_BUSSTATE_DM_Pos (0UL)                           /*!< Position of DM field. */
 #define USBD_BUSSTATE_DM_Msk (0x1UL << USBD_BUSSTATE_DM_Pos) /*!< Bit mask of DM field. */
-#define USBD_BUSSTATE_DM_Low (0UL) /*!< Low */
-#define USBD_BUSSTATE_DM_High (1UL) /*!< High */
+#define USBD_BUSSTATE_DM_Low (0UL)                           /*!< Low */
+#define USBD_BUSSTATE_DM_High (1UL)                          /*!< High */
 
 /* Register: USBD_HALTED_EPIN */
 /* Description: Description collection[0]:  IN endpoint halted status. Can be used as is as response to a GetStatus() request to endpoint. */
 
 /* Bits 15..0 : IN endpoint halted status. Can be used as is as response to a GetStatus() request to endpoint. */
-#define USBD_HALTED_EPIN_GETSTATUS_Pos (0UL) /*!< Position of GETSTATUS field. */
+#define USBD_HALTED_EPIN_GETSTATUS_Pos (0UL)                                        /*!< Position of GETSTATUS field. */
 #define USBD_HALTED_EPIN_GETSTATUS_Msk (0xFFFFUL << USBD_HALTED_EPIN_GETSTATUS_Pos) /*!< Bit mask of GETSTATUS field. */
-#define USBD_HALTED_EPIN_GETSTATUS_NotHalted (0UL) /*!< Endpoint is not halted */
-#define USBD_HALTED_EPIN_GETSTATUS_Halted (1UL) /*!< Endpoint is halted */
+#define USBD_HALTED_EPIN_GETSTATUS_NotHalted (0UL)                                  /*!< Endpoint is not halted */
+#define USBD_HALTED_EPIN_GETSTATUS_Halted (1UL)                                     /*!< Endpoint is halted */
 
 /* Register: USBD_HALTED_EPOUT */
 /* Description: Description collection[0]:  OUT endpoint halted status. Can be used as is as response to a GetStatus() request to endpoint. */
 
 /* Bits 15..0 : OUT endpoint halted status. Can be used as is as response to a GetStatus() request to endpoint. */
-#define USBD_HALTED_EPOUT_GETSTATUS_Pos (0UL) /*!< Position of GETSTATUS field. */
+#define USBD_HALTED_EPOUT_GETSTATUS_Pos (0UL)                                         /*!< Position of GETSTATUS field. */
 #define USBD_HALTED_EPOUT_GETSTATUS_Msk (0xFFFFUL << USBD_HALTED_EPOUT_GETSTATUS_Pos) /*!< Bit mask of GETSTATUS field. */
-#define USBD_HALTED_EPOUT_GETSTATUS_NotHalted (0UL) /*!< Endpoint is not halted */
-#define USBD_HALTED_EPOUT_GETSTATUS_Halted (1UL) /*!< Endpoint is halted */
+#define USBD_HALTED_EPOUT_GETSTATUS_NotHalted (0UL)                                   /*!< Endpoint is not halted */
+#define USBD_HALTED_EPOUT_GETSTATUS_Halted (1UL)                                      /*!< Endpoint is halted */
 
 /* Register: USBD_EPSTATUS */
 /* Description: Provides information on which endpoint's EasyDMA registers have been captured */
 
 /* Bit 24 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT8_Pos (24UL) /*!< Position of EPOUT8 field. */
+#define USBD_EPSTATUS_EPOUT8_Pos (24UL)                              /*!< Position of EPOUT8 field. */
 #define USBD_EPSTATUS_EPOUT8_Msk (0x1UL << USBD_EPSTATUS_EPOUT8_Pos) /*!< Bit mask of EPOUT8 field. */
-#define USBD_EPSTATUS_EPOUT8_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT8_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT8_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT8_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 23 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT7_Pos (23UL) /*!< Position of EPOUT7 field. */
+#define USBD_EPSTATUS_EPOUT7_Pos (23UL)                              /*!< Position of EPOUT7 field. */
 #define USBD_EPSTATUS_EPOUT7_Msk (0x1UL << USBD_EPSTATUS_EPOUT7_Pos) /*!< Bit mask of EPOUT7 field. */
-#define USBD_EPSTATUS_EPOUT7_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT7_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT7_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT7_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 22 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT6_Pos (22UL) /*!< Position of EPOUT6 field. */
+#define USBD_EPSTATUS_EPOUT6_Pos (22UL)                              /*!< Position of EPOUT6 field. */
 #define USBD_EPSTATUS_EPOUT6_Msk (0x1UL << USBD_EPSTATUS_EPOUT6_Pos) /*!< Bit mask of EPOUT6 field. */
-#define USBD_EPSTATUS_EPOUT6_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT6_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT6_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT6_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 21 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT5_Pos (21UL) /*!< Position of EPOUT5 field. */
+#define USBD_EPSTATUS_EPOUT5_Pos (21UL)                              /*!< Position of EPOUT5 field. */
 #define USBD_EPSTATUS_EPOUT5_Msk (0x1UL << USBD_EPSTATUS_EPOUT5_Pos) /*!< Bit mask of EPOUT5 field. */
-#define USBD_EPSTATUS_EPOUT5_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT5_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT5_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT5_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 20 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT4_Pos (20UL) /*!< Position of EPOUT4 field. */
+#define USBD_EPSTATUS_EPOUT4_Pos (20UL)                              /*!< Position of EPOUT4 field. */
 #define USBD_EPSTATUS_EPOUT4_Msk (0x1UL << USBD_EPSTATUS_EPOUT4_Pos) /*!< Bit mask of EPOUT4 field. */
-#define USBD_EPSTATUS_EPOUT4_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT4_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT4_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT4_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 19 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT3_Pos (19UL) /*!< Position of EPOUT3 field. */
+#define USBD_EPSTATUS_EPOUT3_Pos (19UL)                              /*!< Position of EPOUT3 field. */
 #define USBD_EPSTATUS_EPOUT3_Msk (0x1UL << USBD_EPSTATUS_EPOUT3_Pos) /*!< Bit mask of EPOUT3 field. */
-#define USBD_EPSTATUS_EPOUT3_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT3_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT3_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT3_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 18 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT2_Pos (18UL) /*!< Position of EPOUT2 field. */
+#define USBD_EPSTATUS_EPOUT2_Pos (18UL)                              /*!< Position of EPOUT2 field. */
 #define USBD_EPSTATUS_EPOUT2_Msk (0x1UL << USBD_EPSTATUS_EPOUT2_Pos) /*!< Bit mask of EPOUT2 field. */
-#define USBD_EPSTATUS_EPOUT2_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT2_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT2_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT2_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 17 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT1_Pos (17UL) /*!< Position of EPOUT1 field. */
+#define USBD_EPSTATUS_EPOUT1_Pos (17UL)                              /*!< Position of EPOUT1 field. */
 #define USBD_EPSTATUS_EPOUT1_Msk (0x1UL << USBD_EPSTATUS_EPOUT1_Pos) /*!< Bit mask of EPOUT1 field. */
-#define USBD_EPSTATUS_EPOUT1_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT1_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT1_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT1_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 16 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPOUT0_Pos (16UL) /*!< Position of EPOUT0 field. */
+#define USBD_EPSTATUS_EPOUT0_Pos (16UL)                              /*!< Position of EPOUT0 field. */
 #define USBD_EPSTATUS_EPOUT0_Msk (0x1UL << USBD_EPSTATUS_EPOUT0_Pos) /*!< Bit mask of EPOUT0 field. */
-#define USBD_EPSTATUS_EPOUT0_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPOUT0_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT0_NoData (0UL)                            /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPOUT0_DataDone (1UL)                          /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 8 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN8_Pos (8UL) /*!< Position of EPIN8 field. */
+#define USBD_EPSTATUS_EPIN8_Pos (8UL)                              /*!< Position of EPIN8 field. */
 #define USBD_EPSTATUS_EPIN8_Msk (0x1UL << USBD_EPSTATUS_EPIN8_Pos) /*!< Bit mask of EPIN8 field. */
-#define USBD_EPSTATUS_EPIN8_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN8_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN8_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN8_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 7 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN7_Pos (7UL) /*!< Position of EPIN7 field. */
+#define USBD_EPSTATUS_EPIN7_Pos (7UL)                              /*!< Position of EPIN7 field. */
 #define USBD_EPSTATUS_EPIN7_Msk (0x1UL << USBD_EPSTATUS_EPIN7_Pos) /*!< Bit mask of EPIN7 field. */
-#define USBD_EPSTATUS_EPIN7_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN7_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN7_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN7_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 6 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN6_Pos (6UL) /*!< Position of EPIN6 field. */
+#define USBD_EPSTATUS_EPIN6_Pos (6UL)                              /*!< Position of EPIN6 field. */
 #define USBD_EPSTATUS_EPIN6_Msk (0x1UL << USBD_EPSTATUS_EPIN6_Pos) /*!< Bit mask of EPIN6 field. */
-#define USBD_EPSTATUS_EPIN6_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN6_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN6_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN6_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 5 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN5_Pos (5UL) /*!< Position of EPIN5 field. */
+#define USBD_EPSTATUS_EPIN5_Pos (5UL)                              /*!< Position of EPIN5 field. */
 #define USBD_EPSTATUS_EPIN5_Msk (0x1UL << USBD_EPSTATUS_EPIN5_Pos) /*!< Bit mask of EPIN5 field. */
-#define USBD_EPSTATUS_EPIN5_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN5_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN5_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN5_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 4 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN4_Pos (4UL) /*!< Position of EPIN4 field. */
+#define USBD_EPSTATUS_EPIN4_Pos (4UL)                              /*!< Position of EPIN4 field. */
 #define USBD_EPSTATUS_EPIN4_Msk (0x1UL << USBD_EPSTATUS_EPIN4_Pos) /*!< Bit mask of EPIN4 field. */
-#define USBD_EPSTATUS_EPIN4_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN4_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN4_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN4_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 3 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN3_Pos (3UL) /*!< Position of EPIN3 field. */
+#define USBD_EPSTATUS_EPIN3_Pos (3UL)                              /*!< Position of EPIN3 field. */
 #define USBD_EPSTATUS_EPIN3_Msk (0x1UL << USBD_EPSTATUS_EPIN3_Pos) /*!< Bit mask of EPIN3 field. */
-#define USBD_EPSTATUS_EPIN3_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN3_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN3_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN3_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 2 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN2_Pos (2UL) /*!< Position of EPIN2 field. */
+#define USBD_EPSTATUS_EPIN2_Pos (2UL)                              /*!< Position of EPIN2 field. */
 #define USBD_EPSTATUS_EPIN2_Msk (0x1UL << USBD_EPSTATUS_EPIN2_Pos) /*!< Bit mask of EPIN2 field. */
-#define USBD_EPSTATUS_EPIN2_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN2_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN2_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN2_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 1 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN1_Pos (1UL) /*!< Position of EPIN1 field. */
+#define USBD_EPSTATUS_EPIN1_Pos (1UL)                              /*!< Position of EPIN1 field. */
 #define USBD_EPSTATUS_EPIN1_Msk (0x1UL << USBD_EPSTATUS_EPIN1_Pos) /*!< Bit mask of EPIN1 field. */
-#define USBD_EPSTATUS_EPIN1_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN1_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN1_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN1_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Bit 0 : Endpoint's EasyDMA registers captured state. Write '1' to clear. */
-#define USBD_EPSTATUS_EPIN0_Pos (0UL) /*!< Position of EPIN0 field. */
+#define USBD_EPSTATUS_EPIN0_Pos (0UL)                              /*!< Position of EPIN0 field. */
 #define USBD_EPSTATUS_EPIN0_Msk (0x1UL << USBD_EPSTATUS_EPIN0_Pos) /*!< Bit mask of EPIN0 field. */
-#define USBD_EPSTATUS_EPIN0_NoData (0UL) /*!< EasyDMA registers have not been captured for this endpoint */
-#define USBD_EPSTATUS_EPIN0_DataDone (1UL) /*!< EasyDMA registers have been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN0_NoData (0UL)                           /*!< EasyDMA registers have not been captured for this endpoint */
+#define USBD_EPSTATUS_EPIN0_DataDone (1UL)                         /*!< EasyDMA registers have been captured for this endpoint */
 
 /* Register: USBD_EPDATASTATUS */
 /* Description: Provides information on which endpoint(s) an acknowledged data transfer has occurred (EPDATA event) */
 
 /* Bit 23 : Acknowledged data transfer on this OUT endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPOUT7_Pos (23UL) /*!< Position of EPOUT7 field. */
+#define USBD_EPDATASTATUS_EPOUT7_Pos (23UL)                                  /*!< Position of EPOUT7 field. */
 #define USBD_EPDATASTATUS_EPOUT7_Msk (0x1UL << USBD_EPDATASTATUS_EPOUT7_Pos) /*!< Bit mask of EPOUT7 field. */
-#define USBD_EPDATASTATUS_EPOUT7_NotStarted (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPOUT7_Started (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPOUT7_NotStarted (0UL)                            /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPOUT7_Started (1UL)                               /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 22 : Acknowledged data transfer on this OUT endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPOUT6_Pos (22UL) /*!< Position of EPOUT6 field. */
+#define USBD_EPDATASTATUS_EPOUT6_Pos (22UL)                                  /*!< Position of EPOUT6 field. */
 #define USBD_EPDATASTATUS_EPOUT6_Msk (0x1UL << USBD_EPDATASTATUS_EPOUT6_Pos) /*!< Bit mask of EPOUT6 field. */
-#define USBD_EPDATASTATUS_EPOUT6_NotStarted (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPOUT6_Started (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPOUT6_NotStarted (0UL)                            /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPOUT6_Started (1UL)                               /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 21 : Acknowledged data transfer on this OUT endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPOUT5_Pos (21UL) /*!< Position of EPOUT5 field. */
+#define USBD_EPDATASTATUS_EPOUT5_Pos (21UL)                                  /*!< Position of EPOUT5 field. */
 #define USBD_EPDATASTATUS_EPOUT5_Msk (0x1UL << USBD_EPDATASTATUS_EPOUT5_Pos) /*!< Bit mask of EPOUT5 field. */
-#define USBD_EPDATASTATUS_EPOUT5_NotStarted (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPOUT5_Started (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPOUT5_NotStarted (0UL)                            /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPOUT5_Started (1UL)                               /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 20 : Acknowledged data transfer on this OUT endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPOUT4_Pos (20UL) /*!< Position of EPOUT4 field. */
+#define USBD_EPDATASTATUS_EPOUT4_Pos (20UL)                                  /*!< Position of EPOUT4 field. */
 #define USBD_EPDATASTATUS_EPOUT4_Msk (0x1UL << USBD_EPDATASTATUS_EPOUT4_Pos) /*!< Bit mask of EPOUT4 field. */
-#define USBD_EPDATASTATUS_EPOUT4_NotStarted (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPOUT4_Started (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPOUT4_NotStarted (0UL)                            /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPOUT4_Started (1UL)                               /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 19 : Acknowledged data transfer on this OUT endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPOUT3_Pos (19UL) /*!< Position of EPOUT3 field. */
+#define USBD_EPDATASTATUS_EPOUT3_Pos (19UL)                                  /*!< Position of EPOUT3 field. */
 #define USBD_EPDATASTATUS_EPOUT3_Msk (0x1UL << USBD_EPDATASTATUS_EPOUT3_Pos) /*!< Bit mask of EPOUT3 field. */
-#define USBD_EPDATASTATUS_EPOUT3_NotStarted (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPOUT3_Started (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPOUT3_NotStarted (0UL)                            /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPOUT3_Started (1UL)                               /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 18 : Acknowledged data transfer on this OUT endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPOUT2_Pos (18UL) /*!< Position of EPOUT2 field. */
+#define USBD_EPDATASTATUS_EPOUT2_Pos (18UL)                                  /*!< Position of EPOUT2 field. */
 #define USBD_EPDATASTATUS_EPOUT2_Msk (0x1UL << USBD_EPDATASTATUS_EPOUT2_Pos) /*!< Bit mask of EPOUT2 field. */
-#define USBD_EPDATASTATUS_EPOUT2_NotStarted (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPOUT2_Started (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPOUT2_NotStarted (0UL)                            /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPOUT2_Started (1UL)                               /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 17 : Acknowledged data transfer on this OUT endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPOUT1_Pos (17UL) /*!< Position of EPOUT1 field. */
+#define USBD_EPDATASTATUS_EPOUT1_Pos (17UL)                                  /*!< Position of EPOUT1 field. */
 #define USBD_EPDATASTATUS_EPOUT1_Msk (0x1UL << USBD_EPDATASTATUS_EPOUT1_Pos) /*!< Bit mask of EPOUT1 field. */
-#define USBD_EPDATASTATUS_EPOUT1_NotStarted (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPOUT1_Started (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPOUT1_NotStarted (0UL)                            /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPOUT1_Started (1UL)                               /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 7 : Acknowledged data transfer on this IN endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPIN7_Pos (7UL) /*!< Position of EPIN7 field. */
+#define USBD_EPDATASTATUS_EPIN7_Pos (7UL)                                  /*!< Position of EPIN7 field. */
 #define USBD_EPDATASTATUS_EPIN7_Msk (0x1UL << USBD_EPDATASTATUS_EPIN7_Pos) /*!< Bit mask of EPIN7 field. */
-#define USBD_EPDATASTATUS_EPIN7_NotDone (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPIN7_DataDone (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPIN7_NotDone (0UL)                              /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPIN7_DataDone (1UL)                             /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 6 : Acknowledged data transfer on this IN endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPIN6_Pos (6UL) /*!< Position of EPIN6 field. */
+#define USBD_EPDATASTATUS_EPIN6_Pos (6UL)                                  /*!< Position of EPIN6 field. */
 #define USBD_EPDATASTATUS_EPIN6_Msk (0x1UL << USBD_EPDATASTATUS_EPIN6_Pos) /*!< Bit mask of EPIN6 field. */
-#define USBD_EPDATASTATUS_EPIN6_NotDone (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPIN6_DataDone (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPIN6_NotDone (0UL)                              /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPIN6_DataDone (1UL)                             /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 5 : Acknowledged data transfer on this IN endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPIN5_Pos (5UL) /*!< Position of EPIN5 field. */
+#define USBD_EPDATASTATUS_EPIN5_Pos (5UL)                                  /*!< Position of EPIN5 field. */
 #define USBD_EPDATASTATUS_EPIN5_Msk (0x1UL << USBD_EPDATASTATUS_EPIN5_Pos) /*!< Bit mask of EPIN5 field. */
-#define USBD_EPDATASTATUS_EPIN5_NotDone (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPIN5_DataDone (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPIN5_NotDone (0UL)                              /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPIN5_DataDone (1UL)                             /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 4 : Acknowledged data transfer on this IN endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPIN4_Pos (4UL) /*!< Position of EPIN4 field. */
+#define USBD_EPDATASTATUS_EPIN4_Pos (4UL)                                  /*!< Position of EPIN4 field. */
 #define USBD_EPDATASTATUS_EPIN4_Msk (0x1UL << USBD_EPDATASTATUS_EPIN4_Pos) /*!< Bit mask of EPIN4 field. */
-#define USBD_EPDATASTATUS_EPIN4_NotDone (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPIN4_DataDone (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPIN4_NotDone (0UL)                              /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPIN4_DataDone (1UL)                             /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 3 : Acknowledged data transfer on this IN endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPIN3_Pos (3UL) /*!< Position of EPIN3 field. */
+#define USBD_EPDATASTATUS_EPIN3_Pos (3UL)                                  /*!< Position of EPIN3 field. */
 #define USBD_EPDATASTATUS_EPIN3_Msk (0x1UL << USBD_EPDATASTATUS_EPIN3_Pos) /*!< Bit mask of EPIN3 field. */
-#define USBD_EPDATASTATUS_EPIN3_NotDone (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPIN3_DataDone (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPIN3_NotDone (0UL)                              /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPIN3_DataDone (1UL)                             /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 2 : Acknowledged data transfer on this IN endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPIN2_Pos (2UL) /*!< Position of EPIN2 field. */
+#define USBD_EPDATASTATUS_EPIN2_Pos (2UL)                                  /*!< Position of EPIN2 field. */
 #define USBD_EPDATASTATUS_EPIN2_Msk (0x1UL << USBD_EPDATASTATUS_EPIN2_Pos) /*!< Bit mask of EPIN2 field. */
-#define USBD_EPDATASTATUS_EPIN2_NotDone (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPIN2_DataDone (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPIN2_NotDone (0UL)                              /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPIN2_DataDone (1UL)                             /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Bit 1 : Acknowledged data transfer on this IN endpoint. Write '1' to clear. */
-#define USBD_EPDATASTATUS_EPIN1_Pos (1UL) /*!< Position of EPIN1 field. */
+#define USBD_EPDATASTATUS_EPIN1_Pos (1UL)                                  /*!< Position of EPIN1 field. */
 #define USBD_EPDATASTATUS_EPIN1_Msk (0x1UL << USBD_EPDATASTATUS_EPIN1_Pos) /*!< Bit mask of EPIN1 field. */
-#define USBD_EPDATASTATUS_EPIN1_NotDone (0UL) /*!< No acknowledged data transfer on this endpoint */
-#define USBD_EPDATASTATUS_EPIN1_DataDone (1UL) /*!< Acknowledged data transfer on this endpoint has occurred */
+#define USBD_EPDATASTATUS_EPIN1_NotDone (0UL)                              /*!< No acknowledged data transfer on this endpoint */
+#define USBD_EPDATASTATUS_EPIN1_DataDone (1UL)                             /*!< Acknowledged data transfer on this endpoint has occurred */
 
 /* Register: USBD_USBADDR */
 /* Description: Device USB address */
 
 /* Bits 6..0 : Device USB address */
-#define USBD_USBADDR_ADDR_Pos (0UL) /*!< Position of ADDR field. */
+#define USBD_USBADDR_ADDR_Pos (0UL)                             /*!< Position of ADDR field. */
 #define USBD_USBADDR_ADDR_Msk (0x7FUL << USBD_USBADDR_ADDR_Pos) /*!< Bit mask of ADDR field. */
 
 /* Register: USBD_BMREQUESTTYPE */
 /* Description: SETUP data, byte 0, bmRequestType */
 
 /* Bit 7 : Data transfer direction */
-#define USBD_BMREQUESTTYPE_DIRECTION_Pos (7UL) /*!< Position of DIRECTION field. */
+#define USBD_BMREQUESTTYPE_DIRECTION_Pos (7UL)                                       /*!< Position of DIRECTION field. */
 #define USBD_BMREQUESTTYPE_DIRECTION_Msk (0x1UL << USBD_BMREQUESTTYPE_DIRECTION_Pos) /*!< Bit mask of DIRECTION field. */
-#define USBD_BMREQUESTTYPE_DIRECTION_HostToDevice (0UL) /*!< Host-to-device */
-#define USBD_BMREQUESTTYPE_DIRECTION_DeviceToHost (1UL) /*!< Device-to-host */
+#define USBD_BMREQUESTTYPE_DIRECTION_HostToDevice (0UL)                              /*!< Host-to-device */
+#define USBD_BMREQUESTTYPE_DIRECTION_DeviceToHost (1UL)                              /*!< Device-to-host */
 
 /* Bits 6..5 : Data transfer type */
-#define USBD_BMREQUESTTYPE_TYPE_Pos (5UL) /*!< Position of TYPE field. */
+#define USBD_BMREQUESTTYPE_TYPE_Pos (5UL)                                  /*!< Position of TYPE field. */
 #define USBD_BMREQUESTTYPE_TYPE_Msk (0x3UL << USBD_BMREQUESTTYPE_TYPE_Pos) /*!< Bit mask of TYPE field. */
-#define USBD_BMREQUESTTYPE_TYPE_Standard (0UL) /*!< Standard */
-#define USBD_BMREQUESTTYPE_TYPE_Class (1UL) /*!< Class */
-#define USBD_BMREQUESTTYPE_TYPE_Vendor (2UL) /*!< Vendor */
+#define USBD_BMREQUESTTYPE_TYPE_Standard (0UL)                             /*!< Standard */
+#define USBD_BMREQUESTTYPE_TYPE_Class (1UL)                                /*!< Class */
+#define USBD_BMREQUESTTYPE_TYPE_Vendor (2UL)                               /*!< Vendor */
 
 /* Bits 4..0 : Data transfer type */
-#define USBD_BMREQUESTTYPE_RECIPIENT_Pos (0UL) /*!< Position of RECIPIENT field. */
+#define USBD_BMREQUESTTYPE_RECIPIENT_Pos (0UL)                                        /*!< Position of RECIPIENT field. */
 #define USBD_BMREQUESTTYPE_RECIPIENT_Msk (0x1FUL << USBD_BMREQUESTTYPE_RECIPIENT_Pos) /*!< Bit mask of RECIPIENT field. */
-#define USBD_BMREQUESTTYPE_RECIPIENT_Device (0UL) /*!< Device */
-#define USBD_BMREQUESTTYPE_RECIPIENT_Interface (1UL) /*!< Interface */
-#define USBD_BMREQUESTTYPE_RECIPIENT_Endpoint (2UL) /*!< Endpoint */
-#define USBD_BMREQUESTTYPE_RECIPIENT_Other (3UL) /*!< Other */
+#define USBD_BMREQUESTTYPE_RECIPIENT_Device (0UL)                                     /*!< Device */
+#define USBD_BMREQUESTTYPE_RECIPIENT_Interface (1UL)                                  /*!< Interface */
+#define USBD_BMREQUESTTYPE_RECIPIENT_Endpoint (2UL)                                   /*!< Endpoint */
+#define USBD_BMREQUESTTYPE_RECIPIENT_Other (3UL)                                      /*!< Other */
 
 /* Register: USBD_BREQUEST */
 /* Description: SETUP data, byte 1, bRequest */
 
 /* Bits 7..0 : SETUP data, byte 1, bRequest. Values provides for standard requests only, user must implement Class and Vendor values. */
-#define USBD_BREQUEST_BREQUEST_Pos (0UL) /*!< Position of BREQUEST field. */
+#define USBD_BREQUEST_BREQUEST_Pos (0UL)                                  /*!< Position of BREQUEST field. */
 #define USBD_BREQUEST_BREQUEST_Msk (0xFFUL << USBD_BREQUEST_BREQUEST_Pos) /*!< Bit mask of BREQUEST field. */
-#define USBD_BREQUEST_BREQUEST_STD_GET_STATUS (0UL) /*!< Standard request GET_STATUS */
-#define USBD_BREQUEST_BREQUEST_STD_CLEAR_FEATURE (1UL) /*!< Standard request CLEAR_FEATURE */
-#define USBD_BREQUEST_BREQUEST_STD_SET_FEATURE (3UL) /*!< Standard request SET_FEATURE */
-#define USBD_BREQUEST_BREQUEST_STD_SET_ADDRESS (5UL) /*!< Standard request SET_ADDRESS */
-#define USBD_BREQUEST_BREQUEST_STD_GET_DESCRIPTOR (6UL) /*!< Standard request GET_DESCRIPTOR */
-#define USBD_BREQUEST_BREQUEST_STD_SET_DESCRIPTOR (7UL) /*!< Standard request SET_DESCRIPTOR */
-#define USBD_BREQUEST_BREQUEST_STD_GET_CONFIGURATION (8UL) /*!< Standard request GET_CONFIGURATION */
-#define USBD_BREQUEST_BREQUEST_STD_SET_CONFIGURATION (9UL) /*!< Standard request SET_CONFIGURATION */
-#define USBD_BREQUEST_BREQUEST_STD_GET_INTERFACE (10UL) /*!< Standard request GET_INTERFACE */
-#define USBD_BREQUEST_BREQUEST_STD_SET_INTERFACE (11UL) /*!< Standard request SET_INTERFACE */
-#define USBD_BREQUEST_BREQUEST_STD_SYNCH_FRAME (12UL) /*!< Standard request SYNCH_FRAME */
+#define USBD_BREQUEST_BREQUEST_STD_GET_STATUS (0UL)                       /*!< Standard request GET_STATUS */
+#define USBD_BREQUEST_BREQUEST_STD_CLEAR_FEATURE (1UL)                    /*!< Standard request CLEAR_FEATURE */
+#define USBD_BREQUEST_BREQUEST_STD_SET_FEATURE (3UL)                      /*!< Standard request SET_FEATURE */
+#define USBD_BREQUEST_BREQUEST_STD_SET_ADDRESS (5UL)                      /*!< Standard request SET_ADDRESS */
+#define USBD_BREQUEST_BREQUEST_STD_GET_DESCRIPTOR (6UL)                   /*!< Standard request GET_DESCRIPTOR */
+#define USBD_BREQUEST_BREQUEST_STD_SET_DESCRIPTOR (7UL)                   /*!< Standard request SET_DESCRIPTOR */
+#define USBD_BREQUEST_BREQUEST_STD_GET_CONFIGURATION (8UL)                /*!< Standard request GET_CONFIGURATION */
+#define USBD_BREQUEST_BREQUEST_STD_SET_CONFIGURATION (9UL)                /*!< Standard request SET_CONFIGURATION */
+#define USBD_BREQUEST_BREQUEST_STD_GET_INTERFACE (10UL)                   /*!< Standard request GET_INTERFACE */
+#define USBD_BREQUEST_BREQUEST_STD_SET_INTERFACE (11UL)                   /*!< Standard request SET_INTERFACE */
+#define USBD_BREQUEST_BREQUEST_STD_SYNCH_FRAME (12UL)                     /*!< Standard request SYNCH_FRAME */
 
 /* Register: USBD_WVALUEL */
 /* Description: SETUP data, byte 2, LSB of wValue */
 
 /* Bits 7..0 : SETUP data, byte 2, LSB of wValue */
-#define USBD_WVALUEL_WVALUEL_Pos (0UL) /*!< Position of WVALUEL field. */
+#define USBD_WVALUEL_WVALUEL_Pos (0UL)                                /*!< Position of WVALUEL field. */
 #define USBD_WVALUEL_WVALUEL_Msk (0xFFUL << USBD_WVALUEL_WVALUEL_Pos) /*!< Bit mask of WVALUEL field. */
 
 /* Register: USBD_WVALUEH */
 /* Description: SETUP data, byte 3, MSB of wValue */
 
 /* Bits 7..0 : SETUP data, byte 3, MSB of wValue */
-#define USBD_WVALUEH_WVALUEH_Pos (0UL) /*!< Position of WVALUEH field. */
+#define USBD_WVALUEH_WVALUEH_Pos (0UL)                                /*!< Position of WVALUEH field. */
 #define USBD_WVALUEH_WVALUEH_Msk (0xFFUL << USBD_WVALUEH_WVALUEH_Pos) /*!< Bit mask of WVALUEH field. */
 
 /* Register: USBD_WINDEXL */
 /* Description: SETUP data, byte 4, LSB of wIndex */
 
 /* Bits 7..0 : SETUP data, byte 4, LSB of wIndex */
-#define USBD_WINDEXL_WINDEXL_Pos (0UL) /*!< Position of WINDEXL field. */
+#define USBD_WINDEXL_WINDEXL_Pos (0UL)                                /*!< Position of WINDEXL field. */
 #define USBD_WINDEXL_WINDEXL_Msk (0xFFUL << USBD_WINDEXL_WINDEXL_Pos) /*!< Bit mask of WINDEXL field. */
 
 /* Register: USBD_WINDEXH */
 /* Description: SETUP data, byte 5, MSB of wIndex */
 
 /* Bits 7..0 : SETUP data, byte 5, MSB of wIndex */
-#define USBD_WINDEXH_WINDEXH_Pos (0UL) /*!< Position of WINDEXH field. */
+#define USBD_WINDEXH_WINDEXH_Pos (0UL)                                /*!< Position of WINDEXH field. */
 #define USBD_WINDEXH_WINDEXH_Msk (0xFFUL << USBD_WINDEXH_WINDEXH_Pos) /*!< Bit mask of WINDEXH field. */
 
 /* Register: USBD_WLENGTHL */
 /* Description: SETUP data, byte 6, LSB of wLength */
 
 /* Bits 7..0 : SETUP data, byte 6, LSB of wLength */
-#define USBD_WLENGTHL_WLENGTHL_Pos (0UL) /*!< Position of WLENGTHL field. */
+#define USBD_WLENGTHL_WLENGTHL_Pos (0UL)                                  /*!< Position of WLENGTHL field. */
 #define USBD_WLENGTHL_WLENGTHL_Msk (0xFFUL << USBD_WLENGTHL_WLENGTHL_Pos) /*!< Bit mask of WLENGTHL field. */
 
 /* Register: USBD_WLENGTHH */
 /* Description: SETUP data, byte 7, MSB of wLength */
 
 /* Bits 7..0 : SETUP data, byte 7, MSB of wLength */
-#define USBD_WLENGTHH_WLENGTHH_Pos (0UL) /*!< Position of WLENGTHH field. */
+#define USBD_WLENGTHH_WLENGTHH_Pos (0UL)                                  /*!< Position of WLENGTHH field. */
 #define USBD_WLENGTHH_WLENGTHH_Msk (0xFFUL << USBD_WLENGTHH_WLENGTHH_Pos) /*!< Bit mask of WLENGTHH field. */
 
 /* Register: USBD_SIZE_EPOUT */
 /* Description: Description collection[0]:  Amount of bytes received last in the data stage of this OUT endpoint */
 
 /* Bits 6..0 : Amount of bytes received last in the data stage of this OUT endpoint */
-#define USBD_SIZE_EPOUT_SIZE_Pos (0UL) /*!< Position of SIZE field. */
+#define USBD_SIZE_EPOUT_SIZE_Pos (0UL)                                /*!< Position of SIZE field. */
 #define USBD_SIZE_EPOUT_SIZE_Msk (0x7FUL << USBD_SIZE_EPOUT_SIZE_Pos) /*!< Bit mask of SIZE field. */
 
 /* Register: USBD_SIZE_ISOOUT */
 /* Description: Amount of bytes received last on this iso OUT data endpoint */
 
 /* Bit 16 : Zero-length data packet received */
-#define USBD_SIZE_ISOOUT_ZERO_Pos (16UL) /*!< Position of ZERO field. */
+#define USBD_SIZE_ISOOUT_ZERO_Pos (16UL)                               /*!< Position of ZERO field. */
 #define USBD_SIZE_ISOOUT_ZERO_Msk (0x1UL << USBD_SIZE_ISOOUT_ZERO_Pos) /*!< Bit mask of ZERO field. */
-#define USBD_SIZE_ISOOUT_ZERO_Normal (0UL) /*!< No zero-length data received, use value in SIZE */
-#define USBD_SIZE_ISOOUT_ZERO_ZeroData (1UL) /*!< Zero-length data received, ignore value in SIZE */
+#define USBD_SIZE_ISOOUT_ZERO_Normal (0UL)                             /*!< No zero-length data received, use value in SIZE */
+#define USBD_SIZE_ISOOUT_ZERO_ZeroData (1UL)                           /*!< Zero-length data received, ignore value in SIZE */
 
 /* Bits 9..0 : Amount of bytes received last on this iso OUT data endpoint */
-#define USBD_SIZE_ISOOUT_SIZE_Pos (0UL) /*!< Position of SIZE field. */
+#define USBD_SIZE_ISOOUT_SIZE_Pos (0UL)                                  /*!< Position of SIZE field. */
 #define USBD_SIZE_ISOOUT_SIZE_Msk (0x3FFUL << USBD_SIZE_ISOOUT_SIZE_Pos) /*!< Bit mask of SIZE field. */
 
 /* Register: USBD_ENABLE */
 /* Description: Enable USB */
 
 /* Bit 0 : Enable USB */
-#define USBD_ENABLE_ENABLE_Pos (0UL) /*!< Position of ENABLE field. */
+#define USBD_ENABLE_ENABLE_Pos (0UL)                             /*!< Position of ENABLE field. */
 #define USBD_ENABLE_ENABLE_Msk (0x1UL << USBD_ENABLE_ENABLE_Pos) /*!< Bit mask of ENABLE field. */
-#define USBD_ENABLE_ENABLE_Disabled (0UL) /*!< USB peripheral is disabled */
-#define USBD_ENABLE_ENABLE_Enabled (1UL) /*!< USB peripheral is enabled */
+#define USBD_ENABLE_ENABLE_Disabled (0UL)                        /*!< USB peripheral is disabled */
+#define USBD_ENABLE_ENABLE_Enabled (1UL)                         /*!< USB peripheral is enabled */
 
 /* Register: USBD_USBPULLUP */
 /* Description: Control of the USB pull-up */
 
 /* Bit 0 : Control of the USB pull-up on the D+ line */
-#define USBD_USBPULLUP_CONNECT_Pos (0UL) /*!< Position of CONNECT field. */
+#define USBD_USBPULLUP_CONNECT_Pos (0UL)                                 /*!< Position of CONNECT field. */
 #define USBD_USBPULLUP_CONNECT_Msk (0x1UL << USBD_USBPULLUP_CONNECT_Pos) /*!< Bit mask of CONNECT field. */
-#define USBD_USBPULLUP_CONNECT_Disabled (0UL) /*!< Pull-up is disconnected */
-#define USBD_USBPULLUP_CONNECT_Enabled (1UL) /*!< Pull-up is connected to D+ */
+#define USBD_USBPULLUP_CONNECT_Disabled (0UL)                            /*!< Pull-up is disconnected */
+#define USBD_USBPULLUP_CONNECT_Enabled (1UL)                             /*!< Pull-up is connected to D+ */
 
 /* Register: USBD_DPDMVALUE */
 /* Description: State at which the DPDMDRIVE task will force D+ and D-. The DPDMNODRIVE task reverts the control of the lines to MAC IP (no forcing). */
 
 /* Bits 4..0 : State at which the DPDMDRIVE task will force D+ and D- */
-#define USBD_DPDMVALUE_STATE_Pos (0UL) /*!< Position of STATE field. */
+#define USBD_DPDMVALUE_STATE_Pos (0UL)                                /*!< Position of STATE field. */
 #define USBD_DPDMVALUE_STATE_Msk (0x1FUL << USBD_DPDMVALUE_STATE_Pos) /*!< Bit mask of STATE field. */
-#define USBD_DPDMVALUE_STATE_Resume (1UL) /*!< D+ forced low, D- forced high (K state) for a timing pre-set in hardware (50 us or 5 ms, depending on bus state) */
-#define USBD_DPDMVALUE_STATE_J (2UL) /*!< D+ forced high, D- forced low (J state) */
-#define USBD_DPDMVALUE_STATE_K (4UL) /*!< D+ forced low, D- forced high (K state) */
+#define USBD_DPDMVALUE_STATE_Resume (1UL)                             /*!< D+ forced low, D- forced high (K state) for a timing pre-set in hardware (50 us or 5 ms, depending on bus state) */
+#define USBD_DPDMVALUE_STATE_J (2UL)                                  /*!< D+ forced high, D- forced low (J state) */
+#define USBD_DPDMVALUE_STATE_K (4UL)                                  /*!< D+ forced low, D- forced high (K state) */
 
 /* Register: USBD_DTOGGLE */
 /* Description: Data toggle control and status. */
 
 /* Bits 9..8 : Data toggle value */
-#define USBD_DTOGGLE_VALUE_Pos (8UL) /*!< Position of VALUE field. */
+#define USBD_DTOGGLE_VALUE_Pos (8UL)                             /*!< Position of VALUE field. */
 #define USBD_DTOGGLE_VALUE_Msk (0x3UL << USBD_DTOGGLE_VALUE_Pos) /*!< Bit mask of VALUE field. */
-#define USBD_DTOGGLE_VALUE_Nop (0UL) /*!< No action on data toggle when writing the register with this value */
-#define USBD_DTOGGLE_VALUE_Data0 (1UL) /*!< Data toggle is DATA0 on endpoint set by EP and IO */
-#define USBD_DTOGGLE_VALUE_Data1 (2UL) /*!< Data toggle is DATA1 on endpoint set by EP and IO */
+#define USBD_DTOGGLE_VALUE_Nop (0UL)                             /*!< No action on data toggle when writing the register with this value */
+#define USBD_DTOGGLE_VALUE_Data0 (1UL)                           /*!< Data toggle is DATA0 on endpoint set by EP and IO */
+#define USBD_DTOGGLE_VALUE_Data1 (2UL)                           /*!< Data toggle is DATA1 on endpoint set by EP and IO */
 
 /* Bit 7 : Selects IN or OUT endpoint */
-#define USBD_DTOGGLE_IO_Pos (7UL) /*!< Position of IO field. */
+#define USBD_DTOGGLE_IO_Pos (7UL)                          /*!< Position of IO field. */
 #define USBD_DTOGGLE_IO_Msk (0x1UL << USBD_DTOGGLE_IO_Pos) /*!< Bit mask of IO field. */
-#define USBD_DTOGGLE_IO_Out (0UL) /*!< Selects OUT endpoint */
-#define USBD_DTOGGLE_IO_In (1UL) /*!< Selects IN endpoint */
+#define USBD_DTOGGLE_IO_Out (0UL)                          /*!< Selects OUT endpoint */
+#define USBD_DTOGGLE_IO_In (1UL)                           /*!< Selects IN endpoint */
 
 /* Bits 2..0 : Select bulk endpoint number */
-#define USBD_DTOGGLE_EP_Pos (0UL) /*!< Position of EP field. */
+#define USBD_DTOGGLE_EP_Pos (0UL)                          /*!< Position of EP field. */
 #define USBD_DTOGGLE_EP_Msk (0x7UL << USBD_DTOGGLE_EP_Pos) /*!< Bit mask of EP field. */
 
 /* Register: USBD_EPINEN */
 /* Description: Endpoint IN enable */
 
 /* Bit 8 : Enable iso IN endpoint */
-#define USBD_EPINEN_ISOIN_Pos (8UL) /*!< Position of ISOIN field. */
+#define USBD_EPINEN_ISOIN_Pos (8UL)                            /*!< Position of ISOIN field. */
 #define USBD_EPINEN_ISOIN_Msk (0x1UL << USBD_EPINEN_ISOIN_Pos) /*!< Bit mask of ISOIN field. */
-#define USBD_EPINEN_ISOIN_Disable (0UL) /*!< Disable iso IN endpoint 8 */
-#define USBD_EPINEN_ISOIN_Enable (1UL) /*!< Enable iso IN endpoint 8 */
+#define USBD_EPINEN_ISOIN_Disable (0UL)                        /*!< Disable iso IN endpoint 8 */
+#define USBD_EPINEN_ISOIN_Enable (1UL)                         /*!< Enable iso IN endpoint 8 */
 
 /* Bit 7 : Enable IN endpoint 7 */
-#define USBD_EPINEN_IN7_Pos (7UL) /*!< Position of IN7 field. */
+#define USBD_EPINEN_IN7_Pos (7UL)                          /*!< Position of IN7 field. */
 #define USBD_EPINEN_IN7_Msk (0x1UL << USBD_EPINEN_IN7_Pos) /*!< Bit mask of IN7 field. */
-#define USBD_EPINEN_IN7_Disable (0UL) /*!< Disable endpoint IN 7 (no response to IN tokens) */
-#define USBD_EPINEN_IN7_Enable (1UL) /*!< Enable endpoint IN 7 (response to IN tokens) */
+#define USBD_EPINEN_IN7_Disable (0UL)                      /*!< Disable endpoint IN 7 (no response to IN tokens) */
+#define USBD_EPINEN_IN7_Enable (1UL)                       /*!< Enable endpoint IN 7 (response to IN tokens) */
 
 /* Bit 6 : Enable IN endpoint 6 */
-#define USBD_EPINEN_IN6_Pos (6UL) /*!< Position of IN6 field. */
+#define USBD_EPINEN_IN6_Pos (6UL)                          /*!< Position of IN6 field. */
 #define USBD_EPINEN_IN6_Msk (0x1UL << USBD_EPINEN_IN6_Pos) /*!< Bit mask of IN6 field. */
-#define USBD_EPINEN_IN6_Disable (0UL) /*!< Disable endpoint IN 6 (no response to IN tokens) */
-#define USBD_EPINEN_IN6_Enable (1UL) /*!< Enable endpoint IN 6 (response to IN tokens) */
+#define USBD_EPINEN_IN6_Disable (0UL)                      /*!< Disable endpoint IN 6 (no response to IN tokens) */
+#define USBD_EPINEN_IN6_Enable (1UL)                       /*!< Enable endpoint IN 6 (response to IN tokens) */
 
 /* Bit 5 : Enable IN endpoint 5 */
-#define USBD_EPINEN_IN5_Pos (5UL) /*!< Position of IN5 field. */
+#define USBD_EPINEN_IN5_Pos (5UL)                          /*!< Position of IN5 field. */
 #define USBD_EPINEN_IN5_Msk (0x1UL << USBD_EPINEN_IN5_Pos) /*!< Bit mask of IN5 field. */
-#define USBD_EPINEN_IN5_Disable (0UL) /*!< Disable endpoint IN 5 (no response to IN tokens) */
-#define USBD_EPINEN_IN5_Enable (1UL) /*!< Enable endpoint IN 5 (response to IN tokens) */
+#define USBD_EPINEN_IN5_Disable (0UL)                      /*!< Disable endpoint IN 5 (no response to IN tokens) */
+#define USBD_EPINEN_IN5_Enable (1UL)                       /*!< Enable endpoint IN 5 (response to IN tokens) */
 
 /* Bit 4 : Enable IN endpoint 4 */
-#define USBD_EPINEN_IN4_Pos (4UL) /*!< Position of IN4 field. */
+#define USBD_EPINEN_IN4_Pos (4UL)                          /*!< Position of IN4 field. */
 #define USBD_EPINEN_IN4_Msk (0x1UL << USBD_EPINEN_IN4_Pos) /*!< Bit mask of IN4 field. */
-#define USBD_EPINEN_IN4_Disable (0UL) /*!< Disable endpoint IN 4 (no response to IN tokens) */
-#define USBD_EPINEN_IN4_Enable (1UL) /*!< Enable endpoint IN 4 (response to IN tokens) */
+#define USBD_EPINEN_IN4_Disable (0UL)                      /*!< Disable endpoint IN 4 (no response to IN tokens) */
+#define USBD_EPINEN_IN4_Enable (1UL)                       /*!< Enable endpoint IN 4 (response to IN tokens) */
 
 /* Bit 3 : Enable IN endpoint 3 */
-#define USBD_EPINEN_IN3_Pos (3UL) /*!< Position of IN3 field. */
+#define USBD_EPINEN_IN3_Pos (3UL)                          /*!< Position of IN3 field. */
 #define USBD_EPINEN_IN3_Msk (0x1UL << USBD_EPINEN_IN3_Pos) /*!< Bit mask of IN3 field. */
-#define USBD_EPINEN_IN3_Disable (0UL) /*!< Disable endpoint IN 3 (no response to IN tokens) */
-#define USBD_EPINEN_IN3_Enable (1UL) /*!< Enable endpoint IN 3 (response to IN tokens) */
+#define USBD_EPINEN_IN3_Disable (0UL)                      /*!< Disable endpoint IN 3 (no response to IN tokens) */
+#define USBD_EPINEN_IN3_Enable (1UL)                       /*!< Enable endpoint IN 3 (response to IN tokens) */
 
 /* Bit 2 : Enable IN endpoint 2 */
-#define USBD_EPINEN_IN2_Pos (2UL) /*!< Position of IN2 field. */
+#define USBD_EPINEN_IN2_Pos (2UL)                          /*!< Position of IN2 field. */
 #define USBD_EPINEN_IN2_Msk (0x1UL << USBD_EPINEN_IN2_Pos) /*!< Bit mask of IN2 field. */
-#define USBD_EPINEN_IN2_Disable (0UL) /*!< Disable endpoint IN 2 (no response to IN tokens) */
-#define USBD_EPINEN_IN2_Enable (1UL) /*!< Enable endpoint IN 2 (response to IN tokens) */
+#define USBD_EPINEN_IN2_Disable (0UL)                      /*!< Disable endpoint IN 2 (no response to IN tokens) */
+#define USBD_EPINEN_IN2_Enable (1UL)                       /*!< Enable endpoint IN 2 (response to IN tokens) */
 
 /* Bit 1 : Enable IN endpoint 1 */
-#define USBD_EPINEN_IN1_Pos (1UL) /*!< Position of IN1 field. */
+#define USBD_EPINEN_IN1_Pos (1UL)                          /*!< Position of IN1 field. */
 #define USBD_EPINEN_IN1_Msk (0x1UL << USBD_EPINEN_IN1_Pos) /*!< Bit mask of IN1 field. */
-#define USBD_EPINEN_IN1_Disable (0UL) /*!< Disable endpoint IN 1 (no response to IN tokens) */
-#define USBD_EPINEN_IN1_Enable (1UL) /*!< Enable endpoint IN 1 (response to IN tokens) */
+#define USBD_EPINEN_IN1_Disable (0UL)                      /*!< Disable endpoint IN 1 (no response to IN tokens) */
+#define USBD_EPINEN_IN1_Enable (1UL)                       /*!< Enable endpoint IN 1 (response to IN tokens) */
 
 /* Bit 0 : Enable IN endpoint 0 */
-#define USBD_EPINEN_IN0_Pos (0UL) /*!< Position of IN0 field. */
+#define USBD_EPINEN_IN0_Pos (0UL)                          /*!< Position of IN0 field. */
 #define USBD_EPINEN_IN0_Msk (0x1UL << USBD_EPINEN_IN0_Pos) /*!< Bit mask of IN0 field. */
-#define USBD_EPINEN_IN0_Disable (0UL) /*!< Disable endpoint IN 0 (no response to IN tokens) */
-#define USBD_EPINEN_IN0_Enable (1UL) /*!< Enable endpoint IN 0 (response to IN tokens) */
+#define USBD_EPINEN_IN0_Disable (0UL)                      /*!< Disable endpoint IN 0 (no response to IN tokens) */
+#define USBD_EPINEN_IN0_Enable (1UL)                       /*!< Enable endpoint IN 0 (response to IN tokens) */
 
 /* Register: USBD_EPOUTEN */
 /* Description: Endpoint OUT enable */
 
 /* Bit 8 : Enable iso OUT endpoint 8 */
-#define USBD_EPOUTEN_ISOOUT_Pos (8UL) /*!< Position of ISOOUT field. */
+#define USBD_EPOUTEN_ISOOUT_Pos (8UL)                              /*!< Position of ISOOUT field. */
 #define USBD_EPOUTEN_ISOOUT_Msk (0x1UL << USBD_EPOUTEN_ISOOUT_Pos) /*!< Bit mask of ISOOUT field. */
-#define USBD_EPOUTEN_ISOOUT_Disable (0UL) /*!< Disable iso OUT endpoint 8 */
-#define USBD_EPOUTEN_ISOOUT_Enable (1UL) /*!< Enable iso OUT endpoint 8 */
+#define USBD_EPOUTEN_ISOOUT_Disable (0UL)                          /*!< Disable iso OUT endpoint 8 */
+#define USBD_EPOUTEN_ISOOUT_Enable (1UL)                           /*!< Enable iso OUT endpoint 8 */
 
 /* Bit 7 : Enable OUT endpoint 7 */
-#define USBD_EPOUTEN_OUT7_Pos (7UL) /*!< Position of OUT7 field. */
+#define USBD_EPOUTEN_OUT7_Pos (7UL)                            /*!< Position of OUT7 field. */
 #define USBD_EPOUTEN_OUT7_Msk (0x1UL << USBD_EPOUTEN_OUT7_Pos) /*!< Bit mask of OUT7 field. */
-#define USBD_EPOUTEN_OUT7_Disable (0UL) /*!< Disable endpoint OUT 7 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT7_Enable (1UL) /*!< Enable endpoint OUT 7 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT7_Disable (0UL)                        /*!< Disable endpoint OUT 7 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT7_Enable (1UL)                         /*!< Enable endpoint OUT 7 (response to OUT tokens) */
 
 /* Bit 6 : Enable OUT endpoint 6 */
-#define USBD_EPOUTEN_OUT6_Pos (6UL) /*!< Position of OUT6 field. */
+#define USBD_EPOUTEN_OUT6_Pos (6UL)                            /*!< Position of OUT6 field. */
 #define USBD_EPOUTEN_OUT6_Msk (0x1UL << USBD_EPOUTEN_OUT6_Pos) /*!< Bit mask of OUT6 field. */
-#define USBD_EPOUTEN_OUT6_Disable (0UL) /*!< Disable endpoint OUT 6 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT6_Enable (1UL) /*!< Enable endpoint OUT 6 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT6_Disable (0UL)                        /*!< Disable endpoint OUT 6 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT6_Enable (1UL)                         /*!< Enable endpoint OUT 6 (response to OUT tokens) */
 
 /* Bit 5 : Enable OUT endpoint 5 */
-#define USBD_EPOUTEN_OUT5_Pos (5UL) /*!< Position of OUT5 field. */
+#define USBD_EPOUTEN_OUT5_Pos (5UL)                            /*!< Position of OUT5 field. */
 #define USBD_EPOUTEN_OUT5_Msk (0x1UL << USBD_EPOUTEN_OUT5_Pos) /*!< Bit mask of OUT5 field. */
-#define USBD_EPOUTEN_OUT5_Disable (0UL) /*!< Disable endpoint OUT 5 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT5_Enable (1UL) /*!< Enable endpoint OUT 5 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT5_Disable (0UL)                        /*!< Disable endpoint OUT 5 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT5_Enable (1UL)                         /*!< Enable endpoint OUT 5 (response to OUT tokens) */
 
 /* Bit 4 : Enable OUT endpoint 4 */
-#define USBD_EPOUTEN_OUT4_Pos (4UL) /*!< Position of OUT4 field. */
+#define USBD_EPOUTEN_OUT4_Pos (4UL)                            /*!< Position of OUT4 field. */
 #define USBD_EPOUTEN_OUT4_Msk (0x1UL << USBD_EPOUTEN_OUT4_Pos) /*!< Bit mask of OUT4 field. */
-#define USBD_EPOUTEN_OUT4_Disable (0UL) /*!< Disable endpoint OUT 4 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT4_Enable (1UL) /*!< Enable endpoint OUT 4 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT4_Disable (0UL)                        /*!< Disable endpoint OUT 4 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT4_Enable (1UL)                         /*!< Enable endpoint OUT 4 (response to OUT tokens) */
 
 /* Bit 3 : Enable OUT endpoint 3 */
-#define USBD_EPOUTEN_OUT3_Pos (3UL) /*!< Position of OUT3 field. */
+#define USBD_EPOUTEN_OUT3_Pos (3UL)                            /*!< Position of OUT3 field. */
 #define USBD_EPOUTEN_OUT3_Msk (0x1UL << USBD_EPOUTEN_OUT3_Pos) /*!< Bit mask of OUT3 field. */
-#define USBD_EPOUTEN_OUT3_Disable (0UL) /*!< Disable endpoint OUT 3 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT3_Enable (1UL) /*!< Enable endpoint OUT 3 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT3_Disable (0UL)                        /*!< Disable endpoint OUT 3 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT3_Enable (1UL)                         /*!< Enable endpoint OUT 3 (response to OUT tokens) */
 
 /* Bit 2 : Enable OUT endpoint 2 */
-#define USBD_EPOUTEN_OUT2_Pos (2UL) /*!< Position of OUT2 field. */
+#define USBD_EPOUTEN_OUT2_Pos (2UL)                            /*!< Position of OUT2 field. */
 #define USBD_EPOUTEN_OUT2_Msk (0x1UL << USBD_EPOUTEN_OUT2_Pos) /*!< Bit mask of OUT2 field. */
-#define USBD_EPOUTEN_OUT2_Disable (0UL) /*!< Disable endpoint OUT 2 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT2_Enable (1UL) /*!< Enable endpoint OUT 2 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT2_Disable (0UL)                        /*!< Disable endpoint OUT 2 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT2_Enable (1UL)                         /*!< Enable endpoint OUT 2 (response to OUT tokens) */
 
 /* Bit 1 : Enable OUT endpoint 1 */
-#define USBD_EPOUTEN_OUT1_Pos (1UL) /*!< Position of OUT1 field. */
+#define USBD_EPOUTEN_OUT1_Pos (1UL)                            /*!< Position of OUT1 field. */
 #define USBD_EPOUTEN_OUT1_Msk (0x1UL << USBD_EPOUTEN_OUT1_Pos) /*!< Bit mask of OUT1 field. */
-#define USBD_EPOUTEN_OUT1_Disable (0UL) /*!< Disable endpoint OUT 1 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT1_Enable (1UL) /*!< Enable endpoint OUT 1 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT1_Disable (0UL)                        /*!< Disable endpoint OUT 1 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT1_Enable (1UL)                         /*!< Enable endpoint OUT 1 (response to OUT tokens) */
 
 /* Bit 0 : Enable OUT endpoint 0 */
-#define USBD_EPOUTEN_OUT0_Pos (0UL) /*!< Position of OUT0 field. */
+#define USBD_EPOUTEN_OUT0_Pos (0UL)                            /*!< Position of OUT0 field. */
 #define USBD_EPOUTEN_OUT0_Msk (0x1UL << USBD_EPOUTEN_OUT0_Pos) /*!< Bit mask of OUT0 field. */
-#define USBD_EPOUTEN_OUT0_Disable (0UL) /*!< Disable endpoint OUT 0 (no response to OUT tokens) */
-#define USBD_EPOUTEN_OUT0_Enable (1UL) /*!< Enable endpoint OUT 0 (response to OUT tokens) */
+#define USBD_EPOUTEN_OUT0_Disable (0UL)                        /*!< Disable endpoint OUT 0 (no response to OUT tokens) */
+#define USBD_EPOUTEN_OUT0_Enable (1UL)                         /*!< Enable endpoint OUT 0 (response to OUT tokens) */
 
 /* Register: USBD_EPSTALL */
 /* Description: STALL endpoints */
 
 /* Bit 8 : Stall selected endpoint */
-#define USBD_EPSTALL_STALL_Pos (8UL) /*!< Position of STALL field. */
+#define USBD_EPSTALL_STALL_Pos (8UL)                             /*!< Position of STALL field. */
 #define USBD_EPSTALL_STALL_Msk (0x1UL << USBD_EPSTALL_STALL_Pos) /*!< Bit mask of STALL field. */
-#define USBD_EPSTALL_STALL_UnStall (0UL) /*!< Don't stall selected endpoint */
-#define USBD_EPSTALL_STALL_Stall (1UL) /*!< Stall selected endpoint */
+#define USBD_EPSTALL_STALL_UnStall (0UL)                         /*!< Don't stall selected endpoint */
+#define USBD_EPSTALL_STALL_Stall (1UL)                           /*!< Stall selected endpoint */
 
 /* Bit 7 : Selects IN or OUT endpoint */
-#define USBD_EPSTALL_IO_Pos (7UL) /*!< Position of IO field. */
+#define USBD_EPSTALL_IO_Pos (7UL)                          /*!< Position of IO field. */
 #define USBD_EPSTALL_IO_Msk (0x1UL << USBD_EPSTALL_IO_Pos) /*!< Bit mask of IO field. */
-#define USBD_EPSTALL_IO_Out (0UL) /*!< Selects OUT endpoint */
-#define USBD_EPSTALL_IO_In (1UL) /*!< Selects IN endpoint */
+#define USBD_EPSTALL_IO_Out (0UL)                          /*!< Selects OUT endpoint */
+#define USBD_EPSTALL_IO_In (1UL)                           /*!< Selects IN endpoint */
 
 /* Bits 2..0 : Select endpoint number */
-#define USBD_EPSTALL_EP_Pos (0UL) /*!< Position of EP field. */
+#define USBD_EPSTALL_EP_Pos (0UL)                          /*!< Position of EP field. */
 #define USBD_EPSTALL_EP_Msk (0x7UL << USBD_EPSTALL_EP_Pos) /*!< Bit mask of EP field. */
 
 /* Register: USBD_ISOSPLIT */
 /* Description: Controls the split of ISO buffers */
 
 /* Bits 15..0 : Controls the split of ISO buffers */
-#define USBD_ISOSPLIT_SPLIT_Pos (0UL) /*!< Position of SPLIT field. */
+#define USBD_ISOSPLIT_SPLIT_Pos (0UL)                                 /*!< Position of SPLIT field. */
 #define USBD_ISOSPLIT_SPLIT_Msk (0xFFFFUL << USBD_ISOSPLIT_SPLIT_Pos) /*!< Bit mask of SPLIT field. */
-#define USBD_ISOSPLIT_SPLIT_OneDir (0x0000UL) /*!< Full buffer dedicated to either iso IN or OUT */
-#define USBD_ISOSPLIT_SPLIT_HalfIN (0x0080UL) /*!< Lower half for IN, upper half for OUT */
+#define USBD_ISOSPLIT_SPLIT_OneDir (0x0000UL)                         /*!< Full buffer dedicated to either iso IN or OUT */
+#define USBD_ISOSPLIT_SPLIT_HalfIN (0x0080UL)                         /*!< Lower half for IN, upper half for OUT */
 
 /* Register: USBD_FRAMECNTR */
 /* Description: Returns the current value of the start of frame counter */
 
 /* Bits 10..0 : Returns the current value of the start of frame counter */
-#define USBD_FRAMECNTR_FRAMECNTR_Pos (0UL) /*!< Position of FRAMECNTR field. */
+#define USBD_FRAMECNTR_FRAMECNTR_Pos (0UL)                                     /*!< Position of FRAMECNTR field. */
 #define USBD_FRAMECNTR_FRAMECNTR_Msk (0x7FFUL << USBD_FRAMECNTR_FRAMECNTR_Pos) /*!< Bit mask of FRAMECNTR field. */
+
+/* Register: USBD_LOWPOWER */
+/* Description: First silicon only: Controls USBD peripheral low-power mode during USB suspend */
+
+/* Bit 0 : Controls USBD peripheral low-power mode during USB suspend */
+#define USBD_LOWPOWER_LOWPOWER_Pos (0UL)                                 /*!< Position of LOWPOWER field. */
+#define USBD_LOWPOWER_LOWPOWER_Msk (0x1UL << USBD_LOWPOWER_LOWPOWER_Pos) /*!< Bit mask of LOWPOWER field. */
+#define USBD_LOWPOWER_LOWPOWER_ForceNormal (0UL)                         /*!< Software must write this value to exit low power mode and before performing a remote wake-up */
+#define USBD_LOWPOWER_LOWPOWER_LowPower (1UL)                            /*!< Software must write this value to enter low power mode after DMA and software have finished interacting with the USB peripheral */
 
 /* Register: USBD_ISOINCONFIG */
 /* Description: Controls the response of the ISO IN endpoint to an IN token when no data is ready to be sent */
 
 /* Bit 0 : Controls the response of the ISO IN endpoint to an IN token when no data is ready to be sent */
-#define USBD_ISOINCONFIG_RESPONSE_Pos (0UL) /*!< Position of RESPONSE field. */
+#define USBD_ISOINCONFIG_RESPONSE_Pos (0UL)                                    /*!< Position of RESPONSE field. */
 #define USBD_ISOINCONFIG_RESPONSE_Msk (0x1UL << USBD_ISOINCONFIG_RESPONSE_Pos) /*!< Bit mask of RESPONSE field. */
-#define USBD_ISOINCONFIG_RESPONSE_NoResp (0UL) /*!< Endpoint does not respond in that case */
-#define USBD_ISOINCONFIG_RESPONSE_ZeroData (1UL) /*!< Endpoint responds with a zero-length data packet in that case */
+#define USBD_ISOINCONFIG_RESPONSE_NoResp (0UL)                                 /*!< Endpoint does not respond in that case */
+#define USBD_ISOINCONFIG_RESPONSE_ZeroData (1UL)                               /*!< Endpoint responds with a zero-length data packet in that case */
 
 /* Register: USBD_EPIN_PTR */
 /* Description: Description cluster[0]:  Data pointer */
 
 /* Bits 31..0 : Data pointer. Accepts any address in Data RAM. */
-#define USBD_EPIN_PTR_PTR_Pos (0UL) /*!< Position of PTR field. */
+#define USBD_EPIN_PTR_PTR_Pos (0UL)                                   /*!< Position of PTR field. */
 #define USBD_EPIN_PTR_PTR_Msk (0xFFFFFFFFUL << USBD_EPIN_PTR_PTR_Pos) /*!< Bit mask of PTR field. */
 
 /* Register: USBD_EPIN_MAXCNT */
 /* Description: Description cluster[0]:  Maximum number of bytes to transfer */
 
 /* Bits 6..0 : Maximum number of bytes to transfer */
-#define USBD_EPIN_MAXCNT_MAXCNT_Pos (0UL) /*!< Position of MAXCNT field. */
+#define USBD_EPIN_MAXCNT_MAXCNT_Pos (0UL)                                   /*!< Position of MAXCNT field. */
 #define USBD_EPIN_MAXCNT_MAXCNT_Msk (0x7FUL << USBD_EPIN_MAXCNT_MAXCNT_Pos) /*!< Bit mask of MAXCNT field. */
 
 /* Register: USBD_EPIN_AMOUNT */
 /* Description: Description cluster[0]:  Number of bytes transferred in the last transaction */
 
 /* Bits 6..0 : Number of bytes transferred in the last transaction */
-#define USBD_EPIN_AMOUNT_AMOUNT_Pos (0UL) /*!< Position of AMOUNT field. */
+#define USBD_EPIN_AMOUNT_AMOUNT_Pos (0UL)                                   /*!< Position of AMOUNT field. */
 #define USBD_EPIN_AMOUNT_AMOUNT_Msk (0x7FUL << USBD_EPIN_AMOUNT_AMOUNT_Pos) /*!< Bit mask of AMOUNT field. */
 
 /* Register: USBD_ISOIN_PTR */
 /* Description: Data pointer */
 
 /* Bits 31..0 : Data pointer. Accepts any address in Data RAM. */
-#define USBD_ISOIN_PTR_PTR_Pos (0UL) /*!< Position of PTR field. */
+#define USBD_ISOIN_PTR_PTR_Pos (0UL)                                    /*!< Position of PTR field. */
 #define USBD_ISOIN_PTR_PTR_Msk (0xFFFFFFFFUL << USBD_ISOIN_PTR_PTR_Pos) /*!< Bit mask of PTR field. */
 
 /* Register: USBD_ISOIN_MAXCNT */
 /* Description: Maximum number of bytes to transfer */
 
 /* Bits 9..0 : Maximum number of bytes to transfer */
-#define USBD_ISOIN_MAXCNT_MAXCNT_Pos (0UL) /*!< Position of MAXCNT field. */
+#define USBD_ISOIN_MAXCNT_MAXCNT_Pos (0UL)                                     /*!< Position of MAXCNT field. */
 #define USBD_ISOIN_MAXCNT_MAXCNT_Msk (0x3FFUL << USBD_ISOIN_MAXCNT_MAXCNT_Pos) /*!< Bit mask of MAXCNT field. */
 
 /* Register: USBD_ISOIN_AMOUNT */
 /* Description: Number of bytes transferred in the last transaction */
 
 /* Bits 9..0 : Number of bytes transferred in the last transaction */
-#define USBD_ISOIN_AMOUNT_AMOUNT_Pos (0UL) /*!< Position of AMOUNT field. */
+#define USBD_ISOIN_AMOUNT_AMOUNT_Pos (0UL)                                     /*!< Position of AMOUNT field. */
 #define USBD_ISOIN_AMOUNT_AMOUNT_Msk (0x3FFUL << USBD_ISOIN_AMOUNT_AMOUNT_Pos) /*!< Bit mask of AMOUNT field. */
 
 /* Register: USBD_EPOUT_PTR */
 /* Description: Description cluster[0]:  Data pointer */
 
 /* Bits 31..0 : Data pointer. Accepts any address in Data RAM. */
-#define USBD_EPOUT_PTR_PTR_Pos (0UL) /*!< Position of PTR field. */
+#define USBD_EPOUT_PTR_PTR_Pos (0UL)                                    /*!< Position of PTR field. */
 #define USBD_EPOUT_PTR_PTR_Msk (0xFFFFFFFFUL << USBD_EPOUT_PTR_PTR_Pos) /*!< Bit mask of PTR field. */
 
 /* Register: USBD_EPOUT_MAXCNT */
 /* Description: Description cluster[0]:  Maximum number of bytes to transfer */
 
 /* Bits 6..0 : Maximum number of bytes to transfer */
-#define USBD_EPOUT_MAXCNT_MAXCNT_Pos (0UL) /*!< Position of MAXCNT field. */
+#define USBD_EPOUT_MAXCNT_MAXCNT_Pos (0UL)                                    /*!< Position of MAXCNT field. */
 #define USBD_EPOUT_MAXCNT_MAXCNT_Msk (0x7FUL << USBD_EPOUT_MAXCNT_MAXCNT_Pos) /*!< Bit mask of MAXCNT field. */
 
 /* Register: USBD_EPOUT_AMOUNT */
 /* Description: Description cluster[0]:  Number of bytes transferred in the last transaction */
 
 /* Bits 6..0 : Number of bytes transferred in the last transaction */
-#define USBD_EPOUT_AMOUNT_AMOUNT_Pos (0UL) /*!< Position of AMOUNT field. */
+#define USBD_EPOUT_AMOUNT_AMOUNT_Pos (0UL)                                    /*!< Position of AMOUNT field. */
 #define USBD_EPOUT_AMOUNT_AMOUNT_Msk (0x7FUL << USBD_EPOUT_AMOUNT_AMOUNT_Pos) /*!< Bit mask of AMOUNT field. */
 
 /* Register: USBD_ISOOUT_PTR */
 /* Description: Data pointer */
 
 /* Bits 31..0 : Data pointer. Accepts any address in Data RAM. */
-#define USBD_ISOOUT_PTR_PTR_Pos (0UL) /*!< Position of PTR field. */
+#define USBD_ISOOUT_PTR_PTR_Pos (0UL)                                     /*!< Position of PTR field. */
 #define USBD_ISOOUT_PTR_PTR_Msk (0xFFFFFFFFUL << USBD_ISOOUT_PTR_PTR_Pos) /*!< Bit mask of PTR field. */
 
 /* Register: USBD_ISOOUT_MAXCNT */
 /* Description: Maximum number of bytes to transfer */
 
 /* Bits 9..0 : Maximum number of bytes to transfer */
-#define USBD_ISOOUT_MAXCNT_MAXCNT_Pos (0UL) /*!< Position of MAXCNT field. */
+#define USBD_ISOOUT_MAXCNT_MAXCNT_Pos (0UL)                                      /*!< Position of MAXCNT field. */
 #define USBD_ISOOUT_MAXCNT_MAXCNT_Msk (0x3FFUL << USBD_ISOOUT_MAXCNT_MAXCNT_Pos) /*!< Bit mask of MAXCNT field. */
 
 /* Register: USBD_ISOOUT_AMOUNT */
 /* Description: Number of bytes transferred in the last transaction */
 
 /* Bits 9..0 : Number of bytes transferred in the last transaction */
-#define USBD_ISOOUT_AMOUNT_AMOUNT_Pos (0UL) /*!< Position of AMOUNT field. */
+#define USBD_ISOOUT_AMOUNT_AMOUNT_Pos (0UL)                                      /*!< Position of AMOUNT field. */
 #define USBD_ISOOUT_AMOUNT_AMOUNT_Msk (0x3FFUL << USBD_ISOOUT_AMOUNT_AMOUNT_Pos) /*!< Bit mask of AMOUNT field. */
-
 
 /* Peripheral: WDT */
 /* Description: Watchdog Timer */

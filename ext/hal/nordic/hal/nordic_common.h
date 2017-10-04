@@ -42,6 +42,12 @@
  *  when a parameter can be macro itself. */
 #define CONCAT_3(p1, p2, p3)  p1##p2##p3
 
+/** Counts number of elements inside the array
+ */
+#if !defined(ARRAY_SIZE)
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
+#endif
+
 /**@brief Set a bit in the uint32 word.
  *
  * @param[in] W  Word whose bit is being set.
@@ -103,5 +109,6 @@
 
 #define UNUSED_VARIABLE(X)  ((void)(X))
 #define UNUSED_PARAMETER(X) UNUSED_VARIABLE(X)
+#define UNUSED_RETURN_VALUE(X) UNUSED_VARIABLE(X)
 
 #endif // NORDIC_COMMON_H__

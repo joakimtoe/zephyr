@@ -8,6 +8,13 @@
 
 if USB
 
+config USB_NRF5
+	bool
+	prompt "nRF5 USB Device Controller Driver"
+	default n
+	help
+	nRF5 USB Device Controller Driver.
+
 config USB_DW
 	bool
 	prompt "Designware USB Device Controller Driver"
