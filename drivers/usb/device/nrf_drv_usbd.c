@@ -41,10 +41,6 @@
 #include <soc.h>
 #include "nrf_drv_usbd.h"
 #include "nrf.h"
-//#include "nrf_atomic.h"
-//#include "nrf_delay.h"
-//#include "app_util_platform.h"
-//#include "nrf_drv_systick.h" /* Marker to delete when not required anymore: >> NRF_DRV_USBD_ERRATA_ENABLE << */
 
 #include <string.h>
 #include <inttypes.h>

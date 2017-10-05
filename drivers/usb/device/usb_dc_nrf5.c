@@ -1,5 +1,100 @@
 #include <usb/usb_dc.h>
 #include "nrf_drv_usbd.h"
+#include "nrf_power.h"
+
+/**
+ * @brief Startup delay
+ *
+ * Number of microseconds to start USBD after powering up.
+ * Kind of port insert debouncing.
+ */
+#define STARTUP_DELAY 100
+
+/*
+ * USB controller private structure.
+ */
+typedef struct
+{
+    usb_dc_status_callback status_cb;
+}usb_nrf5_ctrl_prv_t;
+
+static usb_nrf5_ctrl_prv_t usb_nrf5_ctrl = {.status_cb = 0};
+
+static inline void usb_nrf5_udelay(u32_t us)
+{
+	k_busy_wait(us);
+}
+
+/**
+ * @brief USB power state
+ *
+ * The single enumerator that holds all data about current state of USB
+ * related POWER.
+ *
+ * Organized this way that higher power state has higher numeric value
+ */
+typedef enum
+{
+    NRF_DRV_POWER_USB_STATE_DISCONNECTED, /**< No power on USB lines detected */
+    NRF_DRV_POWER_USB_STATE_CONNECTED,    /**< The USB power is detected, but USB power regulator is not ready */
+    NRF_DRV_POWER_USB_STATE_READY         /**< From the power point of view USB is ready for working */
+}nrf_drv_power_usb_state_t;
+
+__STATIC_INLINE nrf_drv_power_usb_state_t nrf_drv_power_usbstatus_get(void)
+{
+    uint32_t status = nrf_power_usbregstatus_get();
+    if (0 == (status & NRF_POWER_USBREGSTATUS_VBUSDETECT_MASK))
+    {
+        return NRF_DRV_POWER_USB_STATE_DISCONNECTED;
+    }
+    if (0 == (status & NRF_POWER_USBREGSTATUS_OUTPUTRDY_MASK))
+    {
+        return NRF_DRV_POWER_USB_STATE_CONNECTED;
+    }
+    return NRF_DRV_POWER_USB_STATE_READY;
+}
+
+static void usbd_event_handler(nrf_drv_usbd_evt_t const * const p_event)
+{
+    switch (p_event->type)
+    {
+        case NRF_DRV_USBD_EVT_SOF:
+        break;
+        //
+        case NRF_DRV_USBD_EVT_RESET:
+            /* Inform upper layers */
+            if (usb_nrf5_ctrl.status_cb) {
+                usb_nrf5_ctrl.status_cb(USB_DC_RESET, NULL);
+            }      
+            break;
+        //        
+        case NRF_DRV_USBD_EVT_SUSPEND:
+            /* Inform upper layers */
+            if (usb_nrf5_ctrl.status_cb) {
+                usb_nrf5_ctrl.status_cb(USB_DC_SUSPEND, NULL);
+            }      
+            break;
+        //        
+        case NRF_DRV_USBD_EVT_RESUME:
+            /* Inform upper layers */
+            if (usb_nrf5_ctrl.status_cb) {
+                usb_nrf5_ctrl.status_cb(USB_DC_RESUME, NULL);
+            }             
+            break;
+        //        
+        case NRF_DRV_USBD_EVT_WUREQ:
+        break;
+        //        
+        case NRF_DRV_USBD_EVT_SETUP:
+        break;
+        //        
+        case NRF_DRV_USBD_EVT_EPTRANSFER:
+        break;
+        //        
+        default:
+        break;
+    }
+}
 
 /**
  * @brief attach USB for device connection
@@ -12,6 +107,39 @@
  */
 int usb_dc_attach(void)
 {
+    ret_code_t ret_code;
+    ret_code = nrf_drv_usbd_init(usbd_event_handler);
+    if (ret_code != NRF_SUCCESS)
+    {
+        return -1;
+    }
+
+    usb_nrf5_udelay(STARTUP_DELAY);
+    if (!nrf_drv_usbd_is_enabled())
+    {
+        nrf_drv_usbd_enable();
+    }
+    /* Wait for regulator power up */
+    while (NRF_DRV_POWER_USB_STATE_CONNECTED
+            ==
+            nrf_drv_power_usbstatus_get())
+    {
+        /* Just waiting */
+    }
+
+    if (NRF_DRV_POWER_USB_STATE_READY == nrf_drv_power_usbstatus_get())
+    {
+        if (!nrf_drv_usbd_is_started())
+        {
+            nrf_drv_usbd_start(true);
+        }
+    }
+    else
+    {
+        nrf_drv_usbd_disable();
+        return -1;
+    }
+
     return 0;
 }
 
@@ -25,6 +153,27 @@ int usb_dc_attach(void)
  */
 int usb_dc_detach(void)
 {
+    ret_code_t ret_code;
+
+    if (nrf_drv_usbd_is_started())
+    {
+        nrf_drv_usbd_stop();
+    }
+    
+    if (nrf_drv_usbd_is_enabled())
+    {
+        nrf_drv_usbd_disable();
+    }
+
+    if (nrf_drv_usbd_is_initialized())
+    {
+        ret_code = nrf_drv_usbd_uninit();
+        if (ret_code != NRF_SUCCESS)
+        {
+            return -1;
+        }
+    }
+
     return 0;
 }
 
@@ -65,6 +214,8 @@ int usb_dc_set_address(const u8_t addr)
  */
 int usb_dc_set_status_callback(const usb_dc_status_callback cb)
 {
+    usb_nrf5_ctrl.status_cb = cb;
+
     return 0;
 }
 
@@ -81,6 +232,9 @@ int usb_dc_set_status_callback(const usb_dc_status_callback cb)
  */
 int usb_dc_ep_configure(const struct usb_dc_ep_cfg_data *const cfg)
 {
+    nrf_drv_usbd_ep_max_packet_size_set(cfg->ep_addr, cfg->ep_mps);
+    // TODO: handle ep_type??
+
     return 0;
 }
 
@@ -94,6 +248,7 @@ int usb_dc_ep_configure(const struct usb_dc_ep_cfg_data *const cfg)
  */
 int usb_dc_ep_set_stall(const u8_t ep)
 {
+    nrf_drv_usbd_ep_stall((nrf_drv_usbd_ep_t)ep);
     return 0;
 }
 
@@ -107,6 +262,7 @@ int usb_dc_ep_set_stall(const u8_t ep)
  */
 int usb_dc_ep_clear_stall(const u8_t ep)
 {
+    nrf_drv_usbd_ep_stall_clear((nrf_drv_usbd_ep_t)ep);
     return 0;
 }
 
@@ -121,6 +277,16 @@ int usb_dc_ep_clear_stall(const u8_t ep)
  */
 int usb_dc_ep_is_stalled(const u8_t ep, u8_t *const stalled)
 {
+    bool stall = false;
+
+    if (!stalled)
+    {
+        return -1;
+    }
+
+    stall = nrf_drv_usbd_ep_stall_check((nrf_drv_usbd_ep_t)ep);
+
+    *stalled = (u8_t)stall;
     return 0;
 }
 
@@ -134,6 +300,11 @@ int usb_dc_ep_is_stalled(const u8_t ep, u8_t *const stalled)
  */
 int usb_dc_ep_halt(const u8_t ep)
 {
+    nrf_drv_usbd_ep_stall((nrf_drv_usbd_ep_t)ep);
+    if (nrf_drv_usbd_ep_enable_check((nrf_drv_usbd_ep_t)ep))
+    {
+        nrf_drv_usbd_ep_disable((nrf_drv_usbd_ep_t)ep);
+    }
     return 0;
 }
 
@@ -151,6 +322,7 @@ int usb_dc_ep_halt(const u8_t ep)
  */
 int usb_dc_ep_enable(const u8_t ep)
 {
+    nrf_drv_usbd_ep_enable((nrf_drv_usbd_ep_t)ep);
     return 0;
 }
 
@@ -168,6 +340,7 @@ int usb_dc_ep_enable(const u8_t ep)
  */
 int usb_dc_ep_disable(const u8_t ep)
 {
+    nrf_drv_usbd_ep_disable((nrf_drv_usbd_ep_t)ep);
     return 0;
 }
 
@@ -205,8 +378,12 @@ int usb_dc_ep_write(const u8_t ep, const u8_t *const data,
                     const u32_t data_len, u32_t *const ret_bytes)
 {
     ret_code_t ret_code;
-    nrf_drv_usbd_ep_t nrf_usb_ep = NRF_DRV_USBD_EPOUT(ep);
-    nrf_drv_usbd_transfer_t transfer = {
+
+    if (NRF_USBD_EPOUT_CHECK(ep))
+    {
+        return -1;
+    }
+    const nrf_drv_usbd_transfer_t transfer = {
         .p_data = {
             .tx = data,
         },
@@ -214,7 +391,7 @@ int usb_dc_ep_write(const u8_t ep, const u8_t *const data,
         .flags = 0,
     };
 
-    ret_code = nrf_drv_usbd_ep_transfer(nrf_usb_ep, &transfer);
+    ret_code = nrf_drv_usbd_ep_transfer((nrf_drv_usbd_ep_t)ep, &transfer);
     if (ret_code == NRF_SUCCESS)
     {
         return 0;
@@ -245,7 +422,28 @@ int usb_dc_ep_write(const u8_t ep, const u8_t *const data,
 int usb_dc_ep_read(const u8_t ep, u8_t *const data,
                    const u32_t max_data_len, u32_t *const read_bytes)
 {
-    return 0;
+    ret_code_t ret_code;
+
+    if (NRF_USBD_EPIN_CHECK(ep))
+    {
+        return -1;
+    }
+
+    const nrf_drv_usbd_transfer_t transfer = {
+        .p_data = {
+            .rx = data,
+        },
+        .size = max_data_len,
+        .flags = 0,
+    };
+
+    ret_code = nrf_drv_usbd_ep_transfer((nrf_drv_usbd_ep_t)ep, &transfer);
+    if (ret_code == NRF_SUCCESS)
+    {
+        return 0;
+    }
+
+    return -1;
 }
 
 /**
