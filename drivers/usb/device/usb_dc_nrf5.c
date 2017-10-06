@@ -91,22 +91,12 @@ static void usbd_event_handler(nrf_drv_usbd_evt_t const * const p_event)
         break; 
         //         
         case NRF_DRV_USBD_EVT_SETUP: 
-        { 
-            u8_t ep_idx = NRF_USBD_EP_NR_GET(p_event->data.eptransfer.ep); 
-            if (NRF_USBD_EPIN_CHECK(p_event->data.eptransfer.ep)) 
-            { 
-                if (usb_nrf5_ctrl.in_ep_cb[ep_idx]) 
-                { 
-                    usb_nrf5_ctrl.in_ep_cb[ep_idx]((u8_t)p_event->data.eptransfer.ep, USB_DC_EP_SETUP); 
-                } 
-            } 
-            else 
-            { 
-                if (usb_nrf5_ctrl.out_ep_cb[ep_idx]) 
-                { 
-                    usb_nrf5_ctrl.out_ep_cb[ep_idx]((u8_t)p_event->data.eptransfer.ep, USB_DC_EP_SETUP); 
-                } 
-            } 
+        {
+            u8_t ep_idx = NRF_USBD_EP_NR_GET(NRF_DRV_USBD_EPOUT0);
+            if (usb_nrf5_ctrl.out_ep_cb[ep_idx])
+            {
+                usb_nrf5_ctrl.out_ep_cb[ep_idx]((u8_t)NRF_DRV_USBD_EPOUT0, USB_DC_EP_SETUP);
+            }
         } 
         break; 
         //         
@@ -187,12 +177,18 @@ int usb_dc_attach(void)
     { 
         /* Just waiting */ 
     } 
- 
+
     if (NRF_DRV_POWER_USB_STATE_READY == nrf_drv_power_usbstatus_get()) 
     { 
         if (!nrf_drv_usbd_is_started()) 
         { 
-            nrf_drv_usbd_start(false); 
+            nrf_drv_usbd_start(false);
+
+            /* Inform upper layers */
+            if (usb_nrf5_ctrl.status_cb)
+            {
+                usb_nrf5_ctrl.status_cb(USB_DC_CONNECTED, NULL);
+            }
         } 
     } 
     else 
