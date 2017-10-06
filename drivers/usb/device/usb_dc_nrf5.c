@@ -1,4 +1,7 @@
-#include <usb/usb_dc.h> 
+#include <soc.h>
+#include <string.h>
+#include <usb/usb_dc.h>
+#include <usb/usb_device.h>
 #include "nrf_drv_usbd.h" 
 #include "nrf_power.h" 
 #include "nrf_clock.h"
@@ -12,22 +15,57 @@
  * Number of microseconds to start USBD after powering up. 
  * Kind of port insert debouncing. 
  */ 
-#define STARTUP_DELAY 100 
- 
+#define STARTUP_DELAY 100
+
 /* 
- * USB controller private structure. 
+ * Endpoint state. 
+ */
+typedef struct
+{
+    u16_t ep_mps;                  /** Endpoint max packet size */
+    u8_t ep_type;                  /** Endpoint type */
+    usb_dc_ep_callback cb;         /** Endpoint callback function */
+    u8_t ep_stalled;               /** Endpoint stall flag */
+    u8_t buf[NRF_DRV_USBD_EPSIZE]; /** Read buffer */
+    u32_t read_count;              /** Number of bytes in read buffer  */
+    u32_t read_offset;             /** Current offset in read buffer */
+}usb_nrf5_ep_state_t;
+
+/* 
+ * USB device controller nrf5 private structure. 
  */ 
 typedef struct 
 { 
-    usb_dc_status_callback status_cb; 
-    usb_dc_ep_callback     in_ep_cb[9]; 
-    usb_dc_ep_callback     out_ep_cb[9]; 
-}usb_nrf5_ctrl_prv_t; 
- 
-static usb_nrf5_ctrl_prv_t usb_nrf5_ctrl = {.status_cb = 0,  
-                                            .in_ep_cb = {0},  
-                                            .out_ep_cb = {0}}; 
- 
+    usb_dc_status_callback  status_cb;
+    usb_nrf5_ep_state_t     in_ep[NRF_USBD_EPIN_CNT];
+    usb_nrf5_ep_state_t     out_ep[NRF_USBD_EPOUT_CNT];
+}usb_nrf5_ctrl_prv_t;
+
+static usb_nrf5_ctrl_prv_t usb_nrf5;
+
+int usb_dc_ep_start_read(u8_t ep, u8_t *data, u32_t max_data_len);
+
+static usb_nrf5_ep_state_t *usb_nrf5_ep_state_get(u8_t ep)
+{
+    usb_nrf5_ep_state_t *p_ep_states;
+
+    if (!NRF_USBD_EP_VALIDATE(ep))
+    {
+        return NULL;
+    }
+
+    if (NRF_USBD_EPOUT_CHECK(ep))
+    {
+        p_ep_states = usb_nrf5.out_ep;
+    }
+    else
+    {
+        p_ep_states = usb_nrf5.in_ep;
+    }
+
+    return &p_ep_states[NRF_USBD_EP_NR_GET(ep)];
+}
+
 static inline void usb_nrf5_udelay(u32_t us) 
 { 
 	k_busy_wait(us); 
@@ -60,8 +98,8 @@ __STATIC_INLINE nrf_drv_power_usb_state_t nrf_drv_power_usbstatus_get(void)
         return NRF_DRV_POWER_USB_STATE_CONNECTED; 
     } 
     return NRF_DRV_POWER_USB_STATE_READY; 
-} 
- 
+}
+
 static void usbd_event_handler(nrf_drv_usbd_evt_t const * const p_event) 
 { 
     switch (p_event->type) 
@@ -72,24 +110,24 @@ static void usbd_event_handler(nrf_drv_usbd_evt_t const * const p_event)
         case NRF_DRV_USBD_EVT_RESET:
             SYS_LOG_DBG("NRF_DRV_USBD_EVT_RESET");
             /* Inform upper layers */ 
-            if (usb_nrf5_ctrl.status_cb) { 
-                usb_nrf5_ctrl.status_cb(USB_DC_RESET, NULL); 
+            if (usb_nrf5.status_cb) { 
+                usb_nrf5.status_cb(USB_DC_RESET, NULL); 
             }       
             break; 
         //         
         case NRF_DRV_USBD_EVT_SUSPEND:
             SYS_LOG_DBG("NRF_DRV_USBD_EVT_SUSPEND");
             /* Inform upper layers */ 
-            if (usb_nrf5_ctrl.status_cb) { 
-                usb_nrf5_ctrl.status_cb(USB_DC_SUSPEND, NULL); 
+            if (usb_nrf5.status_cb) { 
+                usb_nrf5.status_cb(USB_DC_SUSPEND, NULL); 
             }       
             break; 
         //         
         case NRF_DRV_USBD_EVT_RESUME:
             SYS_LOG_DBG("NRF_DRV_USBD_EVT_RESUME");
             /* Inform upper layers */ 
-            if (usb_nrf5_ctrl.status_cb) { 
-                usb_nrf5_ctrl.status_cb(USB_DC_RESUME, NULL); 
+            if (usb_nrf5.status_cb) { 
+                usb_nrf5.status_cb(USB_DC_RESUME, NULL); 
             }              
             break; 
         //         
@@ -100,10 +138,26 @@ static void usbd_event_handler(nrf_drv_usbd_evt_t const * const p_event)
         case NRF_DRV_USBD_EVT_SETUP: 
         {
             SYS_LOG_DBG("NRF_DRV_USBD_EVT_SETUP");
-            u8_t ep_idx = NRF_USBD_EP_NR_GET(NRF_DRV_USBD_EPOUT0);
-            if (usb_nrf5_ctrl.out_ep_cb[ep_idx])
+            nrf_drv_usbd_setup_t setup;
+            nrf_drv_usbd_setup_get(&setup);
+
+            usb_nrf5_ep_state_t * p_ep_state = usb_nrf5_ep_state_get(NRF_DRV_USBD_EPOUT0);
+
+            p_ep_state->read_count = sizeof(nrf_drv_usbd_setup_t);
+            p_ep_state->read_offset = 0;
+            memcpy(p_ep_state->buf, &setup, p_ep_state->read_count);
+
+            if (p_ep_state->cb)
             {
-                usb_nrf5_ctrl.out_ep_cb[ep_idx]((u8_t)NRF_DRV_USBD_EPOUT0, USB_DC_EP_SETUP);
+                p_ep_state->cb((u8_t)NRF_DRV_USBD_EPOUT0, USB_DC_EP_SETUP);
+
+                if (!(setup.wLength == 0) &&
+                    !(REQTYPE_GET_DIR(setup.bmRequestType) == REQTYPE_DIR_TO_HOST))
+                {
+                    usb_dc_ep_start_read(NRF_DRV_USBD_EPOUT0,
+                                         p_ep_state->buf,
+                                         setup.wLength);
+                }
             }
         } 
         break; 
@@ -114,16 +168,16 @@ static void usbd_event_handler(nrf_drv_usbd_evt_t const * const p_event)
             u8_t ep_idx = NRF_USBD_EP_NR_GET(p_event->data.eptransfer.ep); 
             if (NRF_USBD_EPIN_CHECK(p_event->data.eptransfer.ep)) 
             { 
-                if (usb_nrf5_ctrl.in_ep_cb[ep_idx]) 
+                if (usb_nrf5.in_ep[ep_idx].cb) 
                 { 
-                    usb_nrf5_ctrl.in_ep_cb[ep_idx]((u8_t)p_event->data.eptransfer.ep, USB_DC_EP_DATA_IN); 
+                    usb_nrf5.in_ep[ep_idx].cb((u8_t)p_event->data.eptransfer.ep, USB_DC_EP_DATA_IN); 
                 } 
             } 
             else 
             { 
-                if (usb_nrf5_ctrl.out_ep_cb[ep_idx]) 
+                if (usb_nrf5.out_ep[ep_idx].cb) 
                 { 
-                    usb_nrf5_ctrl.out_ep_cb[ep_idx]((u8_t)p_event->data.eptransfer.ep, USB_DC_EP_DATA_OUT); 
+                    usb_nrf5.out_ep[ep_idx].cb((u8_t)p_event->data.eptransfer.ep, USB_DC_EP_DATA_OUT); 
                 } 
             } 
         } 
@@ -192,13 +246,7 @@ int usb_dc_attach(void)
     { 
         if (!nrf_drv_usbd_is_started()) 
         { 
-            nrf_drv_usbd_start(false);
-
-            /* Inform upper layers */
-            if (usb_nrf5_ctrl.status_cb)
-            {
-                usb_nrf5_ctrl.status_cb(USB_DC_CONNECTED, NULL);
-            }
+            nrf_drv_usbd_start(true);
         } 
     } 
     else 
@@ -285,7 +333,7 @@ int usb_dc_set_address(const u8_t addr)
 int usb_dc_set_status_callback(const usb_dc_status_callback cb) 
 {
     SYS_LOG_DBG("usb_dc_set_status_callback");
-    usb_nrf5_ctrl.status_cb = cb; 
+    usb_nrf5.status_cb = cb; 
  
     return 0; 
 } 
@@ -303,11 +351,23 @@ int usb_dc_set_status_callback(const usb_dc_status_callback cb)
  */ 
 int usb_dc_ep_configure(const struct usb_dc_ep_cfg_data *const cfg) 
 {
-    SYS_LOG_DBG("usb_dc_ep_configure");
-    nrf_drv_usbd_ep_max_packet_size_set(cfg->ep_addr, cfg->ep_mps); 
-    // TODO: handle ep_type?? 
- 
-    return 0; 
+    SYS_LOG_DBG("usb_dc_ep_configure: ep 0x%02x, ep_mps %u, ep_type %u",
+                cfg->ep_addr, cfg->ep_mps, cfg->ep_type);
+
+    nrf_drv_usbd_ep_max_packet_size_set(cfg->ep_addr, cfg->ep_mps);
+
+    usb_nrf5_ep_state_t *p_ep_state = usb_nrf5_ep_state_get(cfg->ep_addr);
+
+    if (!p_ep_state)
+    {
+        return -EINVAL;
+    }
+
+    // TODO: handle ep_type??
+    p_ep_state->ep_mps = cfg->ep_mps;
+    p_ep_state->ep_type = cfg->ep_type;
+
+    return 0;
 } 
  
 /** 
@@ -321,8 +381,18 @@ int usb_dc_ep_configure(const struct usb_dc_ep_cfg_data *const cfg)
 int usb_dc_ep_set_stall(const u8_t ep) 
 {
     SYS_LOG_DBG("usb_dc_ep_set_stall: ep=0x%02x", ep);
-    nrf_drv_usbd_ep_stall((nrf_drv_usbd_ep_t)ep); 
-    return 0; 
+    nrf_drv_usbd_ep_stall((nrf_drv_usbd_ep_t)ep);
+
+    usb_nrf5_ep_state_t *p_ep_state = usb_nrf5_ep_state_get(ep);
+
+    if (!p_ep_state)
+    {
+        return -EINVAL;
+    }
+
+    p_ep_state->ep_stalled = 1;
+
+    return 0;
 } 
  
 /** 
@@ -336,7 +406,18 @@ int usb_dc_ep_set_stall(const u8_t ep)
 int usb_dc_ep_clear_stall(const u8_t ep) 
 {
     SYS_LOG_DBG("usb_dc_ep_clear_stall: ep=0x%02x", ep);
-    nrf_drv_usbd_ep_stall_clear((nrf_drv_usbd_ep_t)ep); 
+    nrf_drv_usbd_ep_stall_clear((nrf_drv_usbd_ep_t)ep);
+
+    usb_nrf5_ep_state_t *p_ep_state = usb_nrf5_ep_state_get(ep);
+
+    if (!p_ep_state)
+    {
+        return -EINVAL;
+    }
+
+    p_ep_state->ep_stalled = 0;
+    p_ep_state->read_count = 0;
+
     return 0; 
 } 
  
@@ -399,7 +480,23 @@ int usb_dc_ep_halt(const u8_t ep)
 int usb_dc_ep_enable(const u8_t ep) 
 {
     SYS_LOG_DBG("usb_dc_ep_enable: ep=0x%02x", ep);
-    nrf_drv_usbd_ep_enable((nrf_drv_usbd_ep_t)ep); 
+
+    usb_nrf5_ep_state_t *p_ep_state = usb_nrf5_ep_state_get(ep);
+    if (!p_ep_state)
+    {
+        return -EINVAL;
+    }
+
+    nrf_drv_usbd_ep_enable((nrf_drv_usbd_ep_t)ep);
+
+    if (NRF_USBD_EPOUT_CHECK(ep) && ep != NRF_DRV_USBD_EPOUT0)
+    {
+        int ret = usb_dc_ep_start_read(ep,
+                                   p_ep_state->buf,
+                                   NRF_DRV_USBD_EPSIZE);
+        if (ret)
+            return ret;
+    }
     return 0; 
 } 
  
@@ -458,11 +555,7 @@ int usb_dc_ep_write(const u8_t ep, const u8_t *const data,
 {
     SYS_LOG_DBG("usb_dc_ep_write: ep=0x%02x", ep);
     ret_code_t ret_code; 
- 
-    if (NRF_USBD_EPOUT_CHECK(ep)) 
-    { 
-        return -1; 
-    } 
+
     const nrf_drv_usbd_transfer_t transfer = { 
         .p_data = { 
             .tx = data, 
@@ -478,55 +571,97 @@ int usb_dc_ep_write(const u8_t ep, const u8_t *const data,
     } 
  
     return -1; 
-} 
- 
-/** 
- * @brief read data from the specified endpoint 
- * 
- * This function is called by the Endpoint handler function, after an OUT 
- * interrupt has been received for that EP. The application must only call this 
- * function through the supplied usb_ep_callback function. This function clears 
- * the ENDPOINT NAK, if all data in the endpoint FIFO has been read, 
- * so as to accept more data from host. 
- * 
- * @param[in]  ep           Endpoint address corresponding to the one 
- *                          listed in the device configuration table 
- * @param[in]  data         pointer to data buffer to write to 
- * @param[in]  max_data_len max length of data to read 
- * @param[out] read_bytes   Number of bytes read. If data is NULL and 
- *                          max_data_len is 0 the number of bytes 
- *                          available for read should be returned. 
- * 
- * @return 0 on success, negative errno code on fail. 
- */ 
-int usb_dc_ep_read(const u8_t ep, u8_t *const data, 
-                   const u32_t max_data_len, u32_t *const read_bytes) 
+}
+
+int usb_dc_ep_start_read(u8_t ep, u8_t *data, u32_t max_data_len)
 {
-    SYS_LOG_DBG("usb_dc_ep_read: ep=0x%02x", ep);
-    ret_code_t ret_code; 
- 
-    if (NRF_USBD_EPIN_CHECK(ep)) 
-    { 
-        return -1; 
-    } 
- 
-    const nrf_drv_usbd_transfer_t transfer = { 
-        .p_data = { 
-            .rx = data, 
-        }, 
-        .size = max_data_len, 
-        .flags = 0, 
-    }; 
- 
-    ret_code = nrf_drv_usbd_ep_transfer((nrf_drv_usbd_ep_t)ep, &transfer); 
-    if (ret_code == NRF_SUCCESS) 
-    { 
-        return 0; 
-    } 
- 
-    return -1; 
-} 
- 
+    SYS_LOG_DBG("usb_dc_ep_start_read: ep=0x%02x, len %u", ep, max_data_len);
+
+    /* we flush EP0_IN by doing a 0 length receive on it 
+    if (!EP_IS_OUT(ep) && (ep != EP0_IN || max_data_len))
+    {
+        SYS_LOG_ERR("invalid ep 0x%02x", ep);
+        return -EINVAL;
+    } */
+
+    if (max_data_len > NRF_DRV_USBD_EPSIZE)
+    {
+        max_data_len = NRF_DRV_USBD_EPSIZE;
+    }
+
+    const nrf_drv_usbd_transfer_t transfer = {
+        .p_data = {
+            .rx = data,
+        },
+        .size = max_data_len,
+        .flags = 0,
+    };
+
+    ret_code_t ret_code = nrf_drv_usbd_ep_transfer((nrf_drv_usbd_ep_t)ep, &transfer);
+    if (ret_code != NRF_SUCCESS)
+    {
+        SYS_LOG_ERR("nrf_drv_usbd_ep_transfer failed(0x%02x), %d",
+                    ep, (int)ret_code);
+        return -EIO;
+    }
+
+    return 0;
+}
+
+int usb_dc_ep_get_read_count(u8_t ep, u32_t *read_bytes)
+{
+    if (!NRF_USBD_EPOUT_CHECK(ep))
+    {
+        SYS_LOG_ERR("invalid ep 0x%02x", ep);
+        return -EINVAL;
+    }
+
+    *read_bytes = nrf_usbd_epout_size_get(ep);
+
+    return 0;
+}
+
+int usb_dc_ep_read(const u8_t ep, u8_t *const data,
+                   const u32_t max_data_len, u32_t *const read_bytes)
+{
+    usb_nrf5_ep_state_t *p_ep_state = usb_nrf5_ep_state_get(ep);
+    u32_t read_count = p_ep_state->read_count;
+
+    SYS_LOG_DBG("ep 0x%02x, %u bytes, %u+%u, %p", ep,
+                max_data_len, p_ep_state->read_offset, read_count, data);
+
+    if (max_data_len)
+    {
+        if (read_count > max_data_len)
+        {
+            read_count = max_data_len;
+        }
+
+        if (read_count)
+        {
+            memcpy(data,
+                   &p_ep_state->buf[p_ep_state->read_offset],
+                   read_count);
+            p_ep_state->read_count -= read_count;
+            p_ep_state->read_offset += read_count;
+        }
+
+        if ((ep != NRF_DRV_USBD_EPOUT0) && (!p_ep_state->read_count))
+        {
+            usb_dc_ep_start_read(ep,
+                                 p_ep_state->buf,
+                                 NRF_DRV_USBD_EPSIZE);
+        }
+    }
+
+    if (read_bytes)
+    {
+        *read_bytes = read_count;
+    }
+
+    return 0;
+}
+
 /** 
  * @brief set callback function for the specified endpoint 
  * 
@@ -543,18 +678,16 @@ int usb_dc_ep_read(const u8_t ep, u8_t *const data,
 int usb_dc_ep_set_callback(const u8_t ep, const usb_dc_ep_callback cb) 
 {
     SYS_LOG_DBG("usb_dc_ep_set_callback: ep=0x%02x", ep);
-    u8_t ep_idx = NRF_USBD_EP_NR_GET(ep); 
-     
-    if (NRF_USBD_EPIN_CHECK(ep)) 
-    { 
-        usb_nrf5_ctrl.in_ep_cb[ep_idx] = cb; 
-    } 
-    else 
-    { 
-        usb_nrf5_ctrl.out_ep_cb[ep_idx] = cb; 
-    } 
- 
-    return 0; 
+    usb_nrf5_ep_state_t *p_ep_state = usb_nrf5_ep_state_get(ep);
+
+    if (!p_ep_state)
+    {
+        return -EINVAL;
+    }
+
+    p_ep_state->cb = cb;
+
+    return 0;
 } 
  
 /** 
