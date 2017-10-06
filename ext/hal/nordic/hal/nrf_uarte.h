@@ -1,38 +1,47 @@
-/* Copyright (c) 2015-2017 Nordic Semiconductor ASA
- *
+/**
+ * Copyright (c) 2015 - 2017, Nordic Semiconductor ASA
+ * 
  * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *   1. Redistributions of source code must retain the above copyright notice, this
- *      list of conditions and the following disclaimer.
- *
- *   2. Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
- *
- *   3. Neither the name of Nordic Semiconductor ASA nor the names of its
- *      contributors may be used to endorse or promote products derived from
- *      this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * 
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 
+ * 2. Redistributions in binary form, except as embedded into a Nordic
+ *    Semiconductor ASA integrated circuit in a product or a software update for
+ *    such product, must reproduce the above copyright notice, this list of
+ *    conditions and the following disclaimer in the documentation and/or other
+ *    materials provided with the distribution.
+ * 
+ * 3. Neither the name of Nordic Semiconductor ASA nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ * 
+ * 4. This software, with or without modification, must only be used with a
+ *    Nordic Semiconductor ASA integrated circuit.
+ * 
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
-
 #ifndef NRF_UARTE_H__
 #define NRF_UARTE_H__
 
 #include "nrf.h"
+#include "nrf_peripherals.h"
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
@@ -134,6 +143,24 @@ typedef enum
     NRF_UARTE_BAUDRATE_460800 =  UARTE_BAUDRATE_BAUDRATE_Baud460800, ///< 460800 baud.
     NRF_UARTE_BAUDRATE_921600 =  UARTE_BAUDRATE_BAUDRATE_Baud921600, ///< 921600 baud.
     NRF_UARTE_BAUDRATE_1000000 =  UARTE_BAUDRATE_BAUDRATE_Baud1M,    ///< 1000000 baud.
+#ifndef UART_PRESENT
+    NRF_UART_BAUDRATE_1200    = NRF_UARTE_BAUDRATE_1200,
+    NRF_UART_BAUDRATE_2400    = NRF_UARTE_BAUDRATE_2400,
+    NRF_UART_BAUDRATE_4800    = NRF_UARTE_BAUDRATE_4800,
+    NRF_UART_BAUDRATE_9600    = NRF_UARTE_BAUDRATE_9600,
+    NRF_UART_BAUDRATE_14400   = NRF_UARTE_BAUDRATE_14400,
+    NRF_UART_BAUDRATE_19200   = NRF_UARTE_BAUDRATE_19200,
+    NRF_UART_BAUDRATE_28800   = NRF_UARTE_BAUDRATE_28800,
+    NRF_UART_BAUDRATE_38400   = NRF_UARTE_BAUDRATE_38400,
+    NRF_UART_BAUDRATE_57600   = NRF_UARTE_BAUDRATE_57600,
+    NRF_UART_BAUDRATE_76800   = NRF_UARTE_BAUDRATE_76800,
+    NRF_UART_BAUDRATE_115200  = NRF_UARTE_BAUDRATE_115200,
+    NRF_UART_BAUDRATE_230400  = NRF_UARTE_BAUDRATE_230400,
+    NRF_UART_BAUDRATE_250000  = NRF_UARTE_BAUDRATE_250000,
+    NRF_UART_BAUDRATE_460800  = NRF_UARTE_BAUDRATE_460800,
+    NRF_UART_BAUDRATE_921600  = NRF_UARTE_BAUDRATE_921600,
+    NRF_UART_BAUDRATE_1000000 = NRF_UARTE_BAUDRATE_1000000,
+#endif
 } nrf_uarte_baudrate_t;
 
 /**
@@ -146,6 +173,12 @@ typedef enum
     NRF_UARTE_ERROR_PARITY_MASK  = UARTE_ERRORSRC_PARITY_Msk,    ///< Parity error.
     NRF_UARTE_ERROR_FRAMING_MASK = UARTE_ERRORSRC_FRAMING_Msk,   ///< Framing error.
     NRF_UARTE_ERROR_BREAK_MASK   = UARTE_ERRORSRC_BREAK_Msk,     ///< Break error.
+#ifndef UART_PRESENT
+    NRF_UART_ERROR_OVERRUN_MASK =  NRF_UARTE_ERROR_OVERRUN_MASK,
+    NRF_UART_ERROR_PARITY_MASK  =  NRF_UARTE_ERROR_PARITY_MASK,
+    NRF_UART_ERROR_FRAMING_MASK =  NRF_UARTE_ERROR_FRAMING_MASK,
+    NRF_UART_ERROR_BREAK_MASK   =  NRF_UARTE_ERROR_BREAK_MASK,
+#endif
 } nrf_uarte_error_mask_t;
 
 /**
@@ -156,6 +189,10 @@ typedef enum
 {
     NRF_UARTE_PARITY_EXCLUDED = UARTE_CONFIG_PARITY_Excluded << UARTE_CONFIG_PARITY_Pos, ///< Parity excluded.
     NRF_UARTE_PARITY_INCLUDED = UARTE_CONFIG_PARITY_Included << UARTE_CONFIG_PARITY_Pos, ///< Parity included.
+#ifndef UART_PRESENT
+    NRF_UART_PARITY_EXCLUDED = NRF_UARTE_PARITY_EXCLUDED,
+    NRF_UART_PARITY_INCLUDED = NRF_UARTE_PARITY_INCLUDED,
+#endif
 } nrf_uarte_parity_t;
 
 /**
@@ -166,6 +203,10 @@ typedef enum
 {
     NRF_UARTE_HWFC_DISABLED = UARTE_CONFIG_HWFC_Disabled << UARTE_CONFIG_HWFC_Pos, ///< HW flow control disabled.
     NRF_UARTE_HWFC_ENABLED  = UARTE_CONFIG_HWFC_Enabled  << UARTE_CONFIG_HWFC_Pos, ///< HW flow control enabled.
+#ifndef UART_PRESENT
+    NRF_UART_HWFC_DISABLED =  NRF_UARTE_HWFC_DISABLED,
+    NRF_UART_HWFC_ENABLED  =  NRF_UARTE_HWFC_ENABLED,
+#endif
 } nrf_uarte_hwfc_t;
 
 
@@ -565,3 +606,4 @@ __STATIC_INLINE uint32_t nrf_uarte_rx_amount_get(NRF_UARTE_Type * p_reg)
 #endif
 
 #endif //NRF_UARTE_H__
+

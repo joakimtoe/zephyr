@@ -1,32 +1,41 @@
-/* Copyright (c) 2010-2017 Nordic Semiconductor ASA
- *
+/**
+ * Copyright (c) 2017 - 2017, Nordic Semiconductor ASA
+ * 
  * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *   1. Redistributions of source code must retain the above copyright notice, this
- *      list of conditions and the following disclaimer.
- *
- *   2. Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
- *
- *   3. Neither the name of Nordic Semiconductor ASA nor the names of its
- *      contributors may be used to endorse or promote products derived from
- *      this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * 
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 
+ * 2. Redistributions in binary form, except as embedded into a Nordic
+ *    Semiconductor ASA integrated circuit in a product or a software update for
+ *    such product, must reproduce the above copyright notice, this list of
+ *    conditions and the following disclaimer in the documentation and/or other
+ *    materials provided with the distribution.
+ * 
+ * 3. Neither the name of Nordic Semiconductor ASA nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ * 
+ * 4. This software, with or without modification, must only be used with a
+ *    Nordic Semiconductor ASA integrated circuit.
+ * 
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 
 #ifndef NRF_POWER_H__
@@ -48,6 +57,12 @@
 
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+#if defined(POWER_RAMSTATUS_RAMBLOCK0_Msk)
+#define NRF_POWER_HAS_RAMSTATUS 1
+#else
+#define NRF_POWER_HAS_RAMSTATUS 0
 #endif
 
 /**
@@ -308,7 +323,7 @@ bool nrf_power_event_check(nrf_power_event_t event)
 bool nrf_power_event_get_and_clear(nrf_power_event_t event)
 {
     bool ret = nrf_power_event_check(event);
-    if(ret)
+    if (ret)
     {
         nrf_power_event_clear(event);
     }
@@ -361,7 +376,9 @@ typedef enum
     NRF_POWER_RESETREAS_SREQ_MASK     = POWER_RESETREAS_SREQ_Msk    , /*!< Bit mask of SREQ field. */    //!< NRF_POWER_RESETREAS_SREQ_MASK
     NRF_POWER_RESETREAS_LOCKUP_MASK   = POWER_RESETREAS_LOCKUP_Msk  , /*!< Bit mask of LOCKUP field. */  //!< NRF_POWER_RESETREAS_LOCKUP_MASK
     NRF_POWER_RESETREAS_OFF_MASK      = POWER_RESETREAS_OFF_Msk     , /*!< Bit mask of OFF field. */     //!< NRF_POWER_RESETREAS_OFF_MASK
+#if defined(POWER_RESETREAS_LPCOMP_Msk) || defined(__SDK_DOXYGEN__)
     NRF_POWER_RESETREAS_LPCOMP_MASK   = POWER_RESETREAS_LPCOMP_Msk  , /*!< Bit mask of LPCOMP field. */  //!< NRF_POWER_RESETREAS_LPCOMP_MASK
+#endif
     NRF_POWER_RESETREAS_DIF_MASK      = POWER_RESETREAS_DIF_Msk     , /*!< Bit mask of DIF field. */     //!< NRF_POWER_RESETREAS_DIF_MASK
 #if defined(POWER_RESETREAS_NFC_Msk) || defined(__SDK_DOXYGEN__)
     NRF_POWER_RESETREAS_NFC_MASK      = POWER_RESETREAS_NFC_Msk     , /*!< Bit mask of NFC field. */
@@ -384,6 +401,7 @@ typedef enum
 }nrf_power_usbregstatus_mask_t;
 #endif
 
+#if NRF_POWER_HAS_RAMSTATUS
 /**
  * @brief RAM blocks numbers
  *
@@ -408,6 +426,7 @@ typedef enum
  *
  * @sa nrf_power_ramblock_t
  */
+
 typedef enum
 {
     NRF_POWER_RAMBLOCK0_MASK = POWER_RAMSTATUS_RAMBLOCK0_Msk,
@@ -415,6 +434,7 @@ typedef enum
     NRF_POWER_RAMBLOCK2_MASK = POWER_RAMSTATUS_RAMBLOCK2_Msk,
     NRF_POWER_RAMBLOCK3_MASK = POWER_RAMSTATUS_RAMBLOCK3_Msk
 }nrf_power_ramblock_mask_t;
+#endif // NRF_POWER_HAS_RAMSTATUS
 
 /**
  * @brief RAM power state position of the bits
@@ -624,6 +644,7 @@ __STATIC_INLINE uint32_t nrf_power_resetreas_get(void);
  */
 __STATIC_INLINE void nrf_power_resetreas_clear(uint32_t mask);
 
+#if NRF_POWER_HAS_RAMSTATUS
 /**
  * @brief Get RAMSTATUS register
  *
@@ -632,6 +653,7 @@ __STATIC_INLINE void nrf_power_resetreas_clear(uint32_t mask);
  * @return Value with bits sets according to masks in @ref nrf_power_ramblock_mask_t.
  */
 __STATIC_INLINE uint32_t nrf_power_ramstatus_get(void);
+#endif // NRF_POWER_HAS_RAMSTATUS
 
 /**
  * @brief Go to system OFF
@@ -854,37 +876,49 @@ __STATIC_INLINE void nrf_power_resetreas_clear(uint32_t mask)
     NRF_POWER->RESETREAS = mask;
 }
 
+#if NRF_POWER_HAS_RAMSTATUS
 __STATIC_INLINE uint32_t nrf_power_ramstatus_get(void)
 {
     return NRF_POWER->RAMSTATUS;
 }
+#endif // NRF_POWER_HAS_RAMSTATUS
 
 __STATIC_INLINE void nrf_power_system_off(void)
 {
     NRF_POWER->SYSTEMOFF = POWER_SYSTEMOFF_SYSTEMOFF_Enter;
-    /* Solution for simulated System OFF in debug mode.
-     * Also, because dead loop is placed here, we do not need to implement
-     * any barriers here. */
-    while(true)
+    __DSB();
+
+    /* Solution for simulated System OFF in debug mode */
+    while (true)
     {
-        /* Intentionally empty - we would be here only in debug mode */
+        __WFE();
     }
 }
 
 __STATIC_INLINE void nrf_power_pofcon_set(bool enabled, nrf_power_pof_thr_t thr)
 {
     ASSERT(thr == (thr & (POWER_POFCON_THRESHOLD_Msk >> POWER_POFCON_THRESHOLD_Pos)));
-    NRF_POWER->POFCON = (((uint32_t)thr) << POWER_POFCON_THRESHOLD_Pos) |
+#if NRF_POWER_HAS_VDDH
+    uint32_t pofcon = NRF_POWER->POFCON;
+    pofcon &= ~(POWER_POFCON_THRESHOLD_Msk | POWER_POFCON_POF_Msk);
+    pofcon |=
+#else /* NRF_POWER_HAS_VDDH */
+    NRF_POWER->POFCON =
+#endif
+        (((uint32_t)thr) << POWER_POFCON_THRESHOLD_Pos) |
         (enabled ?
         (POWER_POFCON_POF_Enabled << POWER_POFCON_POF_Pos)
         :
         (POWER_POFCON_POF_Disabled << POWER_POFCON_POF_Pos));
+#if NRF_POWER_HAS_VDDH
+    NRF_POWER->POFCON = pofcon;
+#endif
 }
 
 __STATIC_INLINE nrf_power_pof_thr_t nrf_power_pofcon_get(bool * p_enabled)
 {
     uint32_t pofcon = NRF_POWER->POFCON;
-    if(NULL != p_enabled)
+    if (NULL != p_enabled)
     {
         (*p_enabled) = ((pofcon & POWER_POFCON_POF_Msk) >> POWER_POFCON_POF_Pos)
             == POWER_POFCON_POF_Enabled;

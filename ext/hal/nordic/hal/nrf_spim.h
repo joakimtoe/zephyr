@@ -1,34 +1,42 @@
-/* Copyright (c) 2015-2017 Nordic Semiconductor ASA
- *
+/**
+ * Copyright (c) 2015 - 2017, Nordic Semiconductor ASA
+ * 
  * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *   1. Redistributions of source code must retain the above copyright notice, this
- *      list of conditions and the following disclaimer.
- *
- *   2. Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
- *
- *   3. Neither the name of Nordic Semiconductor ASA nor the names of its
- *      contributors may be used to endorse or promote products derived from
- *      this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * 
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 
+ * 2. Redistributions in binary form, except as embedded into a Nordic
+ *    Semiconductor ASA integrated circuit in a product or a software update for
+ *    such product, must reproduce the above copyright notice, this list of
+ *    conditions and the following disclaimer in the documentation and/or other
+ *    materials provided with the distribution.
+ * 
+ * 3. Neither the name of Nordic Semiconductor ASA nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ * 
+ * 4. This software, with or without modification, must only be used with a
+ *    Nordic Semiconductor ASA integrated circuit.
+ * 
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
-
 /**
  * @defgroup nrf_spim_hal SPIM HAL
  * @{
@@ -45,6 +53,7 @@
 #include <stdint.h>
 
 #include "nrf.h"
+#include "nrf_peripherals.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -119,7 +128,16 @@ typedef enum
     NRF_SPIM_FREQ_4M   = SPIM_FREQUENCY_FREQUENCY_M4,     ///< 4 Mbps.
     // [conversion to 'int' needed to prevent compilers from complaining
     //  that the provided value (0x80000000UL) is out of range of "int"]
-    NRF_SPIM_FREQ_8M   = (int)SPIM_FREQUENCY_FREQUENCY_M8 ///< 8 Mbps.
+    NRF_SPIM_FREQ_8M   = (int)SPIM_FREQUENCY_FREQUENCY_M8,///< 8 Mbps.
+#ifndef SPI_PRESENT
+    NRF_SPI_FREQ_125K =  NRF_SPIM_FREQ_125K,
+    NRF_SPI_FREQ_250K =  NRF_SPIM_FREQ_250K,
+    NRF_SPI_FREQ_500K =  NRF_SPIM_FREQ_500K,
+    NRF_SPI_FREQ_1M   =  NRF_SPIM_FREQ_1M,
+    NRF_SPI_FREQ_2M   =  NRF_SPIM_FREQ_2M,
+    NRF_SPI_FREQ_4M   =  NRF_SPIM_FREQ_4M,
+    NRF_SPI_FREQ_8M   =  NRF_SPIM_FREQ_8M,
+#endif
 } nrf_spim_frequency_t;
 
 /**
@@ -130,7 +148,13 @@ typedef enum
     NRF_SPIM_MODE_0, ///< SCK active high, sample on leading edge of clock.
     NRF_SPIM_MODE_1, ///< SCK active high, sample on trailing edge of clock.
     NRF_SPIM_MODE_2, ///< SCK active low, sample on leading edge of clock.
-    NRF_SPIM_MODE_3  ///< SCK active low, sample on trailing edge of clock.
+    NRF_SPIM_MODE_3, ///< SCK active low, sample on trailing edge of clock.
+#ifndef SPI_PRESENT
+    NRF_SPI_MODE_0 = NRF_SPIM_MODE_0,
+    NRF_SPI_MODE_1 = NRF_SPIM_MODE_1,
+    NRF_SPI_MODE_2 = NRF_SPIM_MODE_2,
+    NRF_SPI_MODE_3 = NRF_SPIM_MODE_3,
+#endif
 } nrf_spim_mode_t;
 
 /**
@@ -139,7 +163,11 @@ typedef enum
 typedef enum
 {
     NRF_SPIM_BIT_ORDER_MSB_FIRST = SPIM_CONFIG_ORDER_MsbFirst, ///< Most significant bit shifted out first.
-    NRF_SPIM_BIT_ORDER_LSB_FIRST = SPIM_CONFIG_ORDER_LsbFirst  ///< Least significant bit shifted out first.
+    NRF_SPIM_BIT_ORDER_LSB_FIRST = SPIM_CONFIG_ORDER_LsbFirst, ///< Least significant bit shifted out first.
+#ifndef SPI_PRESENT
+    NRF_SPI_BIT_ORDER_MSB_FIRST  = NRF_SPIM_BIT_ORDER_MSB_FIRST,
+    NRF_SPI_BIT_ORDER_LSB_FIRST  = NRF_SPIM_BIT_ORDER_LSB_FIRST,
+#endif
 } nrf_spim_bit_order_t;
 
 
