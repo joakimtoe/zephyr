@@ -39,13 +39,14 @@
  */
 
 #include <soc.h>
+#include "nordic_common.h"
 #include "nrf_drv_usbd.h"
 #include "nrf.h"
 
 #include <string.h>
 #include <inttypes.h>
 
-#define USBD_CONFIG_IRQ_PRIORITY 7
+#define USBD_CONFIG_IRQ_PRIORITY 6
 
 //TODO: Implement CRITICAL_REGION_ENTER
 #define CRITICAL_REGION_ENTER()
@@ -140,24 +141,26 @@ static inline void nrf_drv_systick_delay_us(uint32_t us)
     k_busy_wait(us);
 }
 
-void nrf_drv_common_irq_enable(IRQn_Type IRQn, uint8_t priority)
-{
-    //INTERRUPT_PRIORITY_ASSERT(priority);
+void usb_nrf5_isr(void);
 
-    NVIC_SetPriority(IRQn, priority);
-    NVIC_ClearPendingIRQ(IRQn);
-    NVIC_EnableIRQ(IRQn);
+static void usb_irq_enable(uint8_t priority)
+{
+
+    IRQ_CONNECT(NRF52_IRQ_USBD_IRQn, priority,
+                usb_nrf5_isr, NULL, 0);
+
+    irq_enable(NRF52_IRQ_USBD_IRQn);
 }
 
-__STATIC_INLINE bool nrf_drv_common_irq_enable_check(IRQn_Type IRQn)
+__STATIC_INLINE bool usb_irq_enable_check(IRQn_Type IRQn)
 {
     return 0 != (NVIC->ISER[(((uint32_t)(int32_t)IRQn) >> 5UL)] &
                  (uint32_t)(1UL << (((uint32_t)(int32_t)IRQn) & 0x1FUL)));
 }
 
-__STATIC_INLINE void nrf_drv_common_irq_disable(IRQn_Type IRQn)
+__STATIC_INLINE void usb_irq_disable()
 {
-    NVIC_DisableIRQ(IRQn);
+    irq_disable(NRF52_IRQ_USBD_IRQn);
 }
 
 /**
@@ -1614,7 +1617,7 @@ static const nrf_drv_usbd_isr_t m_isr[] =
  *
  * @{
  */
-void USBD_IRQHandler(void)
+void usb_nrf5_isr(void)
 {
     const uint32_t enabled = nrf_usbd_int_enable_get();
     uint32_t to_process = enabled;
@@ -1868,7 +1871,7 @@ void nrf_drv_usbd_start(bool enable_sof)
    nrf_usbd_int_enable(ints_to_enable);
 
    /* Enable interrupt globally */
-   nrf_drv_common_irq_enable(USBD_IRQn, USBD_CONFIG_IRQ_PRIORITY);
+   usb_irq_enable(USBD_CONFIG_IRQ_PRIORITY);
 
    /* Enable pullups */
    nrf_usbd_pullup_enable();
@@ -1878,7 +1881,7 @@ void nrf_drv_usbd_stop(void)
 {
     ASSERT(m_drv_state == NRF_DRV_STATE_POWERED_ON);
 
-    if (nrf_drv_common_irq_enable_check(USBD_IRQn))
+    if (usb_irq_enable_check(USBD_IRQn))
     {
         /* Abort transfers */
         usbd_ep_abort_all();
@@ -1887,7 +1890,7 @@ void nrf_drv_usbd_stop(void)
         nrf_usbd_pullup_disable();
 
         /* Disable interrupt globally */
-        nrf_drv_common_irq_disable(USBD_IRQn);
+        usb_irq_disable(USBD_IRQn);
 
         /* Disable all interrupts */
         nrf_usbd_int_disable(~0U);
@@ -1906,7 +1909,7 @@ bool nrf_drv_usbd_is_enabled(void)
 
 bool nrf_drv_usbd_is_started(void)
 {
-    return (nrf_drv_usbd_is_enabled() && nrf_drv_common_irq_enable_check(USBD_IRQn));
+    return (nrf_drv_usbd_is_enabled() && usb_irq_enable_check(USBD_IRQn));
 }
 
 bool nrf_drv_usbd_suspend(void)
