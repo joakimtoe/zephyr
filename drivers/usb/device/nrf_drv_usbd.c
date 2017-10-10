@@ -46,13 +46,29 @@
 #include <string.h>
 #include <inttypes.h>
 
-#define USBD_CONFIG_IRQ_PRIORITY 6
+#define SYS_LOG_LEVEL CONFIG_SYS_LOG_USB_DRIVER_LEVEL
+#include <logging/sys_log.h>
+
+//#define NRF_LOG_DEBUG SYS_LOG_DBG
+#define NRF_LOG_DEBUG(...)
+
+#define USBD_CONFIG_IRQ_PRIORITY 7
 
 //TODO: Implement CRITICAL_REGION_ENTER
-#define CRITICAL_REGION_ENTER()
+#define CRITICAL_REGION_ENTER()                \
+{                                              \
+    if (!k_is_in_isr()) {                      \
+        irq_disable(NRF52_IRQ_USBD_IRQn);      \
+    }                                          \
+}
 
 //TODO: Implement CRITICAL_REGION_EXIT
-#define CRITICAL_REGION_EXIT()
+#define CRITICAL_REGION_EXIT()                 \
+{                                              \
+    if (!k_is_in_isr()) {                      \
+        irq_enable(NRF52_IRQ_USBD_IRQn);       \
+    }                                          \
+}
 
 // Disable lint-warnings/errors for STATIC_ASSERT
 //lint -emacro(10, STATIC_ASSERT)
@@ -183,20 +199,6 @@ typedef enum {
     NRF_DRV_STATE_INITIALIZED,   /**< Initialized but powered off. */
     NRF_DRV_STATE_POWERED_ON
 } nrf_drv_state_t;
-
-//#define NRF_LOG_MODULE_NAME USBD
-
-//#if USBD_CONFIG_LOG_ENABLED
-//#define NRF_LOG_LEVEL       USBD_CONFIG_LOG_LEVEL
-//#define NRF_LOG_INFO_COLOR  USBD_CONFIG_INFO_COLOR
-//#define NRF_LOG_DEBUG_COLOR USBD_CONFIG_DEBUG_COLOR
-//#else //USBD_CONFIG_LOG_ENABLED
-//#define NRF_LOG_LEVEL       0
-//#endif //USBD_CONFIG_LOG_ENABLED
-//#include "nrf_log.h"
-//NRF_LOG_MODULE_REGISTER();
-
-#define NRF_LOG_DEBUG(...)
 
 #ifndef NRF_DRV_USBD_EARLY_DMA_PROCESS
 /* Try to process DMA request when endpoint transmission has been detected
@@ -2304,7 +2306,10 @@ void nrf_drv_usbd_transfer_out_drop(nrf_drv_usbd_ep_t ep)
         {
             ret_code_t ret;
             NRF_DRV_USBD_TRANSFER_OUT(transfer, 0, 0);
-            ret = nrf_drv_usbd_ep_transfer(ep, &transfer);
+            do
+            {
+                ret = nrf_drv_usbd_ep_transfer(ep, &transfer);
+            } while (ret != NRF_SUCCESS);
             ASSERT(ret == NRF_SUCCESS);
             UNUSED_VARIABLE(ret);
         }
